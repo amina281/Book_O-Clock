@@ -20,7 +20,6 @@ class CreateCategoryTable extends Migration
 
         });
     }
-
     /**
      * Reverse the migrations.
      *

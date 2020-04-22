@@ -12,8 +12,7 @@ class CreateAuthorTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('Author', function (Blueprint $table) {
+    {Schema::create('Author', function (Blueprint $table) {
             $table->increments('Id');
             $table->string('Authorname');
             $table->string('Address');

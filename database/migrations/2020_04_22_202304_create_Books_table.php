@@ -23,7 +23,6 @@ class CreateBooksTable extends Migration
         $table->string('Language');
         $table->foreign('AuthorId')->references('Id')->on('Author');
 
-
     });
     }
 

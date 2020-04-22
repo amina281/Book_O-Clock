@@ -26,7 +26,6 @@ class CreateShoppingCartItemsTable extends Migration
 
         });
     }
-
     /**
      * Reverse the migrations.
      *

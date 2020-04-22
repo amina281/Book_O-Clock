@@ -23,7 +23,6 @@ class CreateShoppingCartHeaderTable extends Migration
 
         });
     }
-
     /**
      * Reverse the migrations.
      *

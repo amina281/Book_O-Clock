@@ -21,7 +21,6 @@ class CreateBookCategoryMapTable extends Migration
             $table->foreign('BookId')->references('ISBN')->on('Books');
         });
     }
-
     /**
      * Reverse the migrations.
      *
