@@ -21,7 +21,6 @@ class CreateBooksTable extends Migration
         $table->decimal('Price');
         $table->dateTime('Published');
         $table->string('Language');
-        $table->primary('ISBN');
         $table->foreign('AuthorId')->references('Id')->on('Author');
 
 
