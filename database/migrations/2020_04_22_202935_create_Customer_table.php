@@ -15,7 +15,7 @@ class CreateCustomerTable extends Migration
     {
         Schema::create('Customer', function (Blueprint $table) {
             $table->increments('Id');
-            $table->string('Email')->unique();
+            $table->string('Email');
             $table->string('Username');
             $table->string('Password');
             $table->string('Role');
