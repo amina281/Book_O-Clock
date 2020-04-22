@@ -12,8 +12,20 @@ class CreateBooksTable extends Migration
      * @return void
      */
     public function up()
-    {
-        //
+    { Schema::create('Books', function (Blueprint $table) {
+        $table->string('ISBN');
+        $table->string('Title');
+        $table->integer('PageNum');
+        $table->unsignedInteger('AuthorId');
+        $table->float('Rate');
+        $table->decimal('Price');
+        $table->dateTime('Published');
+        $table->string('Language');
+        $table->primary('ISBN');
+        $table->foreign('AuthorId')->references('Id')->on('Author');
+
+
+    });
     }
 
     /**
@@ -23,6 +35,6 @@ class CreateBooksTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('Books');
     }
 }

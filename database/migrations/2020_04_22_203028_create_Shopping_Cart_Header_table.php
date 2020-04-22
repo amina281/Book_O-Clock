@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuthorTable extends Migration
+class CreateShoppingCartHeaderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,7 @@ class CreateAuthorTable extends Migration
      */
     public function up()
     {
-        Schema::create('Author', function (Blueprint $table) {
-            $table->increments('Id');
-            $table->string('Authorname');
-            $table->string('Address');
-            $table->integer('BookNumber');
-        });
+        //
     }
 
     /**
@@ -28,7 +23,6 @@ class CreateAuthorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Author');
-
+        //
     }
 }
