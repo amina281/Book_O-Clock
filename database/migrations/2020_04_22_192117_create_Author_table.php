@@ -13,7 +13,13 @@ class CreateAuthorTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('Author', function (Blueprint $table) {
+            $table->primary('Id');
+            $table->increments('Id');
+            $table->string('Authorname');
+            $table->string('Address');
+            $table->integer('BookNumber');
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class CreateAuthorTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('Author');
     }
 }
