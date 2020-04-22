@@ -13,7 +13,15 @@ class CreateShoppingCartHeaderTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('Shopping_Cart_Header', function (Blueprint $table) {
+            $table->increments('No');
+            $table->string('CustomerAddress');
+            $table->integer('TotalAmount');
+            $table->unsignedInteger('CustomerId');
+            $table->foreign('CustomerId')->references('Id')->on('Customer');
+
+
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class CreateShoppingCartHeaderTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('Shopping_Cart_Header');
     }
 }
