@@ -20,6 +20,8 @@ class CreateCustomerTable extends Migration
             $table->string('Password');
             $table->string('Role');
             $table->integer('PhoneNumber');
+            $table->rememberToken();
+            $table->timestamps();
 
         });
     }
