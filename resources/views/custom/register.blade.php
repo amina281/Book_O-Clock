@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            @if (count($errors)> 0)
+                @foreach($errors ->all() as $error)
+                    <p class="alert-danger">{{$error}}</p>
+                @endforeach
+                @endif
+
+            <form class="form-horizontal" action="{{route('custom.register')}}" method="post">
+                {{csrf_field()}}
+                <fieldset>
+                    <legend>Registration</legend>
+                    <div class="form-group row">
+                        <label for="inputEmail" class="col-lg-4 control-label">Email</label>
+                        <div class="col-lg-8">
+                            <input type="text"  class="form-control" name="Email" value="{{old('Email')}}" placeholder="email@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputUsername" class="col-lg-4 control-label">Username</label>
+                        <div class="col-lg-8">
+                            <input type="text"  class="form-control" name="Username" value="{{old('Username')}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputRole" class="col-lg-4 control-label">Role</label>
+                        <div class="col-lg-8">
+                            <input type="text"  class="form-control" name="Role" value="{{old('Role')}}" >
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputPhone" class="col-lg-4 control-label">Phone Number</label>
+                        <div class="col-lg-8">
+                            <input type="number"  class="form-control" name="PhoneNumber" value="{{old('PhoneNumber')}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-lg-4 control-label">Password</label>
+                        <div class="col-lg-8">
+                            <input type="password"  class="form-control" name="password" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-lg-4 control-label">Retype password</label>
+                        <div class="col-lg-8">
+                            <input type="password"  class="form-control" name="password_confirmation" placeholder="Retype password">
+                        </div>
+                    </div>
+
+
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Rregjistrohu</button>
+                   <br>
+                @if (session('Status'))
+
+                    <p class="alert-success">{{session(('Status'))}}</p>
+
+                @endif
+            </form>
+        </div>
+    </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.5.0.js"
+        integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+        crossorigin="anonymous">
+
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous">
+
+</script>
+</body>
+</html>
