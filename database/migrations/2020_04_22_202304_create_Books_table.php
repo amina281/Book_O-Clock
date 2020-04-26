@@ -22,6 +22,7 @@ class CreateBooksTable extends Migration
         $table->dateTime('Published');
         $table->string('Language');
         $table->foreign('AuthorId')->references('Id')->on('Author');
+        $table->timestamps();
 
     });
     }

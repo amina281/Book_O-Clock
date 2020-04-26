@@ -19,6 +19,7 @@ class CreateShoppingCartHeaderTable extends Migration
             $table->integer('TotalAmount');
             $table->unsignedInteger('CustomerId');
             $table->foreign('CustomerId')->references('Id')->on('Customer');
+            $table->timestamps();
 
 
         });
