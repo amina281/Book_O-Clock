@@ -1,12 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
+@extends('layout')
+
+@section('content')
 
 <div class="container">
     <div class="row">
@@ -20,7 +14,7 @@
             <form class="form-horizontal" action="{{route('custom.register')}}" method="post">
                 {{csrf_field()}}
                 <fieldset>
-                    <legend>Registration</legend>
+                    <legend align="center">Registration</legend>
                     <div class="form-group row">
                         <label for="inputEmail" class="col-lg-4 control-label">Email</label>
                         <div class="col-lg-8">
@@ -61,9 +55,13 @@
                         </div>
                     </div>
 
-
+                    <div class="form-group">
+                        <div class="col-lg-12 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary btn-block">Rregjistrohu</button>
+                        </div>
+                    </div>
                 </fieldset>
-                <button type="submit" class="btn btn-primary">Rregjistrohu</button>
+
                    <br>
                 @if (session('Status'))
 
@@ -86,5 +84,5 @@
         crossorigin="anonymous">
 
 </script>
-</body>
-</html>
+
+@stop
