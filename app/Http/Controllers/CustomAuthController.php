@@ -13,6 +13,7 @@ class CustomAuthController extends Controller
     public function register(Request $request)
     {
         $this->validation($request);
+        $request['password'] = bcrypt($request->password);
         User::Create($request->all());
         return redirect('/')->with('Status','You are registered successfully.');
     }
@@ -27,4 +28,5 @@ class CustomAuthController extends Controller
                     'password'=>'required|confirmed|max:255',
                 ]);
     }
+
 }

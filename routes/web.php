@@ -17,3 +17,11 @@ Route::get('/', function () {
 
 Route::get('custom-register','CustomAuthController@showRegisterForm')->name('custom.register');
 Route::post('custom-register','CustomAuthController@register');
+
+Route::get('custom-login',  'AuthController@loginForm')->name('custom.login');
+Route::post('custom-login',  'AuthController@login');
+
+Route::get('/logout',  'AuthController@logout');
+
+
+Route::get('/dashboard', 'HomeController@dashboard');

@@ -13,9 +13,19 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Login <span class="sr-only">(current)</span></a>
-            </li>
+                @if (Route::has('custom.login'))
+                        @if (Auth::check())
+                            <a href="{{ url('/dashboard') }}">Home</a>
+                        @else
+                        <li class="nav-item active">
+                            <a  class="nav-link" href="{{ url('/custom-login') }}">Login</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url('/custom-register') }}">Register</a>
+                        </li>
+                        @endif
+
+                @endif
             </ul>
         </form>
     </div>
