@@ -1,10 +1,20 @@
 @extends('layout')
 @section('title', 'Login Form')
 @section('content')
-    <div class="container">
+    <style>
+        .form-horizontal{
+            border: 1px solid #6b9dbb;
+            background-color: #c9e2b3;
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 50%;
+        }
 
+
+    </style>
+    <div class="container">
         <div class="col-lg-6 offset-lg-3">
-            <h2>Login Here</h2><hr>
+            <h2 align="center">Login Here</h2><hr>
             <form class="form-horizontal" method="POST" action="{{route('custom.login')}}">
                 {{ csrf_field() }}
                 <label for="exampleInputEmail1">Email address</label>

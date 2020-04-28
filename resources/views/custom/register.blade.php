@@ -1,20 +1,26 @@
 @extends('layout')
 
 @section('content')
+    <style>
+        .form-horizontal{
 
+            background-color: #ffffff;
+            margin-right: -30px;
+            margin-left: -30px;
+            margin-bottom: 50%;
+        }
+    </style>
 <div class="container">
-    <div class="row">
         <div class="col-lg-6 offset-lg-3">
             @if (count($errors)> 0)
                 @foreach($errors ->all() as $error)
                     <p class="alert-danger">{{$error}}</p>
                 @endforeach
                 @endif
+                <h2 align="center">Register Here</h2><hr>
 
             <form class="form-horizontal" action="{{route('custom.register')}}" method="post">
                 {{csrf_field()}}
-                <fieldset>
-                    <legend align="center">Registration</legend>
                     <div class="form-group row">
                         <label for="inputEmail" class="col-lg-4 control-label">Email</label>
                         <div class="col-lg-8">
@@ -60,7 +66,7 @@
                             <button type="submit" class="btn btn-primary btn-block">Rregjistrohu</button>
                         </div>
                     </div>
-                </fieldset>
+
 
                    <br>
                 @if (session('Status'))
@@ -70,7 +76,6 @@
                 @endif
             </form>
         </div>
-    </div>
 </div>
 
 <script
