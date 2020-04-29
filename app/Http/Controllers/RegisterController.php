@@ -30,4 +30,6 @@ class RegisterController extends Controller
 
         return back('/register');
     }
+
+
 }
