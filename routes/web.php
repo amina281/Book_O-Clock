@@ -12,16 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('custom.register');
+    return view('/AuthFolder/register');
 });
 
-Route::get('custom-register','CustomAuthController@showRegisterForm')->name('custom.register');
-Route::post('custom-register','CustomAuthController@register');
+Route::get('/register', 'RegisterController@index');
+Route::post('/register', 'RegisterController@store');
 
-Route::get('custom-login',  'AuthController@loginForm')->name('custom.login');
-Route::post('custom-login',  'AuthController@login');
+Route::get('/login', 'LoginController@index');
+Route::post('/login', 'LoginController@store');
 
-Route::get('/logout',  'AuthController@logout');
+Route::get('/forget-password', 'ForgotPasswordController@getEmail');
+Route::post('/forget-password', 'ForgotPasswordController@postEmail');
 
-
-Route::get('/dashboard', 'HomeController@dashboard');
+Route::get('/{token}/reset-password', 'ResetPasswordController@getPassword');
+Route::post('/reset-password', 'ResetPasswordController@updatePassword');
