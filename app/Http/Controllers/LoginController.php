@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Hash;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -14,17 +15,35 @@ class LoginController extends Controller
     }
     public function store(Request $request) {
 
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-        $user = DB::table('users')->where('email', $request->email)->first();
+        $this->validation($request);
 
-        if ($user->email === $request->email) {
-            return redirect('/home');
+        //$user = DB::table('users')->where('email', $request->email)->first();
+
+        if (Auth::attempt(
+            ['email' => $request->email,
+            'password' => $request->password])) {
+            return view('AuthFolder.home');
         } else {
             return back()->with('error', 'Your credentials dont match our records');
         }
 
+    }
+
+    public function  validation($request)
+    {
+        return $this->validate($request,[
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        if(Auth::check())
+        {
+            Auth::logout();
+            $request->session()->invalidate();
+        }
+        return redirect()->route('AuthFolder.login');
     }
 }

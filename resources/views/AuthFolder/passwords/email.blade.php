@@ -15,11 +15,15 @@
             <div class="col-lg-6 offset-lg-3">
                 <div class="card">
                     <div class="card-header">Reset Password</div>
-
+                    @if (count($errors)> 0)
+                        @foreach($errors ->all() as $error)
+                            <p class="alert-danger">{{$error}}</p>
+                        @endforeach
+                    @endif
                     <div class="card-body">
-                        @if (session('status'))
+                        @if (session('Status'))
                             <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
+                                {{ session('Status') }}
                             </div>
                         @endif
 
@@ -28,7 +32,7 @@
                             <div class="form-group row">
                                 <label for="email" class="col-lg-4 control-label">E-Mail Address</label>
                                 <div class="col-lg-8">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
 
                                 </div>
                             </div>

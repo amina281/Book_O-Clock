@@ -13,22 +13,24 @@ class RegisterController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
+        $this->validation($request);
+
+         User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+
+        return view('AuthFolder.register')->with('Status','U insertua me Sukses.');
+    }
+    public function  validation($request)
+    {
+        return $this->validate($request,[
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
         ]);
-
-        $register = new User;
-
-        $register->name = $request->name;
-        $register->email = $request->email;
-        $register->password = $request->password;
-
-        $register->save();
-
-        return back('/register');
     }
 
 

@@ -17,9 +17,7 @@ class ForgotPasswordController extends Controller
 
     public function postEmail(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users',
-        ]);
+       $this->validation($request);
 
         $token = str_random(64);
 
@@ -29,9 +27,16 @@ class ForgotPasswordController extends Controller
 
         Mail::send('AuthFolder.verify', ['token' => $token], function($message) use($request){
             $message->to($request->email);
-            $message->subject('Reset Password Notification');
+            $message->subject('Reset i password');
         });
 
-        return back()->with('message', 'We have e-mailed your password reset link!');
+        return view(AuthFolder.passwords.email)->with('Status', 'Reset link!');
+    }
+
+    public function  validation($request)
+    {
+        return $this->validate($request,[
+            'email' => 'required|email|exists:users',
+        ]);
     }
 }

@@ -15,12 +15,7 @@ class ResetPasswordController extends Controller {
     public function updatePassword(Request $request)
     {
 
-        $request->validate([
-            'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:6|confirmed',
-            'password_confirmation' => 'required',
-
-        ]);
+       $this->validation($request);
 
         $updatePassword = DB::table('password_resets')
             ->where(['email' => $request->email, 'token' => $request->token])
@@ -36,5 +31,13 @@ class ResetPasswordController extends Controller {
 
         return redirect('/login')->with('message', 'Your password has been changed!');
 
+    }
+    public function  validation($request)
+    {
+        return $this->validate($request,[
+            'email' => 'required|email|exists:users',
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required',
+        ]);
     }
 }

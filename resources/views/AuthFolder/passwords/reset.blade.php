@@ -22,7 +22,7 @@
                             <div class="form-group row">
                                 <label for="email" class="col-lg-4 control-label">E-Mail Address</label>
                                 <div class="col-lg-8">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?: old('email') }}" autocomplete="email" autofocus>
+                                    <input id="email" type="email" class="form-control name="email" value="{{ $email ?: old('email') }}" autocomplete="email" autofocus>
 
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                             <div class="form-group row">
                                 <label for="password" class="col-lg-4 control-label">Password</label>
                                 <div class="col-lg-8">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                                    <input id="password" type="password" class="form-control  name="password" autocomplete="new-password">
 
                                 </div>
 
