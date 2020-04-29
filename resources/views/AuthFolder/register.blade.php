@@ -1,12 +1,21 @@
 @extends('layouts.dashboard')
 @section('content')
+    <style>
+        .card{
 
+            margin-left: auto%;
+            margin-right:auto%;
+            width: auto%;
+            margin-top:20%;
+
+        }
+    </style>
     <div class="container">
             <div class="col-lg-6 offset-lg-3">
                 <div class="card">
-                    <div class="card-header center-block">Register</div>
+                    <div class="card-header">Register</div>
                     <div class="card-body">
-                        <form method="POST" action="{{url('/register')}}">
+                        <form  method="POST" action="{{url('/register')}}">
                             {{csrf_field()}}
                             <div class="form-group row">
                                 <label for="name" class="col-lg-4 control-label">Name</label>

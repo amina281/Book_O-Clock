@@ -1,6 +1,16 @@
 @extends('layouts.dashboard')
 @section('content')
 
+    <style>
+        .card{
+
+            margin-left: auto%;
+            margin-right:auto%;
+            width: auto%;
+            margin-top:20%;
+
+        }
+    </style>
     <div class="container">
             <div class="col-lg-6 offset-lg-3">
                 <div class="card">
@@ -13,7 +23,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="/forget-password">
+                        <form class="form-horizontal" method="POST" action="/forget-password">
                             {{csrf_field()}}
                             <div class="form-group row">
                                 <label for="email" class="col-lg-4 control-label">E-Mail Address</label>
