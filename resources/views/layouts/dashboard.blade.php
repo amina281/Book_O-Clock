@@ -23,6 +23,7 @@
 
     </script>
 </head>
+
 <style>
     .alert-message {
         color: red;
@@ -58,9 +59,10 @@
         </div>
     </nav>
 
-    <div>
-
+    <div class="container">
+        <div id="main" class="row">
                 @yield('content')
+        </div>
     </div>
 </div>
 </body>
