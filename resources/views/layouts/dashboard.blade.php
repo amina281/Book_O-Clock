@@ -55,6 +55,9 @@
                     @if (Route::has('AuthFolder.login'))
                         @if (Auth::check())
                             <a href="{{ url('/dashboard') }}">Home</a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url('/register') }}">Log Out</a>
+                            </li>
                         @else
                             <li class="nav-item active">
                                 <a  class="nav-link" href="{{ url('/login') }}">Login</a>
