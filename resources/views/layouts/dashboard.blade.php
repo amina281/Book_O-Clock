@@ -45,16 +45,18 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/dashboard') }}">Home <span class="sr-only">(current)</span></a>
-                </li>
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
-                    @if (Route::has('AuthFolder.login'))
+
                         @if (Auth::check())
-                            <a href="{{ url('/dashboard') }}">Home</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url('/dashboard') }}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                            <li class="nav-item active">
+                                <a  class="nav-link" href="{{ url('/logout') }}">Logout</a>
+                            </li>
                         @else
                             <li class="nav-item active">
                                 <a  class="nav-link" href="{{ url('/login') }}">Login</a>
@@ -64,7 +66,7 @@
                             </li>
                         @endif
 
-                    @endif
+
                 </ul>
             </form>
         </div>

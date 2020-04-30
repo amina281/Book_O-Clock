@@ -20,6 +20,7 @@ Route::post('/register', 'RegisterController@store');
 
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@store');
+Route::get('/logout',  'LoginController@logout');
 
 Route::get('/forget-password', 'ForgotPasswordController@getEmail');
 Route::post('/forget-password', 'ForgotPasswordController@postEmail');
