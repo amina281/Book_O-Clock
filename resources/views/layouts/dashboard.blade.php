@@ -52,7 +52,8 @@
 
                         @if (Auth::check())
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ url('/dashboard') }}">Home <span class="sr-only">(current)</span></a>
+
+                       <p class="nav-link"><b>WELCOME  {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</b></p>
                         </li>
                             <li class="nav-item active">
                                 <a  class="nav-link" href="{{ url('/logout') }}">Logout</a>
