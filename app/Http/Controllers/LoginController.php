@@ -10,18 +10,29 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function index() {
+
         return view('AuthFolder.login');
     }
     public function store(Request $request) {
 
         $this->validation($request);
-        //$user = DB::table('users')->where('email', $request->email)->first();
+
+
         if (Auth::attempt(
             ['email' => $request->email,
             'password' => $request->password])) {
+
+            $user = DB::table('users')->where('email', $request->email)->first();
+            if($user->role === 'admin')
+            {
+                return view('AuthFolder.admin');
+            }else{
             return view('AuthFolder.home');
-        } else {
-            return view('AuthFolder.login')->with('Status', 'Your credentials dont match our records');
+        }
+        }
+        else
+            {
+            return redirect('/login')->with('Status', 'Password ose email jo i sakte');
         }
 
     }

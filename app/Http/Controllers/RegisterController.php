@@ -19,9 +19,10 @@ class RegisterController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
+             'role' =>'user',
         ]);
 
-        return view('AuthFolder.register')->with('Status','User is registered successfully');
+        return redirect('/register')->with('Status','Useri u rregjistrua me sukses.');
     }
     public function  validation($request)
     {
