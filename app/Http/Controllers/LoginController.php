@@ -24,7 +24,7 @@ class LoginController extends Controller
             'password' => $request->password])) {
             return view('AuthFolder.home');
         } else {
-            return back()->with('error', 'Your credentials dont match our records');
+            return view('AuthFolder.login')->with('Status', 'Your credentials dont match our records');
         }
 
     }

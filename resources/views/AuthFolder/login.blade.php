@@ -32,13 +32,6 @@
                                 <div class="col-lg-8">
                                     <input id="password" type="password" class="form-control" name="password" autocomplete="current-password">
 
-
-
-                                    @if(session()->has('error'))
-                                        <div class="alert alert-danger">
-                                            {{ session()->get('error') }}
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
 
@@ -52,6 +45,11 @@
                                     </a>
                                 </div>
                             </div>
+                            @if (session('Status'))
+
+                                <p class="alert-danger">{{session(('Status'))}}</p>
+
+                            @endif
                         </form>
                     </div>
                 </div>
