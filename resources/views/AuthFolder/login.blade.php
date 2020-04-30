@@ -3,9 +3,9 @@
     <style>
         .card{
 
-            margin-left: auto%;
-            margin-right:auto%;
-            width: auto%;
+            margin-left: auto;
+            margin-right:auto;
+            width: auto;
             margin-top:20%;
 
         }

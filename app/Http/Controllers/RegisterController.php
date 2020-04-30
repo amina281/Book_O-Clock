@@ -21,7 +21,7 @@ class RegisterController extends Controller
             'password' => bcrypt($request['password']),
         ]);
 
-        return view('AuthFolder.register')->with('Status','U insertua me Sukses.');
+        return view('AuthFolder.register')->with('Status','User is registered successfully');
     }
     public function  validation($request)
     {
