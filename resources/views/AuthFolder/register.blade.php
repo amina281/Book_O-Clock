@@ -64,15 +64,11 @@
                             <br>
 
                             @if (session('Status'))
-
                                 <p class="alert-success">{{session(('Status'))}}</p>
-
                             @endif
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
-
 @endsection
