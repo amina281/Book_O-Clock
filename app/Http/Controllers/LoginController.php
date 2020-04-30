@@ -16,7 +16,6 @@ class LoginController extends Controller
     public function store(Request $request) {
 
         $this->validation($request);
-
         //$user = DB::table('users')->where('email', $request->email)->first();
 
         if (Auth::attempt(
