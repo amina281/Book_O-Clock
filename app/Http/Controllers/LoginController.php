@@ -26,9 +26,11 @@ class LoginController extends Controller
             if($user->role === 'admin')
             {
                 return view('AuthFolder.admin');
-            }else{
-            return view('AuthFolder.home');
-        }
+            }
+            else
+                {
+                    return view('AuthFolder.home');
+                }
         }
         else
             {
