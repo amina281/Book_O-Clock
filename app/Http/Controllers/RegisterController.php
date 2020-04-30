@@ -21,7 +21,6 @@ class RegisterController extends Controller
             'password' => bcrypt($request['password']),
              'role' =>'user',
         ]);
-
         return redirect('/register')->with('Status','Useri u rregjistrua me sukses.');
     }
     public function  validation($request)
