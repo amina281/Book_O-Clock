@@ -44,6 +44,6 @@ class LoginController extends Controller
             Auth::logout();
             $request->session()->invalidate();
         }
-        return redirect()->route('AuthFolder.login');
+        return view('AuthFolder.login');
     }
 }
