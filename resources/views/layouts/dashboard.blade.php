@@ -28,8 +28,14 @@
     .alert-message {
         color: red;
     }
+    .img{
+        background-image: url('https://eatingfiction.files.wordpress.com/2019/08/shutterstock_1068141515.jpg');
+        height: 100%;
+        background-size: cover;
+    }
 </style>
-<body>
+
+<body class="img">
 
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -60,9 +66,9 @@
     </nav>
 
     <div class="container">
-        <div id="main" class="row">
+
                 @yield('content')
-        </div>
+
     </div>
 </div>
 </body>
