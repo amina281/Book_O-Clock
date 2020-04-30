@@ -22,7 +22,7 @@ class RegisterController extends Controller
              'role' =>'user',
         ]);
 
-        return view('AuthFolder.register')->with('Status','User is registered successfully');
+        return redirect('/register')->with('Status','Useri u rregjistrua me sukses.');
     }
     public function  validation($request)
     {

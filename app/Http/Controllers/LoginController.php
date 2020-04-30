@@ -32,7 +32,7 @@ class LoginController extends Controller
         }
         else
             {
-            return view('AuthFolder.login')->with('Status', 'Your credentials dont match our records');
+            return redirect('/login')->with('Status', 'Password ose email jo i sakte');
         }
 
     }
