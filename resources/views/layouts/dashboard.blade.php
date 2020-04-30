@@ -66,17 +66,12 @@
                                 <a class="nav-link" href="{{ url('/register') }}">Register</a>
                             </li>
                         @endif
-
-
                 </ul>
             </form>
         </div>
     </nav>
-
     <div class="container">
-
                 @yield('content')
-
     </div>
 </body>
 </html>
