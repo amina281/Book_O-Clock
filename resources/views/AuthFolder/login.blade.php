@@ -46,7 +46,6 @@
                                 </div>
                             </div>
                             @if (session('Status'))
-
                                 <p class="alert-danger">{{session(('Status'))}}</p>
 
                             @endif
