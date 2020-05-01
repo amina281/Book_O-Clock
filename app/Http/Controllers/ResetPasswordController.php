@@ -7,6 +7,10 @@ use Hash;
 
 class ResetPasswordController extends Controller {
 
+    public function index() {
+
+        return view('AuthFolder.passwords.reset');
+    }
     public function getPassword($token) {
 
         return view('AuthFolder.passwords.reset', ['token' => $token]);
@@ -22,14 +26,14 @@ class ResetPasswordController extends Controller {
             ->first();
 
         if(!$updatePassword)
-            return back()->withInput()->with('error', 'Invalid token!');
+            return redirect('/login')->with('Status', 'Password not changed ,Invalid token!');
 
         $user = User::where('email', $request->email)
             ->update(['password' => Hash::make($request->password)]);
 
         DB::table('password_resets')->where(['email'=> $request->email])->delete();
 
-        return redirect('/login')->with('message', 'Your password has been changed!');
+        return redirect('/login')->with('Reset', 'Your password has been changed!');
 
     }
     public function  validation($request)

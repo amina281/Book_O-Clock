@@ -48,6 +48,10 @@
                             @if (session('Status'))
                                 <p class="alert-danger">{{session(('Status'))}}</p>
                             @endif
+
+                            @if (session('Reset'))
+                                <p class="alert-success">{{session(('Reset'))}}</p>
+                            @endif
                         </form>
                     </div>
                 </div>

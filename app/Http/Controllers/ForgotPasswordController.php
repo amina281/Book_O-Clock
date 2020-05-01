@@ -30,7 +30,7 @@ class ForgotPasswordController extends Controller
             $message->subject('Reset i password');
         });
 
-        return view(AuthFolder.passwords.email)->with('Status', 'Reset link!');
+        return redirect('/forget-password')->with('Status', 'Reset link!');
     }
 
     public function  validation($request)
