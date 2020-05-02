@@ -20,9 +20,12 @@ class RegisterController extends Controller
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
              'role' =>'user',
+             'phonenumber'=>$request['phonenumber'],
         ]);
+
         return redirect('/register')->with('Status','Useri u rregjistrua me sukses.');
     }
+
     public function  validation($request)
     {
         return $this->validate($request,[
@@ -30,6 +33,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
+            'phonenumber'=>'required|integer|min:7|',
         ]);
     }
 

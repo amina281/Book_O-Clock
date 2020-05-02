@@ -13,6 +13,7 @@ class LoginController extends Controller
 
         return view('AuthFolder.login');
     }
+
     public function store(Request $request) {
 
         $this->validation($request);
@@ -21,8 +22,10 @@ class LoginController extends Controller
         if (Auth::attempt(
             ['email' => $request->email,
             'password' => $request->password])) {
+              //deklarim i objektit user, mund te kete dhe emer tjeter.
 
             $user = DB::table('users')->where('email', $request->email)->first();
+
             if($user->role === 'admin')
             {
                 return view('AuthFolder.admin');

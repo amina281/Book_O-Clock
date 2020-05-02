@@ -18,17 +18,17 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password','role','phonenumber'
     ];
-    /**
+    /** protected $hidden = [
+    'password', 'remember_token',
+    ];
+
+    protected $casts = [
+    'email_verified_at' => 'datetime',
+    ];
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
 }
