@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateBookCategoryMapTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('Book_Category_Map', function (Blueprint $table) {
@@ -21,11 +17,7 @@ class CreateBookCategoryMapTable extends Migration
             $table->foreign('BookId')->references('ISBN')->on('Books');
         });
     }
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('Book_Category_Map');
