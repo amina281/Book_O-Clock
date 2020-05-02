@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateShoppingCartHeaderTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('Shopping_Cart_Header', function (Blueprint $table) {
@@ -24,11 +20,7 @@ class CreateShoppingCartHeaderTable extends Migration
 
         });
     }
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('Shopping_Cart_Header');

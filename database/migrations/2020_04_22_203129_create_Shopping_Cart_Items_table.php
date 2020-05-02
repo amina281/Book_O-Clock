@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateShoppingCartItemsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('Shopping_Cart_Items', function (Blueprint $table) {
@@ -26,11 +22,7 @@ class CreateShoppingCartItemsTable extends Migration
 
         });
     }
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('Shopping_Cart_Items');
