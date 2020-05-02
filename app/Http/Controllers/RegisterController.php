@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use DB;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -32,6 +33,27 @@ class RegisterController extends Controller
             'password_confirmation' => 'required',
         ]);
     }
+
+    function check(Request $request)
+    {
+
+        if($request->get('email'))
+        {
+            $email = $request->get('email');
+            $data = DB::table("users")
+                ->where('email', $email)
+                ->count();
+            if($data > 0)
+            {
+                echo 'not_unique';
+            }
+            else
+            {
+                echo 'unique';
+            }
+        }
+    }
+
 
 
 }

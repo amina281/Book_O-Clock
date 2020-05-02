@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@store');
+Route::post('/register/check', 'RegisterController@check')->name('email_available.check');
 
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@store');
