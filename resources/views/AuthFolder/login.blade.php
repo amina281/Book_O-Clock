@@ -17,7 +17,6 @@
                     <div class="card-body">
                         <form class="form-horizontal" method="POST" action="{{url('/login')}}">
                             {{csrf_field()}}
-
                             <div class="form-group row">
                                 <label for="email" class="col-lg-4 control-label">E-Mail Address</label>
                                 <div class="col-lg-8">

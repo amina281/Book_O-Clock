@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 @section('content')
+
     <style>
         .card{
             margin-left: auto;
@@ -46,7 +47,13 @@
                                 </div>
 
                             </div>
+                            <div class="form-group row">
+                            <label for="phonenumber" class="col-lg-4 control-label">Phone Number</label>
+                            <div class="col-lg-8">
+                                <input id="phonenumber" type="number" class="form-control" name="phonenumber" value="{{ old('phonenumber') }}" autocomplete="phonenumber">
 
+                            </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="password" class="col-lg-4 control-label">Password</label>
                                 <div class="col-lg-8">
