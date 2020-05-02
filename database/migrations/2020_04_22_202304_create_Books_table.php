@@ -6,13 +6,10 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateBooksTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
-    { Schema::create('Books', function (Blueprint $table) {
+    {
+        Schema::create('Books', function (Blueprint $table) {
         $table->increments('ISBN');
         $table->string('Title');
         $table->integer('PageNum');
@@ -27,11 +24,7 @@ class CreateBooksTable extends Migration
     });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('Books');
