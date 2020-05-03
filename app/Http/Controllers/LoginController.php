@@ -21,7 +21,8 @@ class LoginController extends Controller
 
         if (Auth::attempt(
             ['email' => $request->email,
-            'password' => $request->password])) {
+            'password' => $request->password,
+            'verified'=> true])) {
               //deklarim i objektit user, mund te kete dhe emer tjeter.
 
             $user = DB::table('users')->where('email', $request->email)->first();
@@ -37,7 +38,7 @@ class LoginController extends Controller
         }
         else
             {
-            return redirect('/login')->with('Status', 'Password ose email jo i sakte');
+            return redirect('/login')->with('Status', 'Password ose email jo i sakte/ose email jo i verifikuar.');
         }
 
     }

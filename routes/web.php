@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@store');
 Route::post('/register/check', 'RegisterController@check')->name('email_available.check');
+Route::post('/register-update', 'RegisterController@updateEmail');
+Route::get('/{token}/{email}/register', 'RegisterController@getInfo');
 
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@store');
@@ -28,3 +30,5 @@ Route::post('/forget-password', 'ForgotPasswordController@postEmail');
 
 Route::get('/{token}/reset-password', 'ResetPasswordController@getPassword');
 Route::post('/reset-password', 'ResetPasswordController@updatePassword');
+
+

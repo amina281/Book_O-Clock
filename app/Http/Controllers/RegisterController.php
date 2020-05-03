@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\User;
 use DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -24,7 +26,9 @@ class RegisterController extends Controller
              'phonenumber'=>$request['phonenumber'],
         ]);
 
-        return redirect('/register')->with('Status','Useri u rregjistrua me sukses.');
+        $this->verifyEmail($request->email);
+
+        return redirect('/register')->with('Status', 'Verification link is send to  your email!');
     }
 
     public function  validation($request)
@@ -57,6 +61,47 @@ class RegisterController extends Controller
             }
         }
     }
+
+     function verifyEmail($email)
+    {
+        $token = str_random(64);
+
+        DB::table('password_resets')->insert(
+            ['email' => $email, 'token' => $token, 'created_at' => Carbon::now()]
+        );
+
+        Mail::send('AuthFolder.validateAccount', ['token' => $token,'email' =>$email], function($message) use($email){
+            $message->to($email);
+            $message->subject('Verifikimi i  adreses');
+        });
+
+    }
+
+    public  function updateEmail(Request $request)
+    {
+
+
+        $updateusers = DB::table('password_resets')
+            ->where(['email' => $request->email, 'token' => $request->token])
+            ->first();
+
+        if(!$updateusers)
+            return redirect('/login')->with('Status', 'Email not verified ,Invalid token!');
+
+        $user = User::where('email', $request->email)
+            ->update(['email_verified_at' => Carbon::now(),'verified' => true]);
+
+        DB::table('password_resets')->where(['email'=> $request->email])->delete();
+
+        return redirect('/login')->with('Reset', 'Email is verified! Now you can log in!');
+    }
+
+    public function getInfo($token,$email)
+    {
+
+        return view('AuthFolder.verifyAccount', ['token' => $token,'email'=>$email]);
+    }
+
 
 
 

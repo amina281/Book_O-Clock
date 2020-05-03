@@ -18,26 +18,26 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Verify Your Email Address</div>
-                    <div class="card-body">
-                        @if (session('resent'))
-                            <div class="alert alert-success" role="alert">
-                                {{ __('A fresh verification link has been sent to your email address.') }}
-                            </div>
-                        @endif
-                            <div class="form-group">
-                                <div class="col-lg-12 col-lg-offset-2">
-                                    <a href="http://127.0.0.1:8000/{{$token}}/reset-password">Click Here</a>.
-                                </div>
-                            </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Verify Your Email Address</div>
+                <div class="card-body">
+                    @if (session('resent'))
+                        <div class="alert alert-success" role="alert">
+                            {{ __('A fresh verification link has been sent to your email address.') }}
+                        </div>
+                    @endif
+                    <div class="form-group">
+                        <div class="col-lg-12 col-lg-offset-2">
+                            <a href="http://127.0.0.1:8000/{{$token}}/{{$email}}/register">Click Here</a>.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
