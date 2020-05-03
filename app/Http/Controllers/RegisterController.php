@@ -22,11 +22,11 @@ class RegisterController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
-             'role' =>'admin',
+             'role' =>'user',
              'phonenumber'=>$request['phonenumber'],
         ]);
 
-        $this->verifyEmail($request->email);
+        $this->verifyEmail($request->email); //funksion i cili dergon emailin e verifikimit
 
         return redirect('/register')->with('Status', 'Verification link is send to  your email!');
     }
@@ -67,6 +67,7 @@ class RegisterController extends Controller
         $token = str_random(64);
 
         DB::table('password_resets')->insert(
+            //fusha e emailit mbushet me emailin qe na vjen si request
             ['email' => $email, 'token' => $token, 'created_at' => Carbon::now()]
         );
 
@@ -88,7 +89,7 @@ class RegisterController extends Controller
         if(!$updateusers)
             return redirect('/login')->with('Status', 'Email not verified ,Invalid token!');
 
-        $user = User::where('email', $request->email)
+        $user = User::where('email', $request->email) //kontrollo ne db ku emaili eshte i = me ate qe vjen
             ->update(['email_verified_at' => Carbon::now(),'verified' => true]);
 
         DB::table('password_resets')->where(['email'=> $request->email])->delete();

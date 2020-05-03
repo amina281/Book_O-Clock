@@ -16,7 +16,7 @@ class ResetPasswordController extends Controller {
         return view('AuthFolder.passwords.reset', ['token' => $token]);
     }
 
-    public function updatePassword(Request $request)
+    public function updatePassword(Request $request) //si request email token psw
     {
 
        $this->validation($request);
@@ -25,7 +25,7 @@ class ResetPasswordController extends Controller {
             ->where(['email' => $request->email, 'token' => $request->token])
             ->first();
 
-        if(!$updatePassword)
+        if(!$updatePassword)//nqs  nuk ka rekord
             return redirect('/login')->with('Status', 'Password not changed ,Invalid token!');
 
         $user = User::where('email', $request->email)
