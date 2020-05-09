@@ -1,0 +1,1264 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow-x: hidden;
+}
+/*============== alert =====================*/
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+/*========================= book-checkout page ====================*/
+.book-page{
+    position: relative;
+    top: 9vh;
+    height: auto;
+}
+
+/*========================== upper section  min-height=110=================*/
+.upper-page{
+    position: relative;
+    width: 100vw;
+    min-height: 160vh;
+}
+.upper-cover-wrapper{
+    position: relative;
+    min-height: 40vh;
+}
+.upper-cover{
+    position: absolute;
+    right: 0;
+    width: 60%;
+    height: 4em;
+    background:  lightcoral;
+}
+.upper-cover a{
+    position: absolute;
+    right: 1em;
+    top: .5em;
+    background: #D5CAC5;
+    border-radius: 50px 0;
+    padding:.2em .7em;
+    text-decoration: none;
+    min-height: 1.2em;
+}
+.upper-cover a h4{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: .7em;
+    color: #FFFFFF;
+}
+.upper-cover a:hover {
+    background: rgb(214, 193, 184);
+}
+.upper-cover a:hover h4{
+    color: rgba(51, 50, 50, 0.911);
+    font-weight: 700;
+}
+.upper-cover img{
+    width: 10em;
+    height: 14em;
+    position: absolute;
+    top: 2em;
+    left: -3em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+}
+
+/*============================ Product info ===============================*/
+.cover-right{
+    position: relative;
+    top: 4vh;
+    width: 100%;
+    min-height: 40vh;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: auto;
+    place-items: center center;
+}
+.right-wrapper{
+    grid-column: 2 / 3;
+    grid-row: 1 / 1;
+    width: 80%;
+    height: 100%;
+    align-items: center;
+    top: 0;
+}
+.cover-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .7em;
+}
+.cover-title h1{
+    margin-bottom: .4em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: black;
+}
+.cover-title a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.cover-title a h3:hover{
+    color: rgb(128, 34, 34);
+    font-weight: 800;
+}
+.cover-title h3{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: .7rem;
+    color: #837F7F;
+    margin-bottom: 1em;
+}
+.right-wrapper p{
+    font-family: 'Amiri' , serif;
+    font-weight: 400;
+    font-size: .8rem;
+    color:black;
+    margin-bottom: 1em;
+    width: 100%;
+    min-height: 20vh;
+}
+
+/*-------------add bookshelf---------------------*/
+.cover-left-wrapper{
+    position: relative;
+    bottom: -8vh;
+    min-height: 12vh;
+    width: 100%;
+    margin-bottom: 10vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.cover-left{
+    top: 0;
+    width: 80%;
+    height: 100%;
+}
+.book-rate{
+    margin-bottom: .7em;
+    display: flex;
+}
+.book-rate h4{
+    font-family: 'Amiri' , serif;
+    font-weight: 400;
+    font-size: .8rem;
+    color: black;
+    margin-right: 1em;
+}
+.rating-stars{
+    color: grey;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.select-op select{
+    font-family: 'Amiri' , serif;
+    font-weight: 400;
+    font-size: .8rem;
+    padding: .3em 1.3em;
+    color: white;
+    background: #011E2A;
+}
+.select-op select option{
+    padding-left: .5em;
+}
+
+
+/*----------- select bookshelf ------------*/
+
+.cover-add{
+    position: relative;
+    width: 10em;
+    cursor: pointer;
+    background: rgba(238, 103, 110, 0.808);
+    display: block;
+}
+.hed-select{
+    list-style: none;
+}
+.hed-select .hed{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hed{
+    display: grid;
+    place-items: center center;
+    height: 2.5em;
+    color: white;
+    font-family: 'Amiri',serif;
+    font-weight: 600;
+    font-size: .9rem;
+    border-bottom: 1px solid rgb(216, 216, 216);
+}
+.hed-select .fa-sort-down{
+    margin-top: -.5em;
+    margin-left: .5em;
+    font-size: 1.3rem;
+}
+/*--------- drop down --------*/
+.toselect-bookshelf{
+    display: none;
+    background: rgb(236, 236, 236);
+}
+.toselect-bookshelf li{
+    list-style: none;
+    padding: .5em 0;
+    width: 100%;
+    border-bottom: 2px solid rgb(204, 204, 204);
+}
+.toselect-bookshelf a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Amiri',serif;
+    font-weight: 400;
+    font-size: .9rem;
+    margin-left: 1.5em;
+}
+/*--------- side form -------------*/
+.side-form{
+    display: none;
+    position: absolute;
+    bottom: -5vh;
+    left: 40vw;
+    list-style: none;
+}
+.bookshelf-form{
+    background: rgb(223, 216, 216);
+    border: 1px solid  rgba(187, 173, 174, 0.808);
+    width: 12em;
+    height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+}
+.bookshelf-form form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.bookshelf-form form input{
+    border: 1px solid  rgba(187, 173, 174, 0.808);
+    background: white;
+    padding: .2em 0 .2em 1em;
+    border-radius: 10px;
+    margin-bottom: .8em;
+    font-family: 'Amiri',serif;
+    font-size: .8rem;
+    font-weight: 400;
+    color: black;
+    width: 80%;
+}
+.bookshelf-form form input:focus{
+    outline: none;
+}
+.bookshelf-form form input::placeholder{
+    font-family: 'Amiri',serif;
+    font-size: .7rem;
+    font-weight: 600;
+    color: rgb(126, 126, 126);
+}
+.bookshelf-form form button{
+    background: rgba(209, 74, 83, 0.808);
+    border: none;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 600;
+    font-size: .7rem;
+    color: white;
+    padding: .3em 1.3em;
+    border-radius: 30px;
+}
+.bookshelf-form form button:hover{
+    background: rgba(182, 47, 56, 0.808);
+}
+.bookshelf-form form button:focus{
+    outline: none;
+}
+/*================  More info ========================*/
+.more-cover-info{
+    position: relative;
+    top: 4em;
+    min-height: 70vh;
+    width: 100%;
+}
+.more-cover-info::before , .more-cover-info::after{
+    position: absolute;
+    content: '';
+    background: lightcoral;
+    top: 0;
+}
+.more-cover-info::before{
+    left: 0;
+    width: 60vw;
+    height: 6vh;
+}
+.more-cover-info::after{
+    top: 5.8vh;
+    right: 0;
+    width: 70vw;
+    height: .05em;
+}
+.tittle-info{
+    position: absolute;
+    width: 60vw;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tittle-info h2{
+    font-family: 'Kaushan Script', cursive;
+    font-weight: normal;
+    font-size: 1rem;
+    margin-left: 10%;
+    color: white;
+}
+/*--------------- BODY OF INFO ------------*/
+.moreinfo-wrapper{
+    min-height: 10vh;
+    position: absolute;
+    margin:  0;
+    top: 4em;
+    padding: 2em 0 2em 10%;
+}
+.cover-specific{
+    margin-bottom: 1em;
+}
+.cover-specific h5{
+    font-family: 'Amiri' , serif;
+    font-weight: 400;
+    font-size: .9rem;
+    color: #393838;
+    line-height: 1.3em;
+}
+.cover-speci2 h5{
+    font-family: 'Amiri' , serif;
+    font-weight: 400;
+    font-size: .9rem;
+    color: black;
+    line-height: 1.4em;
+}
+.cover-speci2 h5 span{
+    font-weight: 600;
+}
+.awords h5{
+    font-weight: 600;
+}
+.awords-list li{
+    list-style: none;
+    font-family: 'Amiri', serif;
+    font-size: .8rem;
+    font-weight: 400;
+    width: 90%;
+}
+/*==================== buy read =====================*/
+.buy-read{
+    position: relative;
+    top: 0;
+    width: 100vw;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buy-read::before, .buy-read::after{
+    position: absolute;
+    content: '';
+    background: lightcoral;
+    top: 0;
+}
+.buy-read::before{
+    right: 0;
+    width: 60vw;
+    height: .7em;
+    border-radius: 10px 0 0 10px;
+}
+.buy-read::after{
+    top: .3em;
+    left: 0;
+    width: 50vw;
+    height: .05em;
+}
+.before-read-wrapper{
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+    grid-template-rows: repeat(2, auto);
+    width: 80%;
+    place-items: center center;
+}
+/*------------------- buy -----*/
+.buy-cover-wrapp{
+    grid-column: 2 / 3;
+    grid-row: 1 / 1;
+    padding: 2em 0;
+    background: white;
+    margin: 3em 0 2em 0 ;
+    width: 100%;
+    height: 12em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.buy-cover{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10em;
+}
+
+/*--------------  info card ------*/
+.copy-head{
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: black;
+    z-index: 1;
+}
+.copy-head:before{
+    content: '';
+    position: absolute;
+    width: 50%;
+    right: 0;
+    z-index: -1;
+    height: .2em;
+    background: rgb(243, 179, 142);
+    border-radius: 20px;
+    bottom: 0;
+}
+.price-cover{
+    padding: .5em 0;
+    margin: 1em 0;
+    display: flex;
+}
+.price-cover h3{
+    font-family: 'Amiri', serif;
+    font-weight: 400;
+    font-size: .9rem;
+    color: black;
+}
+.price-cover h2{
+    font-family: 'Amiri', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #641C26;
+}
+.add-tocart{
+    display:grid;
+    place-items: center center;
+    height: 2em;
+    justify-content: center;
+    align-items: center;
+}
+.add-tocart form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-tocart form button{
+    border: none;
+    background: #0F2334;
+    border-radius: 40px;
+    padding: .25em .6em;
+    color: white;
+    font-family: 'Amiri',serif;
+    font-weight: 600;
+    font-size: .8rem;
+    margin-left: .8em;
+    cursor: pointer;
+}
+.add-tocart form button:hover{
+    background: rgb(1, 11, 20);
+}
+
+/*------------------- read --------------*/
+.read-cover-wrapp{
+    grid-row: 2 / 2;
+    grid-column: 2 / 3;
+    padding: 2em 0;
+    background-color: white;
+    margin-bottom: 2.5em;
+    width: 100%;
+    height: 12em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.read-cover{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10em;
+}
+.read-cover h2{
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: black;
+    z-index: 1;
+}
+.read-cover h2:before{
+    content: '';
+    position: absolute;
+    width: 50%;
+    right: 0;
+    z-index: -1;
+    height: .26em;
+    background: rgb(243, 179, 142);
+    border-radius: 20px;
+    bottom: 0;
+}
+.read-cover p{
+    padding: .5em 0;
+    margin: 1em 0;
+    width: 70%;
+    text-align: center;
+    line-height: 1em;
+    font-family: 'Amiri', serif;
+    font-weight: 400;
+    font-size: .7rem;
+    color: black;
+}
+.read-cover button{
+    border: none;
+    background: #0F2334;
+    border-radius: 40px;
+    padding: .25em 1em;
+    color: white;
+    font-family: 'Amiri',serif;
+    font-weight: 600;
+    font-size: .8rem;
+    margin-left: .8em;
+    cursor: pointer;
+}
+.read-cover button i{
+    margin-right: .5em;
+    font-size: .7rem;
+}
+.read-cover button:hover{
+    background: rgb(1, 11, 20);
+}
+
+/*===========================  critic-review  =============*/
+.critic-review{
+    position: relative;
+    top: 0;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.critic-review::before, .critic-review::after{
+    position: absolute;
+    content: '';
+    background: lightcoral;
+    top: 0;
+}
+.critic-review::before{
+    left: 0;
+    width: 60vw;
+    height: .7em;
+    border-radius: 0 10px 10px 0;
+}
+.critic-review::after{
+    top: .3em;
+    right: 0;
+    width: 70vw;
+    height: .05em;
+}
+/*-------------- body --------------*/
+.critic-wrapper{
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+    grid-template-rows: 5vh auto;
+    width: 90%;
+    height: 100%;
+    place-items: center center;
+    padding-top: 3em;
+}
+.critic-wrapper h1{
+    grid-column: 2 / 3;
+    grid-row: 1 / 1;
+    width: 100%;
+    text-align: center;
+    color: #9A9A9A;
+    font-family: 'Kaushan Script', cursive;
+    font-weight: normal;
+    font-size: 1.3rem;
+}
+.critic-op {
+    padding: 2em .5em 0;
+    grid-column: 2 / 3;
+    grid-row: 2 / 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 4em 0;
+    width: 100%;
+}
+.critic-op p{
+    font-family: 'Amiri',serif;
+    font-weight: 400;
+    font-size: .9rem;
+    color: black;
+    line-height: 1.3em;
+    padding: .5em .5em 0 .5em;
+}
+.critic-op img{
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.17);
+    clip-path: circle(50% at 50% 50%);
+    width: 7em;
+    height: 7em;
+}
+.critic-op h3{
+    padding: 1em .4em .5em;
+    font-family: 'Amiri' ,serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: black;
+}
+
+/*============================ may like section =============================*/
+.maylike{
+    position: relative;
+    width: 100%;
+    min-height:48vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.maylike::before, .maylike::after{
+    content: '';
+    position: absolute;
+    background: lightcoral;
+    top: 0;
+}
+.maylike::before{
+    right: 0;
+    width: 60vw;
+    height: .7em;
+    border-radius: 10px 0  0 10px;
+}
+.maylike::after{
+    top: .3em;
+    left: 0;
+    width: 70vw;
+    height: .05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*---------- page info ----------*/
+.maylike-wrapper{
+    width: 90%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 1;
+}
+.maylike-wrapper::before{
+    width: 100%;
+    margin-left: 8%;
+    height: 40%;
+    content: '';
+    position: absolute;
+    bottom: -15%;
+    background: rgb(228, 228, 228);
+    z-index: -1;
+}
+.maylike-wrapper h2{
+    position: relative;
+    margin: 0 0 2em 0;
+    color: rgb(105, 105, 105);
+    font-family: 'Kaushan Script', cursive;
+    font-weight: normal;
+    font-size: 1.2rem;
+    z-index: 1;
+}
+.maylike-wrapper h2:before{
+    content: '';
+    position: absolute;
+    background: rgba(171, 206, 245, 0.774);
+    width: 70%;
+    height: 17%;
+    border-radius: 20px;
+    bottom: 0;
+    right: -10%;
+    z-index: -1;
+}
+.maylike-list{
+    margin-left: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 50%;
+}
+.maylike-list li{
+    list-style: none;
+}
+.maylike-list li a {
+    text-decoration: none;
+}
+.maylike-list li a img{
+    width: 80%;
+    height: 100%;
+    box-shadow: 0 0 5px rgba(49, 49, 49, 0.151);
+}
+
+/*========================= comment section ===============*/
+.comment-cover{
+    position: relative;
+    top: 0;
+    display: grid;
+    place-items: center center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.comment-cover::before, .comment-cover::after{
+    position: absolute;
+    content: '';
+    background: lightcoral;
+    top: 0;
+}
+.comment-cover::before{
+    left: 0;
+    width: 60vw;
+    height: .7em;
+    border-radius: 0 10px 10px 0;
+}
+.comment-cover::after{
+    top: .3em;
+    right: 0;
+    width: 70vw;
+    height: .05em;
+}
+
+/*-----------------wrapper-----------------*/
+.comment-cover-wrapper{
+    top: 2em;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 0;
+}
+.other-com-wrapper{
+    display: grid;
+    align-items: flex-start;
+    justify-content: flex-start;
+    place-items: center center;
+    width: 100%;
+}
+.comment-cover-wrapper h2{
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 3em 0;
+    color: rgba(154, 154, 154, 0.89);
+    font-family: 'Kaushan Script', cursive;
+    font-weight: normal;
+    font-size: 1.4rem;
+}
+.your-com{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+/*--------- section coments components ------------*/
+.others-com{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 1em;
+    margin-bottom: 2.5em;
+    position: relative;
+}
+.others-com::before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: rgb(197, 197, 197);
+    border-radius: 10px;
+    bottom: -2.5em;
+    margin: 0;
+}
+.user-comimg{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    width: 100%;
+}
+.user-comimg a{
+    text-decoration: none;
+    font-family: 'Kaushan Script', cursive;
+    font-weight: bold;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: black;
+    position: relative;
+    z-index: 1;
+}
+.user-comimg a::before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 25%;
+    right: 10%;
+    bottom: .15em;
+    background: lightcoral;
+    border-radius: 50px;
+    z-index: -1;
+}
+.com-img{
+    width: 4em;
+    height: 4em;
+    clip-path: circle(50% at 50% 50%);
+    margin-right: .7em;
+}
+.left-comment{
+    margin-top: .7em;
+    font-family: 'Amiri',serif;
+    font-weight: 400;
+    font-size: .85rem;
+    line-height: 1.4rem;
+    padding-left: 1em;
+    width: 100%;
+}
+/*---------- user comment -------------------*/
+.your-com form{
+    padding: 1em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.your-com form textarea{
+    margin-bottom: 1.4em;
+    font-family: 'Amiri',serif;
+    font-size: .8rem;
+    line-height: 1.7em;
+    font-weight: 400;
+    color: black;
+    padding: .8em;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 10px;
+}
+.your-com ::placeholder{
+    font-family: 'Amiri',serif;
+    font-size: .9rem;
+    font-weight: 600;
+    color: rgb(168, 168, 168);
+}
+.your-com input{
+    font-family: 'Amiri', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: .1em .9em;
+    border-radius: 50px;
+    border: 2px solid rgb(218, 114, 114);
+    background: rgb(218, 114, 114);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.your-com input:hover{
+    background: rgb(131, 43, 43);
+    border: 2px solid rgb(131, 43, 43);
+}
+
+/*======================== media =========================================*/
+
+
+@media (min-width: 500px){
+    html{
+        font-size: 18px;
+    }
+    .moreinfo-wrapper{
+        top: 3em;
+    }
+    .upper-page{
+        min-height: 100vh;
+    }
+    .comment-cover-wrapper h2{
+        transform: translateX(-250%);
+        margin-top: 1em;
+    }
+}
+
+@media (min-width: 730px){
+    /*------------- upper page ---------*/
+    .upper-page{
+        min-height: 120vh;
+    }
+    .upper-cover{
+        height: 5em;
+        width: 65%;
+    }
+    .upper-cover img{
+        width: 11em;
+        height: 15em;
+        top: 2.5em;
+        left: -5.5em;
+    }
+    .cover-right{
+        margin-top: 1em;
+        left: 15%;
+        width: 90%;
+    }
+    .cover-title{
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: .7em;
+    }
+    .cover-left{
+        width: 55%;
+    }
+    /*---------- more info ----------------*/
+    .more-cover-info{
+        min-height: 80vh;
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+    }
+    .moreinfo-wrapper{
+        top: 17%;
+    }
+    /*--------- side form -------------*/
+    .side-form{
+        left: 28vw;
+    }
+    .bookshelf-form{
+        width: 17em;
+    }
+    .bookshelf-form form{
+        flex-direction: row;
+    }
+    .bookshelf-form form input{
+        margin: 0 1em 0 0;
+        width: 60%;
+    }
+    .bookshelf-form form button{
+        font-size: .8rem;
+    }
+    /*------------- but read ----------------*/
+    .buy-read{
+        min-height: 60vh;
+    }
+    .before-read-wrapper{
+        display: grid;
+        grid-template-columns: 5% repeat(2, 40%) 5%;
+        grid-template-rows: auto;
+        width: 80%;
+        place-items: center center;
+    }
+    /*------------------- buy -----*/
+    .buy-cover-wrapp{
+        grid-column: 2 / 3;
+        grid-row: 1 / 1;
+    }
+    .buy-cover{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    /*--------------  info card ------*/
+    .price-cover{
+        margin: .4em 0 .5em 0 ;
+    }
+    .add-tocart form{
+        margin-top: .2em;
+    }
+    .add-tocart form button{
+        font-size: .8rem;
+        margin-left: .8em;
+        padding: .5em 1.5em;
+    }
+    /*------------------- read --------------*/
+    .read-cover-wrapp{
+        grid-row: 1 / 1;
+        grid-column: 3 / 4;
+        margin: 2em 0 1.5em 0 ;
+        height: 12em;
+    }
+    .read-cover button{
+        margin-top: .5em;
+        padding: .5em 1.5em;
+        font-size: .8rem;
+    }
+    .read-cover button i{
+        font-size: .8rem;
+    }
+    .read-cover h2{
+        margin-top: .5em;
+    }
+
+    /*------ critic -------------------*/
+    .critic-review{
+        min-height: 90vh;
+    }
+    /*-------------- body --------------*/
+    .critic-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .critic-wrapper h1{
+        position: absolute;
+        top: 15%;
+        width: auto;
+        left: 10%;
+        font-size: 1.6rem;
+    }
+    .critic-op {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        align-items: center;
+        padding:  0;
+        top: 15%;
+        right: 10%;
+        margin: 0;
+        width: 90%;
+    }
+    .critic-head{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 30%;
+    }
+    .critic-op img{
+        width: 6em;
+        height: 6em;
+    }
+    .critic-op h3{
+        font-size: .9rem;
+        color: rgb(34, 34, 34);
+    }
+    .critic-com{
+        width: 60%;
+    }
+    .critic-op p{
+        padding: 0;
+        width: 100%;
+    }
+    .critic-op h3{
+        padding: 1.2em .4em .3em;
+    }
+    /*--------- may like section ------*/
+    .maylike{
+        min-height:60vh;
+    }
+    /*---------- comments ----------------*/
+    .comment-cover-wrapper{
+        top: 4em;
+    }
+    .other-com-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .comment-cover-wrapper h2{
+        transform: translateX(-10%);
+        margin-top: 2em;
+    }
+    .your-com{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+    }
+
+    /*--------- section coments components ------------*/
+    .others-com{
+        flex-direction: row;
+        width: 90%;
+        margin-top: 1em;
+        margin-bottom: 2.5em;
+        position: relative;
+    }
+    .user-comimg{
+        flex-direction: column;
+        align-items: center;
+        width: 40%;
+        margin-top: 1.5em;
+    }
+    .user-comimg a{
+        margin-top: .5em;
+    }
+    .com-img{
+        margin-right: 0;
+    }
+    .left-comment{
+        margin-bottom: 0;
+    }
+    /*---------- user comment -------------------*/
+    .your-com form{
+        width: 85%;
+        justify-content: space-around;
+        flex-direction: row;
+        margin: 2em;
+    }
+    .your-com form textarea{
+        margin-bottom: 0;
+        line-height: 2em;
+        padding: 1em;
+        width: 70%;
+    }
+    .your-com input{
+        padding: .3em 1.5em;
+        margin-left: 1em;
+    }
+
+}
+
+@media (min-width: 900px){
+    html{
+        font-size: 19px;
+    }
+    /*--------------- BODY OF INFO ------------*/
+    .moreinfo-wrapper{
+        width: 80%;
+        left: 10%;
+        top: 20%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .cover-specific{
+        margin: 0 7% 0 -10% ;
+        width: 40%;
+    }
+    .upper-page{
+        min-height: 90vh;
+    }
+    /*============================ Product info ===============================*/
+    .cover-right{
+        position: absolute;
+        top: 5.5vh;
+        width: 52%;
+        min-height: 30vh;
+        left: 45%;
+    }
+    .right-wrapper{
+        grid-column: 1 / 2;
+        grid-row: 1 / 1;
+        width: 80%;
+        height: 100%;
+        align-items: center;
+        top: 0;
+    }
+    .cover-title{
+        align-items: flex-start;
+        margin-bottom: .7em;
+    }
+    .cover-title h1{
+        margin-bottom: 1.2em;
+    }
+    /*-------------add bookshelf---------------------*/
+    .cover-left-wrapper{
+        left: 2%;
+    }
+    /*--------- may like section ------*/
+    .maylike{
+        min-height:80vh;
+    }
+    .maylike-wrapper h2{
+        margin: 0 0 4em 0;
+        font-size: 1.5rem;
+    }
+    .maylike-list li a img{
+        max-width: 11em;
+    }
+    /*------ back img -----------------*/
+
+}
+
+@media (min-width: 1024px){
+
+    .critic-review{
+        min-height: 80vh;
+    }
+    .comment-cover-wrapper h2{
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: translateX(-450%);
+        margin-bottom: 3em;
+        color: rgba(154, 154, 154, 0.89);
+        font-family: 'Kaushan Script', cursive;
+        font-weight: normal;
+        font-size: 1.4rem;
+    }
+    /*--------- may like section ------*/
+    .maylike{
+        min-height:90vh;
+    }
+}
+
+@media (min-width: 1124px){
+    .cover-left-wrapper{
+        left: 4.5%;
+    }
+}
+@media (min-width:1440px){
+    html{
+        font-size: 20px;
+    }
+}
+@media (min-width:2560px){
+    html{
+        font-size: 50px;
+    }
+}

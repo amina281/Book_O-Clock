@@ -1,0 +1,366 @@
+/*------------------------------------ SOCIAL MEDIA  -----------------------------*/
+.social{
+    z-index: 3;
+    top:30%;
+    background: rgba(239, 234, 231, 0.616);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+}
+.social ul{
+    list-style: none;
+    padding: 0;
+    width: 40px;
+}
+.social ul .follow{
+    text-transform: uppercase;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 1px;
+    padding: 40px 18px ;
+    font-weight: bold;
+    line-height: 20px;
+    color:rgba(103, 103, 107, 0.822);
+    transform: rotate(-90deg);
+}
+.social ul li{
+    display: block;
+    margin: 15px;
+    width: 15px;
+    text-align: center;
+    padding: 5px;
+}
+.social ul li a{
+    color: rgba(103, 103, 107, 0.822);
+    text-decoration: none;
+
+}
+.social ul li i{
+    text-align: center;
+    color: rgba(103, 103, 107, 0.829);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+.social ul .facebook i:hover{
+    color: #3d5999;
+    font-size: 23px;
+}
+.social ul .twitter i:hover{
+    color: #55acee;
+    font-size: 23px;
+
+}
+.social ul .instagram i:hover{
+    color: #e4405f;
+    font-size: 23px;
+
+}
+.social ul .pinterest i:hover{
+    color: #dd4b39;
+    font-size: 23px;
+
+}
+
+/*------------------ nav bar ---------------------------*/
+
+header{
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.144);
+    position: fixed;
+    width: 100vw;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-header{
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.burger{
+    width: 1.6em;
+    height: 100%;
+    display: block;
+}
+.line{
+    display: none;
+    width: 100%;
+    height: .17em;
+    background: black;
+    border-radius: 50px;
+
+}
+.line2{
+    margin: .25em 0 ;
+}
+.logo{
+    font-family: 'Amiri' ,serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: black;
+    text-transform: uppercase;
+}
+
+.nav{
+    display: flex;
+}
+.nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-bar li{
+    list-style: none;
+    margin: 0 1.3em;
+}
+.nav-bar li a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Amiri',serif;
+    font-weight: 400;
+    font-size: 1rem;
+    position: relative;
+}
+.nav-bar .list-items:hover a::before{
+    opacity: 1;
+}
+.nav-bar .list-items a::before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    top: -.5em;
+    height: .3em;
+    background: rgb(104, 1, 26);
+    border-radius: 40px;
+    opacity: 0;
+    transition: .3s ease-in;
+}
+.list-drop{
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    display: flex;
+}
+.list-drop:hover .dropdown{
+    visibility: visible;
+    opacity: 1;
+}
+.dropdown{
+    visibility: hidden;
+    opacity: 0;
+    transition: .1s ease-in;
+    position: absolute;
+    background: rgb(243, 243, 243);
+    display: block;
+    margin-top: 2.8em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+.dropdown li{
+    width: 100%;
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown li a{
+    width: 100%;
+    padding: .7em 2em;
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-family: 'Amiri',serif;
+    font-weight: 400;
+    font-size: .95rem;
+}
+.dropdown li a::before{
+    position: absolute;
+    content: '';
+    width: .5em;
+    height: 100%;
+    top: 0;
+    background: rgb(104, 1, 26);
+    left: 0;
+    transition: .2s ease-in;
+    opacity: 0;
+}
+.dropdown li:hover a::before {
+    opacity: 1;
+}
+
+.search-area{
+    position: relative;
+    width: 17em;
+}
+.search-txt{
+    position: relative;
+    width: 85%;
+    height: 2em;
+    padding: 1em 0em 1em 1em;
+    font-family: 'Amiri',serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: black;
+    border: 2px solid rgba(219, 219, 219, 0.705);
+    border-radius: 50px;
+    background: none;
+}
+.search-txt:hover{
+    border:2px solid rgba(150, 6, 30, 0.767);
+}
+.search-txt:focus{
+    outline: none;
+}
+.search-txt::placeholder{
+    font-weight: 600;
+    font-size: .9rem;
+    color: lightslategrey;
+}
+.search-btn{
+    background: rgba(219, 219, 219, 0.705);
+    border-radius: 50px;
+    border: none;
+    font-size: 1.2rem;
+    color: rgb(51, 51, 51);
+    cursor: pointer;
+    width: 1.8em;
+    height: 1.8em;
+}
+.search-area:hover .search-btn{
+    width: 1.8em;
+    height: 1.8em;
+    background: rgb(80, 1, 21);
+    color: white;
+}
+
+.nav-bar .button-hom{
+    background: rgb(122, 3, 33);
+    color: white;
+    border:none;
+    font-family:'Amiri',serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: .2em 1em;
+    border-radius: 100px;
+}
+.nav-bar .button-hom:focus{
+    outline: none;
+}
+.nav-bar .button-hom:hover{
+    background: rgb(83, 3, 23);
+}
+
+
+.shopping {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.3em;
+    height: 2.3em;
+    border-radius: 50px;
+    background: rgba(219, 219, 219, 0.705);
+}
+.shopping a{
+    display: grid;
+    place-items: center center;
+}
+.shopping a i{
+    font-size: 1.4rem;
+    color: rgb(44, 44, 44);
+}
+.shopping:hover {
+    background: rgb(53, 1, 14);
+}
+.shopping:hover i{
+    color: white;
+}
+
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.3em;
+    height: 2.3em;
+    border-radius: 50px;
+    background: rgba(219, 219, 219, 0.705);
+    position: relative;
+}
+.user a{
+    display: grid;
+    place-items: center center;
+}
+.user a i{
+    font-size: 1.4rem;
+    color: rgb(44, 44, 44);
+}
+.user:hover {
+    background: rgb(53, 1, 14);
+}
+.user:hover i{
+    color: white;
+}
+.user:hover .user-dropdown{
+    visibility: visible;
+    opacity: 1;
+}
+.user-dropdown{
+    visibility: hidden;
+    opacity: 0;
+    transition: .1s ease-in;
+    position: absolute;
+    background: rgb(243, 243, 243);
+    display: block;
+    margin-top: 6.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+.user-dropdown li{
+    width: 100%;
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.user-dropdown li a{
+    width: 100%;
+    padding: .7em 2em;
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-family: 'Amiri',serif;
+    font-weight: 400;
+    font-size: .95rem;
+}
+.user-dropdown li a::before{
+    position: absolute;
+    content: '';
+    width: .5em;
+    height: 100%;
+    top: 0;
+    background: rgb(104, 1, 26);
+    left: 0;
+    transition: .2s ease-in;
+    opacity: 0;
+}
+.user-dropdown li:hover a::before {
+    opacity: 1;
+}
