@@ -12,12 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('/cart');
+    return view('/AuthFolder/register');
 });
 
 Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@store');
 Route::post('/register/check', 'RegisterController@check')->name('email_available.check');
+Route::post('/register-update', 'RegisterController@updateEmail');
+Route::get('/{token}/{email}/register', 'RegisterController@getInfo');
 
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@store');
@@ -30,6 +32,7 @@ Route::get('/{token}/reset-password', 'ResetPasswordController@getPassword');
 Route::post('/reset-password', 'ResetPasswordController@updatePassword');
 
 
+<<<<<<< HEAD
 
 Route::get('/', 'LandingPageController@index')->name('landing-page');
 
@@ -54,3 +57,5 @@ Route::get('/guestCheckout', 'CheckoutController@index')->name('guestCheckout.in
 
 Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
 
+=======
+>>>>>>> origin
