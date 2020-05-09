@@ -26,6 +26,8 @@
                     <li><a href="#">Authors</a></li>
                 </ul>
             </li>
+
+            @if (Auth::check())
             <li class="list-drop ">
                 <a href="#">Others  <i class="fa fa-caret-down"></i></a>
                 <ul class="dropdown">
@@ -33,6 +35,7 @@
                     <li><a href="#">Quotes</a></li>
                 </ul>
             </li>
+            @endif
 
             <li>
                 <div class="search-area">
@@ -40,6 +43,7 @@
                     <button class="search-btn"><i class="fa fa-search"></i></button>
                 </div>
             </li>
+
             @if (Auth::check())
                 <li class="user">
                     <a href="#"><i class="fa fa-user"></i></a>
