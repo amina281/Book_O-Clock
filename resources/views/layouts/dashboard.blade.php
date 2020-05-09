@@ -52,15 +52,16 @@
                     <li class="nav-item active">
                         <a  class="nav-link" href="{{ url('/logout') }}">Logout</a>
                     </li>
-                    <li class="nav-item active">
-                        <a  class="nav-link" href="{{ url('/logout') }}">Shopping Cart</a>
-                    </li>
+
                 @else
                     <li class="nav-item active">
                         <a  class="nav-link" href="{{ url('/login') }}">Login</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url('/register') }}">Register</a>
+                    <li class="nav-item active">
+                        <a  class="nav-link" href="{{ url('/cart') }}">Shopping Cart</a>
+                    </li>
                     </li>
                 @endif
             </ul>

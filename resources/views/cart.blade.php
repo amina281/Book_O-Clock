@@ -11,8 +11,8 @@
             <div class="shopping-pg-wrapper">
 
                 <section class="shop-header">
-                    @if (Cart::count() > 0)
-                        <h1>Your Order: {{ Cart::count() }} item(s)</h1>
+                    @if (cart::count() > 0)
+                        <h1>Your Order: {{ cart::count() }} item(s)</h1>
                 </section>
 
                 <div class="product-wrapper">
@@ -24,7 +24,7 @@
                         <li>Total Price</li>
                     </ul>
 
-                    @foreach (Cart::content() as $item)
+                    @foreach (cart::content() as $item)
                         <section class="row-product">
                             <div class="product-img-div">
                                 <img src="./img/cover-book.jpg" alt="" class="product-img">
@@ -32,7 +32,7 @@
 
                             <div class="info-prod-row">
                                 <div class="name-price">
-                                    <h2 class="book-name"><a href="{{}}">American Street</a></h2>
+                                    <h2 class="book-name"><a href="#">American Street</a></h2>
                                     <h2 class="book-price">$<span class="price-tg">9.99</span></h2>
                                 </div>
                                 <div class="quantity">
