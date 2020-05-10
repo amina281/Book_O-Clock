@@ -2,7 +2,7 @@
 
 @section('title', 'Home Page')
 
-@section('style')
+@section('extra-styles')
     <link rel="stylesheet" href="{{ asset('css/pages/landing-page.css') }}">
 @endsection
 

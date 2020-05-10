@@ -67,7 +67,7 @@
                         <section class="tot-prod-nr tot">
                             <div>
                                 <h4>Total Product:</h4>
-                                <h4 class="nr-tot nr-black">3</h4>
+                                <h4 class="nr-tot nr-black">{{ Cart::count() }}</h4>
                             </div>
                         </section>
                         <section class="tot-cart-price tot">
