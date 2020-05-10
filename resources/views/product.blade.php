@@ -153,7 +153,7 @@
                             <form action="{{ route('cart.store')}}" method="POST">
                                 {{csrf_field()}}
                                 <input type="hidden" name="ISBN" value="{{ $product->ISBN }}">
-                                <input type="hidden" name="Title" value="{{ $product->TitleN }}">
+                                <input type="hidden" name="Title" value="{{ $product->Title }}">
                                 <input type="hidden" name="Price" value="{{ $product->Price }}">
                                 <button type="submit">Add to Cart</button>
                             </form>

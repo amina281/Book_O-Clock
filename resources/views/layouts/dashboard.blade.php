@@ -60,7 +60,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url('/register') }}">Register</a>
                     <li class="nav-item active">
-                        <a  class="nav-link" href="{{ url('/cart') }}">Shopping Cart</a>
+                        <a  class="nav-link" href="{{ route('cart.index') }}">Shopping Cart</a>
                     </li>
                     </li>
                 @endif
