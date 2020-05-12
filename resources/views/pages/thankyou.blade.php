@@ -1,4 +1,4 @@
-@section('style')
+@section('extra-styles')
 
 @endsection
 
@@ -15,7 +15,7 @@
             </section>
             <div class="text-placed">
 
-                <a href="#"><i class="fa fa-home"></i></a>
+                <a href="{{ route('landing-page') }}"><i class="fa fa-home"></i></a>
                 <h3>Go to <span>Home </span> page</h3>
             </div>
             <div class="word">
@@ -32,6 +32,23 @@
     </div>
 @endsection
 
-@section('script')
+@section('extra-js')
+    <script>
+        const spans = document.querySelectorAll('.word span');
 
+        spans.forEach((span, idx) => {
+            span.addEventListener('click', (e) => {
+                e.target.classList.add('active');
+            });
+            span.addEventListener('animationend', (e) => {
+                e.target.classList.remove('active');
+            });
+
+            // Initial animation
+            setTimeout(() => {
+                span.classList.add('active');
+            }, 750 * (idx+1))
+        });
+
+    </script>
 @endsection

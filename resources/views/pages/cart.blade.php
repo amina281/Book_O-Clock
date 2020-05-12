@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.dashboard')
 
 @section('title', 'Shopping Cart')
 
@@ -23,7 +23,8 @@
                         <li>Total Price</li>
                     </ul>
 
-                    @foreach(Cart::content() as $item)
+
+                @foreach(Cart::content() as $item)
                         <section class="row-product">
                             <div class="product-img-div">
                                 <img src="{{asset('img/products/'.$item->model->slug.'.jpg')}}" alt="" class="product-img">
@@ -88,7 +89,7 @@
 
                     <div class="button-check">
                         <a href="{{ route('shop.index') }}"><button class="checkout-from-cart -generes">Books</button></a>
-                        <a href="#"><button class="checkout-from-cart">Checkout</button></a>
+                        <a href="{{ route('checkout.index') }}"><button class="checkout-from-cart">Checkout</button></a>
                     </div>
                 </div>
 
@@ -98,7 +99,7 @@
 
                         <section class="shop-header savefor-later">
                             @if (Cart::instance('saveForLater')->count() > 0)
-                            <h1>{{ Cart::instance('saveForLater')->count() }} item(s) Saved For Later:</h1>
+                            <h1>{{ Cart::instance('saveForLater')->count() }} Item(s) Saved For Later:</h1>
                         </section>
 
                         <div class="product-wrapper">

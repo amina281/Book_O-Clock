@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration
         $table->float('Rate');
         $table->decimal('Price');
         $table->dateTime('Published');
-        $table->string('Language');
+        $table->string('Language')->default('English');
         $table->text('Description');
         $table->foreign('AuthorId')->references('Id')->on('Author');
         $table->timestamps();
