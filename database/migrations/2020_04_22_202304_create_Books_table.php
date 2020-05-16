@@ -9,7 +9,7 @@ class CreateBooksTable extends Migration
 
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('Books', function (Blueprint $table) {
         $table->increments('ISBN');
         $table->string('Title');
         $table->string('slug')->unique();
