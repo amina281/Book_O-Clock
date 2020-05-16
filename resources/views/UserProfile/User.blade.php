@@ -39,34 +39,43 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="home">
-                                <form>
+                                @if (count($errors)> 0)
+                                    @foreach($errors ->all() as $error)
+                                        <p class="alert-danger">{{$error}}</p>
+                                    @endforeach
+                                @endif
+                                <form method="POST" action="{{route('userUpdate')}}">
+                                    {{csrf_field()}}
                                     <div class="form-group">
                                         <label for="inputName">Name</label>
-                                        <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                        <input type="text" class="form-control" name="Username" id="inputName" placeholder="Name"  value="{{ $user ->name}}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputLastName">Last Name</label>
-                                        <input type="text" class="form-control" id="inputLastName"
-                                               placeholder="Last Name">
+                                        <label for="inputLastName">Phone Number</label>
+                                        <input type="number" name="phonenumber" class="form-control" id="inputPhoneNumber"
+                                               placeholder="Phone Number"  value="{{ $user ->phonenumber}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                               placeholder="Email">
+                                        <input type="email" name="email" class="form-control" readonly="readonly" id="exampleInputEmail1"
+                                               placeholder="Email"  value="{{ $user ->email}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1"
-                                               placeholder="Password">
+                                        <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                                               placeholder="Password"  value="{{ '******'}}">
                                     </div>
                                     <br>
 
                                     <button type="submit" id="submit" class="btn btn-primary btn-block">
-                                        Validate
+                                        Update
                                     </button>
                                     <br>
                                     <br>
-
+                                    <br>
+                                    @if (session('success'))
+                                        <p class="alert-success">{{session(('success'))}}</p>
+                                    @endif
                                 </form>
 
                             </div>
