@@ -20,6 +20,7 @@ Route::post('/register', 'RegisterController@store');
 Route::post('/register/check', 'RegisterController@check')->name('email_available.check');
 Route::post('/register-update', 'RegisterController@updateEmail');
 Route::get('/{token}/{email}/register', 'RegisterController@getInfo');
+Route::get('/User','UserController@index');
 
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@store');
