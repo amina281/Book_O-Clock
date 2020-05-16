@@ -23,11 +23,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/{token}/{email}/register', 'RegisterController@getInfo');
 
 
-    Route::get('/login', 'LoginController@index');
+    Route::get('/login', [ 'as' => 'login', 'uses' => 'LoginController@index']);
     Route::post('/login', 'LoginController@store');
-//Route::post('/login', 'LoginController@store');
-    Route::get('/logout', 'LoginController@logout');
-    Route::get('/home', 'LoginController@HomePage');
+    Route::get('/logout', 'LoginController@logout')->middleware('auth');
+    Route::get('/home', 'LoginController@HomePage')->middleware('auth');
 
 
     Route::get('/forget-password', 'ForgotPasswordController@getEmail');
@@ -36,7 +35,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/{token}/reset-password', 'ResetPasswordController@getPassword');
     Route::post('/reset-password', 'ResetPasswordController@updatePassword');
 
-    Route::get('/user', 'UserProfileController@index');
+    Route::get('/user', 'UserProfileController@GetUserData')->middleware('auth');
 
 });
 
