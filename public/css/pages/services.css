@@ -1,0 +1,687 @@
+.section-a{
+    position: relative;
+    background: url('./img/sincerely-media-2eDp0UqvgB8-unsplash\ \(1\).jpg') no-repeat;
+    background-size: cover;
+    background-position: 0 125%;
+    width: 100%;
+    height: 70vh;
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 50% 40%, 0 30%);
+    display: grid;
+    place-items: center;
+}
+.backservices{
+    position: absolute;
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 5.5em;
+    top: 10vh;
+    width: 20%;
+}
+.section-a h1{
+    position: absolute;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 800;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+    z-index: 1;
+}
+.section-a h3{
+    position: absolute;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.897);
+    width: 9em;
+    bottom: 0;
+}
+/*===========================services cards===============================*/
+.section-b{
+    position: relative;
+    top: -30vh;
+    display: grid;
+    align-items: center;
+    place-items: center center;
+}
+.sectionb-wrapper{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, auto);
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+/*---- Boxes -----*/
+
+.wrapper-info{
+    position: relative;
+    align-self: center;
+    max-width: 16em;
+    min-height: 18em;
+    justify-self: center;
+    display: grid;
+    place-content: center center;
+    background: rgb(236, 230, 230);
+    margin-bottom: 5em;
+}
+
+.wrapper-info:hover{
+    background: rgb(226, 221, 221);
+}
+
+.wrapper-info::before,
+.wrapper-info::after{
+    content: '';
+    position: absolute;
+    top: 90%;
+    bottom: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0, .30);
+    z-index: -1;
+}
+
+.wrapper-info::before{
+    background: rgb(255, 255, 255);
+    left: 6px;
+    right: 45px;
+    transform: rotate(-5deg);
+}
+
+.wrapper-info::after{
+    background: rgb(255, 255, 255);
+    left: 45px;
+    right: 6px;
+    transform: rotate(5deg);
+}
+
+/*----- info ---------*/
+
+.wrapper-info i{
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: .7em;
+    background: none;
+    color: rgb(124, 124, 124);
+}
+
+.wrapper-info p{
+    align-content: center;
+    text-align: center;
+    width: 80%;
+    font-family: 'Amiri',serif;
+    font-size: 1rem;
+    line-height: 1.5em;
+    font-weight: 400;
+    margin: .5em 1.5em;
+    color: #252525;
+}
+
+.wrapper-info h2{
+    text-align: center;
+    font-family: 'Amiri',serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: .5em;
+    color: #000000;
+}
+
+.wrapper-info h3{
+    position: absolute;
+    font-family: 'Amiri',serif;
+    font-weight: 600;
+    font-size: 2.3em;
+    top: -.8em;
+    left: .3em;
+    color: rgb(104, 64, 64);
+}
+
+.wrapper-1{
+    grid-column: 2 / 3;
+    grid-row: 1 / 1;
+}
+
+.wrapper-2{
+    grid-column: 2 / 3;
+    grid-row: 2 / 2;
+}
+
+.wrapper-3{
+    grid-column: 2 / 3;
+    grid-row:3 / 3;
+}
+/*=============== Section c  ===============================*/
+.section-c{
+    top: 0;
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+}
+.back-worksinfo{
+    position: relative;
+    background: #E1BFBF;
+    width: 100%;
+    min-height: 15vh;
+}
+
+.back-worksinfo::before,
+.back-worksinfo::after{
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 8em;
+    background-color: #E1BFBF;
+    top: -5em;
+    z-index: -1;
+}
+
+.back-worksinfo::before{
+    transform: skewY(8deg);
+    left: 0;
+}
+
+.back-worksinfo::after{
+    transform: skewY(-8deg);
+    right: 0;
+}
+/*------------------------------------*/
+
+.works-info{
+    position: absolute;
+    display: grid;
+    justify-self: center;
+    top: -4vh;
+}
+.works-info h3{
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1em;
+}
+.works-info h2{
+    text-align: center;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #464545;
+}
+.section-c2{
+    position: relative;
+    bottom: -3em;
+    display: grid;
+    align-items: center;
+    place-items: center center;
+    width: 100%;
+}
+.c2{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, auto);
+    align-items: center;
+    justify-content: space-evenly;
+}
+.bubble{
+    position: relative;
+    align-self: center;
+    max-width: 16em;
+    min-height: 18em;
+    justify-self: center;
+    display: grid;
+    place-content: center center;
+    margin-top: 3em;
+}
+.bubble1-info{
+    grid-column: 2 / 3;
+    grid-row: 1 / 1;
+}
+
+.bubble2-info{
+    grid-column: 2 / 3;
+    grid-row: 2 / 2;
+}
+
+.bubble3-info{
+    grid-column: 2 / 3;
+    grid-row:3 / 3;
+}
+
+
+.bubble i{
+    background-color:#E1BFBF ;
+    text-align: center;
+    align-content: center;
+    font-size: 2.3em;
+    display: grid;
+    margin-left: calc(50% - .9em);
+    color: white;
+    border-radius: 50px;
+    width: 1.7em;
+    height: 1.7em;
+    place-items: center center;
+}
+
+.bubble p{
+    align-content: center;
+    text-align: center;
+    width: 85%;
+    font-family: 'Amiri',serif;
+    font-size: 1rem;
+    line-height: 1.7em;
+    font-weight: 400;
+    margin: 1.2em 1em 1em 1em;
+    color: #252525;
+}
+
+.bubble h2{
+    text-align: center;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: .7em 0;
+    color: #000000;
+}
+
+/*=========================== section d =======================*/
+.section-d{
+    position: relative;
+    top: 20vh;
+    min-height: 105vh;
+}
+
+.back-contact{
+    position: absolute;
+    background-color: #E1BFBF;
+    width: 33.5%;
+    height: 100%;
+    right: 0;
+    z-index: -1;
+}
+.contact-header{
+    position: absolute;
+    top: 4em;
+    left: 30%;
+}
+.contact-header h2{
+    position: absolute;
+    font-family: 'Montserrat' ,sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: black;
+}
+.contact-header p{
+    position: relative;
+    top: 3.5em;
+    text-align: left;
+    font-family: 'Amiri', serif;
+    font-weight: 600;
+    font-size: .8rem;
+    color: rgba(0, 0, 0, 0.4);
+    width: 18.5em;
+}
+.contact-header p::before{
+    content: '';
+    width: 50vw;
+    height: 100%;
+    background: #E1BFBF;
+    position: absolute;
+    right: 25em;
+}
+
+.contact-form{
+    position: absolute;
+    top: 25vh;
+    width: auto;
+    height: auto;
+    right: 12%;
+}
+
+.contact-form form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont-input{
+    background: #FFFFFF;
+    border: .5px solid rgb(209, 209, 209);
+    width: 17em;
+    line-height: 2.3em;
+    margin-bottom: 1.3em;
+    padding-left: 1em;
+    font-family: 'Amiri',serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+.cont-input::placeholder {
+    font-family: 'Amiri',serif;
+    font-weight: 600;
+    font-size: .9rem;
+    color: rgb(179, 179, 179);
+}
+.submit-contact{
+    position: relative;
+    background: none;
+    border: none;
+    font-family: 'Amiri', serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-top: 1em;
+    bottom: auto;
+    padding: .3em  0;
+}
+.submit-contact::before{
+    position: absolute;
+    content: '';
+    width: 130%;
+    height: 80%;
+    border: 1px solid black;
+    left: -100%;
+    margin-top: -5%;
+}
+
+.submit-contact::after{
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 50vw;
+    background: #E1BFBF;
+    left: -80vw;
+    top: 0;
+
+}
+@media (min-width: 700px){
+    /*------- section-a  ----------*/
+    .section-a{
+        background-position: 0 100%;
+    }
+    .backservices{
+        min-height: 6em;
+    }
+    .section-a h1{
+        font-size: 2.5rem;
+    }
+    .section-a h3{
+        font-size: 1rem;
+        letter-spacing: .5px;
+        margin-top: .5em
+    }
+    /*------------- How it works ------------------------*/
+    .section-c{
+        min-height: 60vh;;
+    }
+
+    .back-worksinfo{
+        min-height: 20vh;
+    }
+    .works-info{
+        top: -2vh;
+    }
+    .section-c2{
+        top: -10.5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .c2{
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows:  auto;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .bubble1-info{
+        grid-column: 1 / 2;
+        grid-row: 1 / 1;
+    }
+
+    .bubble2-info{
+        grid-column: 2 / 3;
+        grid-row: 1 / 1;
+    }
+
+    .bubble3-info{
+        grid-column: 3 / 4;
+        grid-row:1 / 1;
+    }
+    .bubble i{
+        margin-bottom: .5em;
+    }
+
+    .bubble p{
+        margin: 1em 1em 1em 1em;
+    }
+}
+@media (min-width: 800px){
+    /*---------------- Contact us -----------------*/
+    .svg-img{
+        position: absolute;
+        width: 17em;
+        height: 17em;
+        left: 0;
+        bottom: 0;
+        background: url('./img/standing\ girlstanding.svg') no-repeat;
+        background-size: contain ;
+
+    }
+    /*--------------Services----------------------------*/
+    .section-a h1{
+        font-size: 3rem;
+    }
+    .section-a h3{
+        margin-top: 3em;
+    }
+    .section-a{
+        background-position: 0 70%;
+        height: 90vh;
+        clip-path: polygon(0 0, 100% 0, 100% 40%, 50% 60%, 0 40%);
+    }
+    .backservices{
+        top: 18vh;
+    }
+
+    /*--------------------- Section b ------------------*/
+    .section-b{
+        top: -15vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .sectionb-wrapper{
+        max-width: 87%;
+        grid-template-columns: repeat(3, 14em);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+    /*---- Boxes -----*/
+
+    .wrapper-info{
+        max-width: 16em;
+        min-height: 20em;
+        margin-left: 1em;
+    }
+    /*----- info ---------*/
+
+    .wrapper-info i{
+        margin-top: .5em;
+    }
+
+    .wrapper-info p{
+        width: 90%;
+        margin: .5em .5em;
+    }
+    .wrapper-1{
+        grid-column: 1 / 2;
+        grid-row: 1 / 1;
+    }
+    .wrapper-2{
+        grid-column: 2 / 3;
+        grid-row: 1 / 1;
+    }
+    .wrapper-3{
+        grid-column: 3 / 4;
+        grid-row: 1 / 1;
+    }
+    /*---------------------- Section c  ---------------------------*/
+    .section-c{
+        min-height: 90vh;;
+    }
+    .section-c2{
+        top: -24.5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .c2{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .works-info{
+        top: 2.5vh;
+    }
+    .works-info h2{
+        font-size: 1.8rem;
+    }
+    .section-c{
+        top: 10vh;
+    }
+    .bubble{
+        align-items: center;
+        justify-content: center;
+        margin-left: 2em;
+        max-width: 16em;
+        min-height: 18em;
+        margin-top: 2.5em;
+    }
+    .bubble i{
+        font-size: 2.3em;
+        width: 2em;
+        height: 2em;
+    }
+    .bubble p{
+        width: 90%;
+    }
+
+}
+@media (min-width: 1000px){
+    /*--------------   SEction c -------------*/
+    .c2{
+        max-width: 100%;
+    }
+    .bubble{
+        margin-left: 3em;
+    }
+    /*-------------------  section d ----------------------------*/
+    .contact-header{
+        top: 20%;
+        left: 15%;
+        width: 20em;
+        height: 6em;
+    }
+    .contact-header h2{
+        font-weight: 800;
+        font-size: 2.5rem;
+        line-height: 100%;
+        width: 150%;
+    }
+    .contact-header p{
+        bottom: 2em;
+        font-size: .8rem;
+        width: 90%;
+    }
+    .contact-form{
+        top: 20%;
+        right: 20%;
+    }
+    .cont-input{
+        width: 20em;
+        line-height: 2.2em;
+        margin-bottom: 1.4em;
+        padding: .3em 1em .3em 1.5em;
+        font-size: 1rem;
+    }
+    .svg-img{
+        width: 19em;
+        height: 19em;
+    }
+
+}
+@media(min-width:1140px){
+    /*---------------------- section a ----------------------*/
+    .backservices{
+        min-height: 10em;
+        top: 7vh;
+    }
+    .section-a h1{
+        font-size: 4rem;
+    }
+    .section-a h3{
+        font-size: 1.3em;
+        bottom: 0;
+    }
+    /*-------------  section b -----*/
+    .sectionb-wrapper{
+        width: 65%;
+    }
+    .sectionb-wrapper{
+        max-width: 90%;
+    }
+    /*------------------- section c ---------------------*/
+    .c2{
+        width: 80%;
+    }
+    .back-worksinfo{
+        min-height: 20vh;
+    }
+
+    .back-worksinfo::before{
+        transform: skewY(6deg);
+    }
+
+    .back-worksinfo::after{
+        transform: skewY(-6deg);
+    }
+    .works-info{
+        top: 1vh;
+    }
+    .works-info h2{
+        font-size: 1.9rem;
+    }
+    .section-c{
+        min-height: 70vh;;
+    }
+    .section-c2{
+        top: -14vh;
+    }
+    /*------------- section d --------------*/
+    .contact-header{
+        left: 20%;
+    }
+    .contact-header h2{
+        font-size: 2.9rem;
+    }
+    .contact-header p{
+        margin-top: 2em;
+        font-size: 1rem;
+        width: 100%;
+    }
+    .contact-header{
+        top: 15%;
+    }
+    .contact-form{
+        top: 15%;
+    }
+}

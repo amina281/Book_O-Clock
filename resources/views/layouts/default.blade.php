@@ -16,20 +16,26 @@
             crossorigin="anonymous">
 
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 </head>
 
 <style>
     .alert-message {
         color: red;
     }
-    .img{
-        background-image: url('https://eatingfiction.files.wordpress.com/2019/08/shutterstock_1068141515.jpg');
-        height: 100%;
-        background-size: cover;
+
+    .color
+    {
+        background-color: #f2dede;
     }
+
 </style>
 
-<body class="img">
+<body class="color">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Book O'Clock</a>
@@ -57,8 +63,6 @@
                     <li class="nav-item active">
                         <a  class="nav-link" href="{{ url('/logout') }}">Logout</a>
                     </li>
-
-
 
                 @else
                     <li class="nav-item active">

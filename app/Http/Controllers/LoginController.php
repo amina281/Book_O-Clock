@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use DB;
 use Hash;
@@ -10,8 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function index() {
-
+    if (Auth::check() == false){
         return view('AuthFolder.login');
+    }
+    else{
+        return view('AuthFolder.home');
+    }
     }
 
     public function store(Request $request) {
@@ -22,7 +27,9 @@ class LoginController extends Controller
         if (Auth::attempt(
             ['email' => $request->email,
             'password' => $request->password,
-            'verified'=> true])) {
+            'verified'=> true],true
+            )) {
+
               //deklarim i objektit user, mund te kete dhe emer tjeter.
 
             $user = DB::table('users')->where('email', $request->email)->first();
@@ -33,7 +40,8 @@ class LoginController extends Controller
             }
             else
                 {
-                    return view('AuthFolder.home');
+                   //return view('AuthFolder.home');
+                    return redirect('/home');
                 }
         }
         else
@@ -51,7 +59,7 @@ class LoginController extends Controller
         ]);
     }
 
-    public function logout(Request $request)
+        public function logout(Request $request)
     {
         if(Auth::check())
         {
@@ -59,5 +67,10 @@ class LoginController extends Controller
             $request->session()->invalidate();
         }
         return view('AuthFolder.login');
+    }
+
+    public function HomePage()
+    {
+       return view('AuthFolder.home');
     }
 }
