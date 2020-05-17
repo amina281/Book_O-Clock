@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('.cart');
-});
 
 Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@store');
@@ -32,8 +29,13 @@ Route::get('/{token}/reset-password', 'ResetPasswordController@getPassword');
 Route::post('/reset-password', 'ResetPasswordController@updatePassword');
 
 
+Route::get('/', 'LandingPageController@index')->name('landing-page');
 
-/*Route::get('/', 'LandingPageController@index')->name('landing-page');*/
+Route::get('/services', 'ServicesController@index')->name('services.index');
+Route::post('/services', 'ServicesController@show')->name('services.store');
+
+Route::get('/shop', 'ShopController@index')->name('shop.index');
+Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
 
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::post('/cart/{product}', 'CartController@store')->name('cart.store');
@@ -49,3 +51,9 @@ Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 Route::post('/paypal-checkout', 'CheckoutController@paypalCheckout')->name('checkout.paypal');
 
 Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
+
+Route::get('/mailable', function () {
+     $order = App\Order::find(1);
+
+     return new App\Mail\OrderPlaced($order);
+});

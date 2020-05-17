@@ -9,7 +9,7 @@
 }
 .back-photo{
     position: absolute;
-    background: url('./img/web-img/carlijeen.jpg.jpg');
+    background: url('../../images/web-img/carlijeen.jpg.jpg');
     width: 40%;
     height: 80vh;
     background-size: cover;
@@ -68,7 +68,7 @@
     position: absolute;
     width: 20%;
     height: 100%;
-    background: url('./img/web-img/carolynv (1).jpg');
+    background: url('../../images/web-img/carolynv (1).jpg');
     background-size: cover;
 }
 .bottom-section button{
@@ -159,17 +159,17 @@
 }
 .news-btn{
     left: 52%;
-    background: url('./img/web-img/enikokis.jpg.jpg');
+    background: url('../../images/web-img/enikokis.jpg.jpg');
     background-size: cover;
 }
 .quotes-btn{
     right: 3%;
-    background: url('./img/web-img/debbyhudson.jpg.jpg');
+    background: url('../../images/web-img/debbyhudson.jpg.jpg');
     background-size: cover;
 }
 .books-btn{
     left: 3%;
-    background: url('./img/web-img/debbyunsplash.jpg.jpg');
+    background: url('../../images/web-img/debbyunsplash.jpg.jpg');
     background-size: cover;
 }
 .containerhm:hover::before{
@@ -190,7 +190,7 @@
 .info{
     position: relative;
     width: 100%;
-    background: url('./img/elaine-howlin-iMIl-PaLszw-unsplash\ \(1\).jpg');
+    background: url('public/images/elaine-howlin-iMIl-PaLszw-unsplash\ \(1\).jpg');
     clip-path: polygon(0 0, 100% 0, 100% 30%, 50% 40%, 0 30%);
     background-size: cover;
     background-position: 90% 0;

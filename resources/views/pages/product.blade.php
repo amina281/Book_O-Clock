@@ -1,9 +1,7 @@
 @extends('layouts.master')
 
-@section('title', 'Book Page')
-
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/pages/product.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/product.css') }}">
 @endsection
 
 @section('content')
@@ -42,7 +40,7 @@
                 <section class="right-wrapper">
                     <div class="cover-title">
                         <h1>{{ $product->Title }}</h1>
-                        <a href="#"><h3>{{ $product->AuthorId->Authorname}}</h3></a>
+                        <a href="#"><h3></h3></a>
                     </div>
                     <p>
                         {{ $product->Description}}

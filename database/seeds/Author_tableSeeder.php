@@ -15,7 +15,7 @@ class Author_tableSeeder extends Seeder
     {
         Author::create([
             'slugA' => 'john green',
-            'Authorname' => 'John Green',
+            'name' => 'John Green',
             'Address' => 'http://www.rainbowrowell.com',
             'BookNumber' => 3,
             'Description' => 'In 2007, John and his brother Hank were the hosts of a popular internet blog, "Brotherhood 2.0,"
@@ -25,7 +25,7 @@ class Author_tableSeeder extends Seeder
         ]);
         Author::create([
             'slugA' => 'rainbow rowell',
-            'Authorname' => 'Rainbow Rowell',
+            'name' => 'Rainbow Rowell',
             'Address' => 'http://www.johngreenbooks.com/',
             'BookNumber' => 3,
             'Description' => 'Rainbow Rowell writes books. Sometimes she writes about adults (ATTACHMENTS and LANDLINE).
@@ -34,7 +34,7 @@ class Author_tableSeeder extends Seeder
         ]);
         Author::create([
             'slugA' => 'nicola yoon',
-            'Authorname' => 'Nicola Yoon',
+            'name' => 'Nicola Yoon',
             'Address' => 'http://www.NicolaYoon.com',
             'BookNumber' => 2,
             'Description' => 'Nicola Yoon grew up in Jamaica (the island) and Brooklyn (part of Long Island). 
@@ -43,7 +43,7 @@ class Author_tableSeeder extends Seeder
         ]);
         Author::create([
             'slugA' => 'jenna evans welch',
-            'Authorname' => 'Jenna Evans Welch',
+            'name' => 'Jenna Evans Welch',
             'Address' => 'http://www.jennaevanswelch.com',
             'BookNumber' => 3,
             'Description' => 'Jenna Evans Welch was the kind of insatiable child reader who had no choice but to grow up
@@ -52,20 +52,20 @@ class Author_tableSeeder extends Seeder
              messes in the kitchen. ',
         ]);
         Author::create([
-        'slugA' => 'meg rosoff',
-        'Authorname' => 'Meg Rosoff',
-        'Address' => 'http://www.megrosoff.co.uk',
-        'BookNumber' => 3,
-        'Description' => '
-            Meg Rosoff was born in Boston and had three or four careers in publishing and advertising before she moved to London in 
-            1989, where she lives now with her husband and daughter. Formerly a Young Adult author, Meg has earned numerous prizes 
-            including the highest American and British honors for YA fiction: the Michael L. Printz Award and the Carnegie Medal. ',
+            'slugA' => 'meg rosoff',
+            'name' => 'Meg Rosoff',
+            'Address' => 'http://www.megrosoff.co.uk',
+            'BookNumber' => 3,
+            'Description' => '
+                Meg Rosoff was born in Boston and had three or four careers in publishing and advertising before she moved to London in 
+                1989, where she lives now with her husband and daughter. Formerly a Young Adult author, Meg has earned numerous prizes 
+                including the highest American and British honors for YA fiction: the Michael L. Printz Award and the Carnegie Medal. ',
         ]);
 
 
         Author::create([
             'slugA' => 'anna-marie mcLemore',
-            'Authorname' => 'Anna-Marie McLemore',
+            'name' => 'Anna-Marie McLemore',
             'Address' => 'http://author.annamariemclemore.com/',
             'BookNumber' => 3,
             'Description' => 'Anna-Marie McLemore was born in the foothills of the San Gabriel Mountains and taught by 
@@ -73,7 +73,7 @@ class Author_tableSeeder extends Seeder
         ]);
         Author::create([
             'slugA' => 'sabaa tahir',
-            'Authorname' => 'Sabaa Tahir',
+            'name' => 'Sabaa Tahir',
             'Address' => 'http://www.sabaatahir.com',
             'BookNumber' => 3,
             'Description' => 'Sabaa Tahir grew up in Californias Mojave Desert at her familys 18-room motel. There, 
@@ -83,7 +83,7 @@ class Author_tableSeeder extends Seeder
         ]);
         Author::create([
             'slugA' => 'george R.R. martin',
-            'Authorname' => 'George R.R. Martin',
+            'name' => 'George R.R. Martin',
             'Address' => 'http://www.georgerrmartin.com/',
             'BookNumber' => 3,
             'Description' => 'George R.R. Martin was born September 20, 1948, in Bayonne, New Jersey. His father was Raymond 
@@ -97,7 +97,7 @@ class Author_tableSeeder extends Seeder
         ]);
         Author::create([
             'slugA' => 'victoria aveyard',
-            'Authorname' => 'Victoria Aveyard',
+            'name' => 'Victoria Aveyard',
             'Address' => 'http://www.victoriaaveyard.com',
             'BookNumber' => 3,
             'Description' => 'I\'m a screenwriter/YA author who likes books and lists. This site is the nexus of my universe.
@@ -108,7 +108,7 @@ class Author_tableSeeder extends Seeder
 
         Author::create([
             'slugA' => 'christopher paolini',
-            'Authorname' => 'Christopher Paolini',
+            'name' => 'Christopher Paolini',
             'Address' => 'http://www.paolini.net/',
             'BookNumber' => 3,
             'Description' => 'Christopher Paolini was born on November 17, 1983 in Southern California. He has lived 
@@ -121,7 +121,7 @@ class Author_tableSeeder extends Seeder
         ]);
         Author::create([
             'slugA' => 'cheryl strayed',
-            'Authorname' => 'Cheryl Strayed',
+            'name' => 'Cheryl Strayed',
             'Address' => 'http://www.cherylstrayed.com',
             'BookNumber' => 2,
             'Description' => 'Cheryl Strayed is the author of books: Tiny Beautiful Things, Torch, Brave Enough,
@@ -130,7 +130,7 @@ class Author_tableSeeder extends Seeder
         ]);
         Author::create([
             'slugA' => 'nathaniel philbrick',
-            'Authorname' => 'Nathaniel Philbrick',
+            'name' => 'Nathaniel Philbrick',
             'Address' => 'http://www.nathanielphilbrick.com/',
             'BookNumber' => 2,
             'Description' => 'Philbrick was Brown’s first Intercollegiate All-American sailor in 1978; that year he 
@@ -141,7 +141,7 @@ class Author_tableSeeder extends Seeder
         ]);
         Author::create([
             'slugA' => 'yossi ghinsberg',
-            'Authorname' => 'Yossi Ghinsberg',
+            'name' => 'Yossi Ghinsberg',
             'Address' => 'https://ghinsberg.com/',
             'BookNumber' => 2,
             'Description' => 'Yossi Ghinsberg is an Israeli adventurer, author, entrepreneur, humanitarian, and 
@@ -149,22 +149,8 @@ class Author_tableSeeder extends Seeder
              stranded in an uncharted part of the Bolivian Amazon jungle for three weeks in 1981',
         ]);
         Author::create([
-            'slugA' => 'alan R. clarke',
-            'Authorname' => 'Alan R. Clarke',
-            'Address' => 'https://ghinsberg.com/',
-            'BookNumber' => 1,
-            'Description' => 'Alan R. Clarke was born in Wolverhampton, England on July 14, 1938.  Clarke attended the 
-             Royal Technical College, Salford, and the University of Sheffield, both in England, before coming to the 
-             U. S. in 1966. Because of an airline strike at the time, his first exposure to American railroads was
-             traveling from New York to Washington on the Pennsylvania Railroad and then on to Grafton, West Virginia, 
-             on the Baltimore and Ohio Railroad. Clarke taught chemistry at Salem College from 1966 to 1978.
-             During this time he developed an interest in the photography of bridges, which later became focused on 
-             stone bridges. This led to the discovery of the Coal and Coke Railway in West Virginia and a fascination 
-             with the railroad, which ultimately led to a book on its history. ',
-        ]);
-        Author::create([
             'slugA' => 'jules verne',
-            'Authorname' => 'Jules Verne',
+            'name' => 'Jules Verne',
             'Address' => '-',
             'BookNumber' => 3,
             'Description' => 'Jules Gabriel Verne was a French author who pioneered the genre of science-fiction.

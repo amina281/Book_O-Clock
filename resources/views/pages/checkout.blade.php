@@ -1,6 +1,4 @@
-@extends('layouts.dashboard')
-
-@section('title', 'Checkout')
+@extends('layouts.master')
 
 @section('extra-css')
     <style>
@@ -136,7 +134,7 @@
                     @foreach (Cart::content() as $item)
                         <div class="checkout-table-row">
                             <div class="checkout-table-row-left">
-                                <img src="{{asset('img/products/'.$item->model->slug.'.jpg')}}" alt="item" class="checkout-table-img">
+                                <img src="{{asset('images/products/'.$item->model->slug.'.jpg')}}" alt="item" class="checkout-table-img">
                                 <div class="checkout-item-details">
                                     <div class="checkout-table-item">{{ $item->model->Title}}</div>
                                     <div class="checkout-table-price">{{ $item->model->Price }}</div>

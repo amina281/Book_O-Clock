@@ -1,3 +1,8 @@
+@extends('layouts.master')
+
+@section('extra-css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/services.css') }}">
+@endsection
 
 @section('content')
     <section class="section-a">
@@ -81,13 +86,13 @@
                 <input class="cont-input" type="email" placeholder="Email*"/>
                 <input class="cont-input" type="text" placeholder="Subject*"/>
                 <textarea class="cont-input" name="message" class="text-contact" placeholder="Type a message" rows="7" required></textarea>
-                <a class="submit-contact"> <span>Submit </span></a>
+                <button type="submit" class="submit-contact">Submit</button>
             </form>
         </div>
         <div class="svg-img"></div>
     </section>
 @endsection
 
-@section('script')
+@section('extra-js')
 
 @endsection

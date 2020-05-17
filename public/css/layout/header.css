@@ -71,10 +71,13 @@
 /*------------------ nav bar ---------------------------*/
 
 header{
+    top: 0;
+    left: 0;
+    z-index: 11111111111111111111111;
     background: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.144);
     position: fixed;
-    width: 100vw;
+    width: 100%;
     height: 8vh;
     display: flex;
     align-items: center;
@@ -106,7 +109,7 @@ header{
 .logo{
     font-family: 'Amiri' ,serif;
     font-weight: 400;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: black;
     text-transform: uppercase;
 }
@@ -161,7 +164,6 @@ header{
     transition: .1s ease-in;
     position: absolute;
     background: rgb(243, 243, 243);
-    display: block;
     margin-top: 2.8em;
     display: flex;
     flex-direction: column;
@@ -210,7 +212,7 @@ header{
     position: relative;
     width: 85%;
     height: 2em;
-    padding: 1em 0em 1em 1em;
+    padding: 1em 0 1em 1em;
     font-family: 'Amiri',serif;
     font-weight: 400;
     font-size: 1rem;
@@ -253,7 +255,7 @@ header{
     border:none;
     font-family:'Amiri',serif;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: .9rem;
     padding: .2em 1em;
     border-radius: 100px;
 }
@@ -339,7 +341,6 @@ header{
     transition: .1s ease-in;
     position: absolute;
     background: rgb(243, 243, 243);
-    display: block;
     margin-top: 6.5em;
     display: flex;
     flex-direction: column;

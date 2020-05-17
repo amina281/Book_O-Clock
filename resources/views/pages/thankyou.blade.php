@@ -1,5 +1,7 @@
-@section('extra-styles')
+@extends('layouts.master')
 
+@section('extra-css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/thankyou.css') }}">
 @endsection
 
 @section('content')
