@@ -36,7 +36,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/reset-password', 'ResetPasswordController@updatePassword');
 
     Route::get('/user', 'UserProfileController@GetUserData')->middleware('auth');
-    Route::post('/userUpdate', 'UserProfileController@update')->name('userUpdate');
+    Route::post('/userUpdate', 'UserProfileController@update')->name('userUpdate')->middleware('auth');
 
 });
 
