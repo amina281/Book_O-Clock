@@ -13,7 +13,7 @@
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', function () {
-        return view('AuthFolder.login');
+        return view('AuthFolder.register');
     });
 
     Route::get('/register', 'RegisterController@index');
