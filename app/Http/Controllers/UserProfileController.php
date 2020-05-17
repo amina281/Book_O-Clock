@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserProfileController extends Controller
 {
@@ -16,7 +17,15 @@ class UserProfileController extends Controller
     {
         $user = Auth::user();
 
-        return view('UserProfile.User', compact('user'));
+
+        $Orders = DB::table('Shopping_Cart_Header')
+            ->where(['CustomerId' => $user->id])->get() ;
+
+        if($Orders->count() == 0)
+            return view('UserProfile.User', compact('user'),['EmptySet'=>'Nuk keni bere asnje porosi!']);
+
+
+        return view('UserProfile.User', compact('user','Orders'),['EmptySet'=>'']);
     }
 
     public function update(Request $request)
@@ -32,6 +41,8 @@ class UserProfileController extends Controller
         $user->save();
         return redirect('/user')->with('success', 'User has been updated!!');
     }
+
+
 
     public function  validation($request)
     {
