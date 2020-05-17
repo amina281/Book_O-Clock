@@ -1,10 +1,16 @@
 @extends('layouts.default')
+
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+
+@endsection
+
 @section('content')
 
 <br>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8" style="background-color: floralwhite">
             <div class="portlet light bordered">
                 <div class="portlet-title tabbable-line">
                     <br>
@@ -39,6 +45,8 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="home">
+                                <br>
+                                <br>
                                 @if (count($errors)> 0)
                                     @foreach($errors ->all() as $error)
                                         <p class="alert-danger">{{$error}}</p>
@@ -82,7 +90,8 @@
 
 
                         <div class="tab-pane" id="profile">
-
+                            <br>
+                            <br>
                             <form>
                                 <div class="form-group">
                                     <label for="inputName">Name</label>
@@ -103,11 +112,12 @@
                         </div>
 
                             <div class="tab-pane" id="Orders" >
-
+                                <br>
+                                <br>
                                 @if ($EmptySet != '')
                                     <p class="alert-info">{{$EmptySet}}</p>
                                 @else
-                                    <table id="example" class="display" style="width:100%">
+                                    <table class="table" id="datatable">
                                         <thead>
                                         <tr>
                                             <th>Order ID</th>
@@ -134,10 +144,19 @@
                                 @endif
 
                             </div>
-                     </div>
+
                     </div>
                 </div>
             </div>
         </div>
 
+@endsection
+
+        @section('javascripts')
+            <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+            <script>
+                $(document).ready( function () {
+                    $('#datatable').DataTable();
+                });
+            </script>
 @endsection

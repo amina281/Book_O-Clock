@@ -15,6 +15,7 @@ class UserProfileController extends Controller
 
     public function GetUserData()
     {
+
         $user = Auth::user();
 
 
