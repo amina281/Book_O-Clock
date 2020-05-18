@@ -10,23 +10,35 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('/', function () {
+        return view('AuthFolder.login');
+    });
+
+    Route::get('/register', 'RegisterController@index');
+    Route::post('/register', 'RegisterController@store');
+    Route::post('/register/check', 'RegisterController@check')->name('email_available.check');
+    Route::post('/register-update', 'RegisterController@updateEmail');
+    Route::get('/{token}/{email}/register', 'RegisterController@getInfo');
 
 
-Route::get('/register', 'RegisterController@index');
-Route::post('/register', 'RegisterController@store');
-Route::post('/register/check', 'RegisterController@check')->name('email_available.check');
-Route::post('/register-update', 'RegisterController@updateEmail');
-Route::get('/{token}/{email}/register', 'RegisterController@getInfo');
+    Route::get('/login', [ 'as' => 'login', 'uses' => 'LoginController@index']);
+    Route::post('/login', 'LoginController@store');
+    Route::get('/logout', 'LoginController@logout')->middleware('auth');
+    Route::get('/home', 'LoginController@HomePage')->middleware('auth');
 
-Route::get('/login', 'LoginController@index');
-Route::post('/login', 'LoginController@store');
-Route::get('/logout',  'LoginController@logout');
 
-Route::get('/forget-password', 'ForgotPasswordController@getEmail');
-Route::post('/forget-password', 'ForgotPasswordController@postEmail');
+    Route::get('/forget-password', 'ForgotPasswordController@getEmail');
+    Route::post('/forget-password', 'ForgotPasswordController@postEmail');
 
-Route::get('/{token}/reset-password', 'ResetPasswordController@getPassword');
-Route::post('/reset-password', 'ResetPasswordController@updatePassword');
+    Route::get('/{token}/reset-password', 'ResetPasswordController@getPassword');
+    Route::post('/reset-password', 'ResetPasswordController@updatePassword');
+
+    Route::get('/user', 'UserProfileController@GetUserData')->middleware('auth');
+    Route::post('/userUpdate', 'UserProfileController@update')->name('userUpdate');
+
+});
 
 
 Route::get('/', 'LandingPageController@index')->name('landing-page');
