@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
+use App\Cart;
 use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
 
 class ProductController extends Controller
 {
@@ -32,9 +35,17 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $ISBN)
     {
-        //
+        $product = Book::find($ISBN);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $product->ISBN);
+
+        $request->session()->put('cart', $cart);
+        dd($request->session()->get('cart'));
+        return back()->with('success_message','Item was added to your cart!');
+
     }
 
     /**

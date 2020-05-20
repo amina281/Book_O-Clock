@@ -1,6 +1,6 @@
 <?php
 
-use App\Product;
+use App\Book;
 use Illuminate\Database\Seeder;
 
 class ProductsTableSeeder extends Seeder
@@ -12,7 +12,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        Product::create([
+        Book::create([
             'Title' => 'An Abundance of Katherines',
             'slug' => 'abundance-of-katherines',
             'PageNum' => 229,
@@ -28,7 +28,7 @@ class ProductsTableSeeder extends Seeder
             Love, friendship, and a dead Austro-Hungarian archduke add up to surprising and heart-changing conclusions in 
             this ingeniously layered comic novel about reinventing oneself.</p>>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Turtles All the Way Down ',
             'slug' => 'turtles-all-the-way-down ',
             'PageNum' => 286,
@@ -39,7 +39,7 @@ class ProductsTableSeeder extends Seeder
             and tuatara. But at its heart is Aza Holmes, a young woman navigating daily existence within the ever-tightening 
             spiral of her own thoughts.In his long-awaited return, John Green shares Aza\'s story with shattering, unflinching clarity</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Paper Towns',
             'slug' => 'paper-towns',
             'PageNum' => 305,
@@ -54,7 +54,7 @@ class ProductsTableSeeder extends Seeder
 
 
 
-        Product::create([
+        Book::create([
             'Title' => 'Eleanor & Park',
             'slug' => 'e&p',
             'PageNum' => 328,
@@ -68,7 +68,7 @@ class ProductsTableSeeder extends Seeder
              Park fall for each other. They fall in love the way you do the first time, when you\'re young, and you feel
              as if you have nothing and everything to lose.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Almost Midnight ',
             'slug' => 'almost-midnight ',
             'PageNum' => 161,
@@ -78,9 +78,9 @@ class ProductsTableSeeder extends Seeder
             year and fall a little more in love each time . . .</p>
             <p>Kindred  Spirits is about Elena, who decides to queue to see the new Star Wars movie and meets Gabe, a fellow fan.
             Midnights was previously published as part of the My True Love Gave to Me anthology, edited by Stephanie Perkins and 
-            Kindred Spirits was previously published as a World Product Day title.</p>',
+            Kindred Spirits was previously published as a World Book Day title.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Landline: A Novel',
             'slug' => 'landline-novel',
             'PageNum' => 310,
@@ -93,7 +93,7 @@ class ProductsTableSeeder extends Seeder
         ]);
 
 
-        Product::create([
+        Book::create([
             'Title' => 'Everything, Everything',
             'slug' => 'everything-everything',
             'PageNum' => 306,
@@ -107,7 +107,7 @@ class ProductsTableSeeder extends Seeder
             <p>Everything, Everything will make you laugh, cry, and feel everything in between. It\'s an innovative,  
             inspiring, and heartbreakingly romantic debut novel that unfolds via vignettes, diary entries, illustrations, and more.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'The Sun Is Also a Star ',
             'slug' => 'sun-also-star ',
             'PageNum' => 384,
@@ -126,7 +126,7 @@ class ProductsTableSeeder extends Seeder
 
 
 
-        Product::create([
+        Book::create([
             'Title' => 'Love & Gelato',
             'slug' => 'L&G',
             'PageNum' => 389,
@@ -141,7 +141,7 @@ class ProductsTableSeeder extends Seeder
             unearth a secret that has been kept from Lina for far too long.
             People come to Italy for love and gelato, someone tells her, but sometimes they discover much more.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Love & Luck ',
             'slug' => 'L&L',
             'PageNum' => 303,
@@ -154,7 +154,7 @@ class ProductsTableSeeder extends Seeder
             But when Addie discovers an unusual guidebook, Ireland for the Heartbroken, hidden in the dusty shelves of 
             the hotel library, she’s able to finally escape her anxious mind and her brother criticism.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Love & Olives',
             'slug' => 'L&O',
             'PageNum' => 352,
@@ -169,7 +169,7 @@ class ProductsTableSeeder extends Seeder
         ]);
 
 
-        Product::create([
+        Book::create([
             'Title' => 'How I Live Now',
             'slug' => 'how-i-live-now',
             'PageNum' => 194,
@@ -182,7 +182,7 @@ class ProductsTableSeeder extends Seeder
             Despite the war, it’s a kind of Eden, with no adults in charge and no rules, a place where Daisy’s uncanny 
             bond with her cousins grows into something rare and extraordinary.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Picture Me Gone',
             'slug' => 'picture-me-gone',
             'PageNum' => 256,
@@ -195,7 +195,7 @@ class ProductsTableSeeder extends Seeder
             from London to find him.But just when she’s closest to solving the mystery, a shocking betrayal calls into question her 
             trust in the one person she thought she could read best.</p> ',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'What I Was',
             'slug' => 'what-was',
             'PageNum' => 209,
@@ -210,7 +210,7 @@ class ProductsTableSeeder extends Seeder
 
 
 
-        Product::create([
+        Book::create([
             'Title' => 'Wild Beauty',
             'slug' => 'wild-beauty',
             'PageNum' => 340,
@@ -224,7 +224,7 @@ class ProductsTableSeeder extends Seeder
             than his first name. As Estrella tries to help Fel piece together his unknown past, La Pradera leads them to 
             secrets as dangerous as they are magical in this stunning exploration of love, loss, and family.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'When the Moon Was Ours',
             'slug' => 'moon-was-urs',
             'PageNum' => 273,
@@ -236,7 +236,7 @@ class ProductsTableSeeder extends Seeder
             knows about his life before he and his mother moved to town.</p><p>Atmospheric, dynamic, and packed with gorgeous 
             prose, When the Moon was Ours is another winner from this talented author.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'The Weight of Feathers',
             'slug' => 'feathers',
             'PageNum' => 320,
@@ -250,7 +250,7 @@ class ProductsTableSeeder extends Seeder
 
 
 
-        Product::create([
+        Book::create([
             'Title' => 'An Ember in the Ashes',
             'slug' => 'ember-ashes',
             'PageNum' => 446,
@@ -262,7 +262,7 @@ class ProductsTableSeeder extends Seeder
             Laia lives with her grandparents and older brother. The family ekes out an existence in the Empire’s 
             impoverished backstreets. They do not challenge the Empire. They’ve seen what happens to those who do.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'A Torch Against the Night',
             'slug' => 'torch-night',
             'PageNum' => 452,
@@ -274,7 +274,7 @@ class ProductsTableSeeder extends Seeder
             soldiers hunt the two fugitives as they flee the city of Serra and undertake a perilous journey through the 
             heart of the Empire.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'A Reaper at the Gates',
             'slug' => 'reaper-gates',
             'PageNum' => 464,
@@ -290,7 +290,7 @@ class ProductsTableSeeder extends Seeder
 
 
 
-        Product::create([
+        Book::create([
             'Title' => 'A Game of Thrones',
             'slug' => 'Game-of-Thrones',
             'PageNum' => 835,
@@ -302,7 +302,7 @@ class ProductsTableSeeder extends Seeder
             fill these pages and transport us to a world unlike any we have ever experienced. Already hailed as a classic, 
             George R. R. Martin’s stunning series is destined to stand as one of the great achievements of imaginative fiction.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'A Clash of Kings',
             'slug' => 'Clash-of-Kings',
             'PageNum' => 969,
@@ -314,7 +314,7 @@ class ProductsTableSeeder extends Seeder
             Six factions struggle for control of a divided land and the Iron Throne of the Seven Kingdoms, preparing to 
             stake their claims through tempest, turmoil, and war.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'A Storm of Swords',
             'slug' => 'Storm-of-Swords',
             'PageNum' => 1177,
@@ -332,7 +332,7 @@ class ProductsTableSeeder extends Seeder
 
 
 
-        Product::create([
+        Book::create([
             'Title' => 'Red Queen',
             'slug' => 'Red-Queen',
             'PageNum' => 383,
@@ -346,7 +346,7 @@ class ProductsTableSeeder extends Seeder
             the king, princes, and all the nobles, she discovers she has an ability of her own.One wrong move can lead 
             to her death, but in the dangerous game she plays, the only certainty is betrayal.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Glass Sword',
             'slug' => 'Glass-Sword',
             'PageNum' => 444,
@@ -357,7 +357,7 @@ class ProductsTableSeeder extends Seeder
             impossibility, a fake, but as she makes her escape from Maven, the prince—the friend—who betrayed her, 
             Mare uncovers something startling: she is not the only one of her kind.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'King\'s Cage',
             'slug' => 'King-Cage',
             'PageNum' => 528,
@@ -372,7 +372,7 @@ class ProductsTableSeeder extends Seeder
 
 
 
-        Product::create([
+        Book::create([
             'Title' => 'Eragon',
             'slug' => 'Eragon',
             'PageNum' => 503,
@@ -386,7 +386,7 @@ class ProductsTableSeeder extends Seeder
             Eragon soon realizes he has stumbled upon a legacy nearly as old as the Empire itself.Can Eragon take up the 
             mantle of the legendary Dragon Riders? The fate of the Empire may rest in his hands.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Eldest',
             'slug' => 'Eldest',
             'PageNum' => 704,
@@ -399,7 +399,7 @@ class ProductsTableSeeder extends Seeder
             places and people, his days filled with fresh adventure. But chaos and betrayal plague him at every turn, and nothing is 
             what it seems. Before long, Eragon doesn’t know whom he can trust.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Brisingr',
             'slug' => 'Brisingr',
             'PageNum' =>748,
@@ -413,7 +413,7 @@ class ProductsTableSeeder extends Seeder
 
 
 
-        Product::create([
+        Book::create([
             'Title' => 'Wild: From Lost to Found on the Pacific Crest Trail',
             'slug' => 'Wild',
             'PageNum' => 315,
@@ -425,7 +425,7 @@ class ProductsTableSeeder extends Seeder
             great suspense and style, sparkling with warmth and humor, Wild vividly captures the terrors and pleasures of 
             one young woman forging ahead against all odds on a journey that maddened, strengthened, and ultimately healed her.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Brave Enough',
             'slug' => 'Brave-Enough',
             'PageNum' => 160,
@@ -444,20 +444,20 @@ class ProductsTableSeeder extends Seeder
 
 
 
-        Product::create([
+        Book::create([
             'Title' => 'In the Heart of the Sea: The Tragedy of the Whaleship Essex',
             'slug' => 'the-heart-sea',
             'PageNum' => 302,
             'Price' => 8.37,
             'Published' => ' May 1st 2001' ,
-            'Description' => '<p>Winner of the National Product Award, Nathaniel Philbrick\'s book is a fantastic saga of 
+            'Description' => '<p>Winner of the National Book Award, Nathaniel Philbrick\'s book is a fantastic saga of 
             survival and adventure, steeped in the lore of whaling, with deep resonance in American literature and history.</p>
             <p>In 1820, the whaleship Essex was rammed and sunk by an angry whale, leaving the desperate crew to 
             drift for more than ninety days in three tiny boats. Nathaniel Philbrick uses little-known documents and 
             vivid details about the Nantucket whaling tradition to reveal the chilling facts of this infamous maritime disaster. 
             In the Heart of the Sea, recently adapted into a major feature film starring Chris Hemsworth, is a book for the ages.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'The Last Stand: Custer, Sitting Bull, and the Battle of the Little Bighorn',
             'slug' => 'The-Last-Stand',
             'PageNum' =>466,
@@ -473,7 +473,7 @@ class ProductsTableSeeder extends Seeder
         ]);
 
 
-        Product::create([
+        Book::create([
             'Title' => 'Jungle: A Harrowing True Story of Survival',
             'slug' => 'Jungle',
             'PageNum' => 441,
@@ -489,7 +489,7 @@ class ProductsTableSeeder extends Seeder
             upcoming motion picture, Jungle is the story of friendship and the teachings of nature, and a terrifying 
             true account that you won’t be able to put down.</p> ',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Laws of the Jungle: Jaguars Don\'t Need Self-Help Books',
             'slug' => 'Laws-Jungle',
             'PageNum' =>166,
@@ -502,7 +502,7 @@ class ProductsTableSeeder extends Seeder
 
 
 
-        Product::create([
+        Book::create([
             'Title' => 'Twenty Thousand Leagues Under the Sea',
             'slug' => ' Thousand-Leagues',
             'PageNum' => 394,
@@ -512,7 +512,7 @@ class ProductsTableSeeder extends Seeder
             his readers into the center of the Earth and to the far reaches of the galaxy years before such travels .
             could actually be attempted.</p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Around the World in Eighty Days',
             'slug' => 'Around-the-World',
             'PageNum' =>252,
@@ -523,7 +523,7 @@ class ProductsTableSeeder extends Seeder
             off for Dover with his astonished valet Passepartout. Passing through exotic lands and dangerous locations, 
             they seize whatever transportation is at hand—whether train or elephant—overcoming set-backs and always racing against the clock. </p>',
         ]);
-        Product::create([
+        Book::create([
             'Title' => 'Journey to the Center of the Earth',
             'slug' => 'Journey to the Center of the Earth',
             'PageNum' => 240,
