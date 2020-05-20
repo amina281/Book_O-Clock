@@ -18,7 +18,6 @@ class UserProfileController extends Controller
 
         $user = Auth::user();
 
-
         $Orders = DB::table('Shopping_Cart_Header')
             ->where(['CustomerId' => $user->id])->get() ;
 
