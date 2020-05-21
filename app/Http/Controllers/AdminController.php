@@ -14,8 +14,8 @@ use App\User;
 class AdminController extends Controller
 {
     public function index(){
-        $post = User::paginate(4);
-        return view('Admin.ManageUsers',compact('post'));
+        $user = User::paginate(4);
+        return view('Admin.ManageUsers',compact('user'));
     }
 
     public function addUser(Request $request){
