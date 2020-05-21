@@ -41,7 +41,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/data/users','AdminController@getUsers')->name('dataProcessing');
     Route::get('/adminArea', 'AdminController@index')->middleware('auth');
 
-    Route::get('/adminUser', 'AdminController@getUserView')->middleware('auth');
+    Route::resource('/post','AdminController');
+
+    Route::post('/addPost','AdminController@addUser');
+    Route::post('/editPost','AdminController@editUser');
+    Route::post('deletePost','AdminController@deleteUser');
 
 });
 
