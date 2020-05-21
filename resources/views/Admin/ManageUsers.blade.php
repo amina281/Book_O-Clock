@@ -51,7 +51,7 @@
                 @endforeach
             </table>
         </div>
-        {{$post->links()}}
+        {{$user->links()}}
     </div>
     {{-- Modal Form Create Post --}}
     <div id="create" class="modal fade" role="dialog">
