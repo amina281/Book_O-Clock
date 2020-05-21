@@ -43,9 +43,9 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::resource('/post','AdminController');
 
-    Route::post('/addPost','AdminController@addPost');
-    Route::post('/editPost','AdminController@editPost');
-    Route::post('deletePost','AdminController@deletePost');
+    Route::post('/addPost','AdminController@addUser');
+    Route::post('/editPost','AdminController@editUser');
+    Route::post('deletePost','AdminController@deleteUser');
 
 });
 

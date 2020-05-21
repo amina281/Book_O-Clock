@@ -18,31 +18,36 @@ class AdminController extends Controller
         return view('Admin.ManageUsers',compact('post'));
     }
 
-    public function addPost(Request $request){
+    public function addUser(Request $request){
         $this->validation($request);
 
-            $post = new User;
-            $post->name = $request->name;
-            $post->email = $request->email;
-            $post->password = Hash::make($request->password);
-            $post->verified =true;
-            $post->email_verified_at= Carbon::now();
-            $post->role ='user';
-            $post->save();
-            return response()->json($post);
+            $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->verified =true;
+        $user->email_verified_at= Carbon::now();
+        $user->role ='user';
+        $user->save();
+            return response()->json($user);
 
     }
 
-    public function editPost(request $request){
-        $post = User::find ($request->id);
-        $post->name = $request->name;
-        $post->email = $request->email;
-        $post->save();
-        return response()->json($post);
+    public function editUser(request $request){
+        $user = User::find ($request->id);
+
+      //  $this->validation($request);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password= Hash::make($request->password);
+       // $post->verified = $request->verified;
+        $user->save();
+        return response()->json($user);
     }
 
-    public function deletePost(request $request){
-        $post = User::find ($request->id)->delete();
+    public function deleteUser(request $request){
+        $user = User::find ($request->id)->delete();
         return response()->json();
     }
 
