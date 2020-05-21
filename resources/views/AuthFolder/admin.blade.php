@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.admin')
 @section('content')
     <style>
         .card{
@@ -16,7 +16,10 @@
                 <div class="card">
                     <div class="card-header">Dashboard</div>
                     <div class="card-body">
-                        Ketu do jete faqja e adminit.!
+                        <div class="center-block">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" style="background-color: #c7254e !important;" onclick="window.location='{{ url("/adminUser") }}'">Manage Users</button>
+                            <button type="button" class="btn btn-secondary btn-lg btn-block">Manage Orders</button>
+                        </div>
                     </div>
                 </div>
             </div>

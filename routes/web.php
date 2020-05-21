@@ -38,6 +38,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/user', 'UserProfileController@GetUserData')->middleware('auth');
     Route::post('/userUpdate', 'UserProfileController@update')->name('userUpdate')->middleware('auth');
 
+    Route::post('/data/users','AdminController@getUsers')->name('dataProcessing');
+    Route::get('/adminArea', 'AdminController@index')->middleware('auth');
+
+    Route::get('/adminUser', 'AdminController@getUserView')->middleware('auth');
+
 });
 
 
