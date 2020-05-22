@@ -15,7 +15,8 @@ class RegisterController extends Controller
         return view('AuthFolder.register');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->validation($request);
 
          User::create([

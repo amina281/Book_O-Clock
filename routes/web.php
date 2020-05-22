@@ -12,6 +12,10 @@
 */
 Route::group(['middleware' => ['web']], function () {
 
+    Route::get('/', function () {
+        return view('AuthFolder.register');
+    });
+
     Route::get('/register', 'RegisterController@index');
     Route::post('/register', 'RegisterController@store');
     Route::post('/register/check', 'RegisterController@check')->name('email_available.check');
@@ -32,10 +36,19 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/reset-password', 'ResetPasswordController@updatePassword');
 
     Route::get('/user', 'UserProfileController@GetUserData')->middleware('auth');
-    Route::post('/userUpdate', 'UserProfileController@update')->name('userUpdate');
+    Route::post('/userUpdate', 'UserProfileController@update')->name('userUpdate')->middleware('auth');
 
+    Route::post('/data/users','AdminController@getUsers')->name('dataProcessing');
+    Route::get('/adminArea', 'AdminController@index')->middleware('auth');
+
+    Route::resource('/post','AdminController');
+
+    Route::post('/addUser','AdminController@addUser');
+    Route::post('/editUser','AdminController@editUser');
+    Route::post('deleteUser','AdminController@deleteUser');
 
     Route::get('/', 'LandingPageController@index')->name('landing-page');
+});
 
     Route::get('/services', 'ServicesController@index')->name('services.index');
     Route::post('/services/send', 'ServicesController@send')->name('services.send');

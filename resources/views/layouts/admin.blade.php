@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Books OClock</title>
+    <title>Books OClock Administaton</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
@@ -16,7 +16,7 @@
             crossorigin="anonymous">
 
     </script>
-   @yield('styles')
+    @yield('styles')
 </head>
 
 <style>
@@ -31,10 +31,10 @@
 
 </style>
 
-<body class="color">
+<body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Book O'Clock</a>
+<nav class="navbar navbar-expand-lg " style="background-color: #011E2A">
+    <a class="navbar-brand" href="#">Admin Section</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -46,31 +46,16 @@
         <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
 
-                @if (Auth::check())
-                    <li class="nav-item active">
+                <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                    </a>
 
-                        <p class="nav-link"><b>WELCOME  {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</b></p>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a  class="nav-link" href="{{ url('/user') }}">User Profile</a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a  class="nav-link" href="{{ url('/logout') }}">Logout</a>
-                    </li>
-
-                @else
-                    <li class="nav-item active">
-                        <a  class="nav-link" href="{{ url('/login') }}">Login</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/register') }}">Register</a>
-                    <li class="nav-item active">
-                        <a  class="nav-link" href="{{ route('cart.index') }}">Shopping Cart</a>
-                    </li>
-
-                @endif
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="{{ url('/logout') }}">Log Out</a>
+                    </div>
+                </li>
             </ul>
         </form>
     </div>
