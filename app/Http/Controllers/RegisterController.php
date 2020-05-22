@@ -23,7 +23,7 @@ class RegisterController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
-             'role' =>'user',
+             'role' =>'admin',
              'phonenumber'=>$request['phonenumber'],
         ]);
 

@@ -47,8 +47,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/editUser','AdminController@editUser');
     Route::post('deleteUser','AdminController@deleteUser');
 
-    Route::get('/', 'LandingPageController@index')->name('landing-page');
+
 });
+Route::get('/', 'LandingPageController@index')->name('landing-page');
 
     Route::get('/services', 'ServicesController@index')->name('services.index');
     Route::post('/services/send', 'ServicesController@send')->name('services.send');
@@ -69,9 +70,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/paypal-checkout', 'CheckoutController@paypalCheckout')->name('checkout.paypal');
 
     Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
-
-
-});
 
 
 
