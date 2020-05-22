@@ -42,8 +42,7 @@ class CartController extends Controller
         $product =DB::table('books')->where('ISBN',$id)->first();
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product,$id);
-
+        $cart->add(  $product,$id);
         $request->session()->put('cart', $cart);
         return redirect()->route('product.index')->with('success_message','Item was added to your cart!');
     }
