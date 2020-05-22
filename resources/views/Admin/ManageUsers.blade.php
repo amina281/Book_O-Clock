@@ -92,7 +92,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-warning" type="submit" id="add">
-                        <span class="glyphicon glyphicon-plus"></span>Save Post
+                        <span class="glyphicon glyphicon-plus"></span>Save User
                     </button>
                     <button class="btn btn-warning" type="button" data-dismiss="modal">
                         <span class="glyphicon glyphicon-remobe"></span>Close
