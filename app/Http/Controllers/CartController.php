@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 class CartController extends Controller
@@ -38,10 +39,10 @@ class CartController extends Controller
      */
     public function add(Request $request, $id)
     {
-        $product = Book::find($id);
+        $product =DB::table('books')->where('ISBN',$id)->first();
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product, $product->ISBN);
+        $cart->add($product,$id);
 
         $request->session()->put('cart', $cart);
         return redirect()->route('product.index')->with('success_message','Item was added to your cart!');
