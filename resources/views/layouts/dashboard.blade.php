@@ -8,14 +8,16 @@
     <title>Books OClock</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,400;1,700&family=Anton&family=Dancing+Script:wght@700&family=Kaushan+Script&family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous">
-
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    @yield('extra-css')
 </head>
 
 <style>
@@ -57,8 +59,7 @@
                     <li class="nav-item active">
                         <a  class="nav-link" href="{{ url('/logout') }}">Logout</a>
                     </li>
-
-
+                    <li class="nav-item active"><a class="nav-link" href="{{ route('landing-page') }}">Home</a></li>
 
                 @else
                     <li class="nav-item active">
@@ -66,10 +67,6 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url('/register') }}">Register</a>
-                    <li class="nav-item active">
-                        <a  class="nav-link" href="{{ route('cart.index') }}">Shopping Cart</a>
-                    </li>
-
                 @endif
             </ul>
         </form>
@@ -79,5 +76,7 @@
 <div class="container">
     @yield('content')
 </div>
+
+@yield('extra-js')
 </body>
 </html>

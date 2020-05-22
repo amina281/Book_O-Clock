@@ -109,6 +109,13 @@
     align-items: flex-start;
     justify-content: flex-end;
 }
+.name-price-wrapp{
+    margin-bottom: -.4em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
 .book-name{
     font-family: 'Amiri',serif;
     font-weight: bold;
@@ -129,7 +136,7 @@
     color: #275645;
 }
 
-.quantity{
+.quantity-wrapp{
     grid-column: 2 / 3;
     grid-row: 1 / 1;
     display: flex;
@@ -139,41 +146,17 @@
     align-items: flex-end;
     justify-content: center;
 }
-.quantity-buttons{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.quantity{
     width: 100%;
-    height: 40%;
-}
-.quantity a{
-    background: #A0616A;
-    width: .7em;
-    height: .7em;
-    border-radius: 50px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.quantity a:focus{
+    font-family: "Amiri",serif;
+    font-size: .8rem;
+    font-weight: 600;
+    background: none;
+    border: none;
     outline: none;
-}
-.quantity a:hover{
-    background: rgb(77, 14, 23);
-}
-.quantity a i{
-    color: white;
-    font-size: 8px;
     text-align: center;
 }
-.prod-quantity{
-    font-family: 'Montserrat',sans-serif;
-    font-weight: 600;
-    font-size: .8rem;
-    padding: 0 .6em;
-}
+
 
 
 .total-dtelete{
@@ -243,7 +226,7 @@
     position: absolute;
     margin-top: 1em;
     width: 50%;
-    height: 55%;
+    height: 30%;
     right: 0;
     display: flex;
     flex-direction: column;
@@ -252,7 +235,7 @@
 }
 .tot-prod-nr{
     background: rgb(202, 202, 202);
-    height: 30%;
+    height: 50%;
     width: 90%;
 }
 .tot-prod-nr div{
@@ -268,7 +251,7 @@
     align-items: center;
     justify-content: center;
     background: rgb(241, 205, 210);
-    height: 90%;
+    height: 50%;
     width: 90%;
 
 }
@@ -330,23 +313,6 @@
     margin-left: 20%;
 }
 
-/*---------------------- save for later    ----------------*/
-.save-forlater-wrapper{
-    background: rgb(235, 235, 235);
-    width: 111%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-.save-forlater{
-    width: 79%;
-}
-.savefor-later h1::before{
-    background: rgba(32, 130, 241, 0.425);
-}
-
-
 /*=============== media queries =======================*/
 @media (min-width:560px){
     .shopping-pg-wrapper{
@@ -382,6 +348,10 @@
     .shop-header{
         width: 70%;
     }
+    .quantity{
+        width: 80%;
+    }
+
 }
 @media (min-width:900px){
     .shop-header{
@@ -398,6 +368,9 @@
         width: 80%;
         height: 80%;
         box-shadow: 0 0 3px  rgba(0, 0, 0, 0.178);
+    }
+    .quantity{
+        width: 60%;
     }
 
 }
@@ -438,28 +411,30 @@
         align-items: center;
         justify-content: space-between;
     }
+    .name-price-wrapp{
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
     .book-name{
         font-size: .9rem;
         margin-bottom: 0;
     }
     .book-price{
+        margin-bottom: 0;
         font-size: .90rem;
     }
-    .quantity{
+
+
+    .quantity-wrapp{
         height: 100%;
         margin-left: 5%;
         flex-direction: row;
         align-items: center;
     }
-    .quantity a{
-        width: .8em;
-        height: .8em;
-    }
-    .quantity a i{
-        font-size: 10px;
-    }
-    .prod-quantity{
-        padding: 0 1em;
+    .quantity{
+        width: 25%;
     }
 
 
@@ -508,6 +483,5 @@
         width: 100%;
         position: relative;
         margin-top: 10vh;
-        margin-bottom: 30vh;
     }
 }

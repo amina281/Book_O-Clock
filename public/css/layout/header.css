@@ -1,80 +1,14 @@
-/*------------------------------------ SOCIAL MEDIA  -----------------------------*/
-.social{
-    z-index: 3;
-    top:30%;
-    background: rgba(239, 234, 231, 0.616);
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-}
-.social ul{
-    list-style: none;
-    padding: 0;
-    width: 40px;
-}
-.social ul .follow{
-    text-transform: uppercase;
-    font-size: 15px;
-    display: flex;
-    justify-content: center;
-    letter-spacing: 1px;
-    padding: 40px 18px ;
-    font-weight: bold;
-    line-height: 20px;
-    color:rgba(103, 103, 107, 0.822);
-    transform: rotate(-90deg);
-}
-.social ul li{
-    display: block;
-    margin: 15px;
-    width: 15px;
-    text-align: center;
-    padding: 5px;
-}
-.social ul li a{
-    color: rgba(103, 103, 107, 0.822);
-    text-decoration: none;
-
-}
-.social ul li i{
-    text-align: center;
-    color: rgba(103, 103, 107, 0.829);
-    background-color: transparent;
-    border: none;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-}
-.social ul .facebook i:hover{
-    color: #3d5999;
-    font-size: 23px;
-}
-.social ul .twitter i:hover{
-    color: #55acee;
-    font-size: 23px;
-
-}
-.social ul .instagram i:hover{
-    color: #e4405f;
-    font-size: 23px;
-
-}
-.social ul .pinterest i:hover{
-    color: #dd4b39;
-    font-size: 23px;
-
-}
 
 /*------------------ nav bar ---------------------------*/
 
 header{
+    top: 0;
+    left: 0;
+    z-index: 11111111111111111111111;
     background: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.144);
     position: fixed;
-    width: 100vw;
+    width: 100%;
     height: 8vh;
     display: flex;
     align-items: center;
@@ -106,7 +40,7 @@ header{
 .logo{
     font-family: 'Amiri' ,serif;
     font-weight: 400;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: black;
     text-transform: uppercase;
 }
@@ -161,7 +95,6 @@ header{
     transition: .1s ease-in;
     position: absolute;
     background: rgb(243, 243, 243);
-    display: block;
     margin-top: 2.8em;
     display: flex;
     flex-direction: column;
@@ -210,7 +143,7 @@ header{
     position: relative;
     width: 85%;
     height: 2em;
-    padding: 1em 0em 1em 1em;
+    padding: 1em 0 1em 1em;
     font-family: 'Amiri',serif;
     font-weight: 400;
     font-size: 1rem;
@@ -253,7 +186,7 @@ header{
     border:none;
     font-family:'Amiri',serif;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: .9rem;
     padding: .2em 1em;
     border-radius: 100px;
 }
@@ -266,6 +199,7 @@ header{
 
 
 .shopping {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -292,7 +226,7 @@ header{
     position: absolute;
     top: 0;
     right: -.6em;
-    background: lightskyblue;
+    background: rgb(131, 209, 192);
     width: 1.2em;
     height: 1.2em;
     border-radius: 50px;
@@ -304,6 +238,7 @@ header{
     align-items: center;
     justify-content: center;
 }
+
 
 .user {
     display: flex;
@@ -339,7 +274,6 @@ header{
     transition: .1s ease-in;
     position: absolute;
     background: rgb(243, 243, 243);
-    display: block;
     margin-top: 6.5em;
     display: flex;
     flex-direction: column;

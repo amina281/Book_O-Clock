@@ -11,19 +11,18 @@ class CreateAuthorTable extends Migration
     {
         Schema::create('Author', function (Blueprint $table) {
             $table->increments('Id');
-            $table->string('slugA')->unique();
             $table->string('Authorname');
+            $table->string('slug');
             $table->string('Address');
             $table->integer('BookNumber');
-            $table->text('Description');
+            $table->string('imagePath');
+            $table->text('description');
             $table->timestamps();
         });
     }
-
-
     public function down()
     {
         Schema::dropIfExists('Author');
-
     }
 }
+

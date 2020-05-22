@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\CheckoutRequest;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Cartalyst\Stripe\Exception\CardErrorException;
 
 class CheckoutController extends Controller
 {
@@ -13,7 +18,18 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        //
+        if(!Session::has('cart')){
+            return view('pages.cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $total = $cart->totalPrice;
+        return  view('pages.checkout',
+            [
+                'products' => $cart->items,
+                'totalPrice' => $cart->totalPrice,
+                'totalQty' => $cart->totalQty,
+            ]);
     }
 
     /**
@@ -32,10 +48,11 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
         //
     }
+
 
     /**
      * Display the specified resource.
@@ -46,6 +63,7 @@ class CheckoutController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -81,4 +99,5 @@ class CheckoutController extends Controller
     {
         //
     }
+
 }
