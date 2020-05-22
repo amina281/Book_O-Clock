@@ -11,15 +11,20 @@ class CreateBooksTable extends Migration
     {
         Schema::create('Books', function (Blueprint $table) {
         $table->increments('ISBN');
-        $table->string('Title');
+        $table->string('Title')->unique();
         $table->string('slug')->unique();
+        $table->string('imagePath');
         $table->integer('PageNum');
         $table->unsignedInteger('AuthorId');
-        $table->float('Rate');
+        $table->float('Rate')->default(0);
         $table->decimal('Price');
-        $table->dateTime('Published');
-        $table->string('Language');
+        $table->date('Published');
+        $table->string('Language')->default('English');
+        $table->text('literaryAwards');
         $table->text('Description');
+        $table->text('criticRev');
+        $table->string('criticName');
+        $table->string('criticImagePath');
         $table->foreign('AuthorId')->references('Id')->on('Author');
         $table->timestamps();
 

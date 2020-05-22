@@ -5,151 +5,83 @@
 @endsection
 
 @section('content')
-        <div class="shopping-page">
-            <div class="shopping-pg-wrapper">
+    <div class="shopping-page">
+        <div class="shopping-pg-wrapper">
 
-                    <section class="shop-header">
-                        <h1>Your Order:</h1>
-                    </section>
+            @if(Session::has('cart'))
 
-                    <div class="product-wrapper">
+                <section class="shop-header">
+                    <h1>Your Order:</h1>
+                </section>
 
-                        <ul class="title-shop">
-                            <li>Title</li>
-                            <li>Price</li>
-                            <li>QTY</li>
-                            <li>Total Price</li>
-                        </ul>
+                <div class="product-wrapper">
+                    <ul class="title-shop">
+                        <li>Title</li>
+                        <li>Price</li>
+                        <li>QTY</li>
+                        <li>Total Price</li>
+                    </ul>
 
-                        @foreach(Cart::content() as $item)
-                            <section class="row-product">
-                                <div class="product-img-div">
-                                    <img src="{{asset('images/products/'.$item->model->slug.'.jpg')}}" alt="" class="product-img">
-                                </div>
+                    <section class="row-product">
+                        @foreach($products as $product)
+                            <div class="product-img-div">
+                                <img src="{{ $product['item']['imagePath'] }}.jpg" alt="img" class="product-img">
+                            </div>
 
-                                <div class="info-prod-row">
-                                    <div class="name-price">
-                                        <div class="name-price-wrapp">
-                                            <h2 class="book-name"><a href="{{route('shop.show',$item->model->slug)}}">{{ $item->model->Title}}</a></h2>
-                                            <h2 class="book-price">$<span class="price-tg">{{$item->model->Price}}</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="quantity-wrapp">
-                                        <select class="quantity" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->model->quantity }}">
-                                            @for ($i = 1; $i < 5 + 1 ; $i++)
-                                                <option {{ $item->qty == $i ? 'selected' : '' }}>{{ $i }}</option>
-                                            @endfor
-                                        </select>
-                                    </div>
-                                    <div class="total-dtelete">
-                                        <div class="tot-del">
-                                            <h2 class="total-book-price">$<span class="total-price-tg">{{$item->subtotal}}</span></h2>
-                                            <form action="{{ route('cart.destroy','$item->rowId') }}" method="POST">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit"><i class="fa fa-times"></i></button>
-                                            </form>
-                                            <form action="{{ route('cart.switchToSaveForLater', $item->rowId) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                <button type="submit" >Save for Later</button>
-                                            </form>
-                                        </div>
+                            <div class="info-prod-row">
+                                <div class="name-price">
+                                    <div class="name-price-wrapp">
+                                        <h2 class="book-name"><a href="#">{{ $product['item']['Tittle'] }}</a></h2>
+                                        <h2 class="book-price">$<span class="price-tg">{{ $product['item']['Price'] }}</span></h2>
                                     </div>
                                 </div>
-                            </section><!-- end cart-table-row -->
+                                <div class="quantity-wrapp">
+                                    <div class="quantity" >{{ $product['qty'] }}</div>
+                                </div>
+                                <div class="total-dtelete">
+                                    <div class="tot-del">
+                                        <h2 class="total-book-price">$<span class="total-price-tg">{{ $product['price'] }}</span></h2>
+                                        <a href="{{ route('checkout') }}">
+                                            <button type="submit"><i class="fa fa-times"></i></button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
-                    </div>
-
-                    <div class="tot-footer">
-                        <div class="upper-footer-tgs">
-                            <section class="tot-prod-nr tot">
-                                <div>
-                                    <h4>Total Product:</h4>
-                                    <h4 class="nr-tot nr-black">{{ Cart::count() }}</h4>
-                                </div>
-                            </section>
-                            <section class="tot-cart-price tot">
-                                <div>
-                                    <h4>Subtotal:</h4>
-                                    <h4 class="tot-price-nr nr-black">$<span class="price-of-prd">{{ Cart::subtotal() }}</span></h4>
-                                </div>
-                                <div>
-                                    <h4>Taxes:</h4>
-                                    <h4 class="tot-price-nr nr-black">$<span class="price-of-prd">{{ Cart::tax() }}</span></h4>
-                                </div>
-                                <div>
-                                    <h4>Total Cost:</h4>
-                                    <h4 class="tot-price-nr nr-black">$<span class="price-of-prd">{{ Cart::total() }}</span></h4>
-                                </div>
-                            </section>
-                        </div>
-
-                        <div class="button-check">
-                            <a href="{{ route('product.index') }}"><button class="checkout-from-cart -generes">Books</button></a>
-                            <a href="{{ route('checkout.index') }}"><button class="checkout-from-cart">Checkout</button></a>
-                        </div>
-                    </div>
-
-                <div class="save-forlater-wrapper">
-                    <div class="save-forlater">
-
-                        <section class="shop-header savefor-later">
-                            @if (Cart::instance('saveForLater')->count() > 0)
-                            <h1>{{ Cart::instance('saveForLater')->count() }} Item(s) Saved For Later:</h1>
-                        </section>
-
-                        <div class="product-wrapper">
-
-                            <ul class="title-shop">
-                                <li>Title</li>
-                                <li>Price</li>
-                                <li>QTY</li>
-                                <li>Total Price</li>
-                            </ul>
-
-                            @foreach(Cart::instance('saveForLater')->content() as $item)
-                                <section class="row-product">
-                                    <div class="product-img-div">
-                                        <img src="{{asset('images/products/'.$item->model->slug.'.jpg')}}" alt="" class="product-img">
-                                    </div>
-
-                                    <div class="info-prod-row">
-                                        <div class="name-price">
-                                            <h2 class="book-name"><a href="{{route('shop.show',$item->model->slug)}}">{{ $item->model->Title}}</a></h2>
-                                            <h2 class="book-price">$<span class="price-tg">{{$item->model->Price}}</span></h2>
-                                        </div>
-                                        <div class="total-dtelete">
-                                            <div class="tot-del">
-                                                <h2 class="total-book-price">$<span class="total-price-tg">{{$item->model->Price}}</span></h2>
-                                                <div class="move-remove">
-                                                    <form action="{{ route('saveForLater.destroy','$item->rowId') }}" method="POST">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                        <button type="submit"><i class="fa fa-times"></i></button>
-                                                    </form>
-                                                    <form action="{{ route('saveForLater.switchToCart', $item->rowId) }}" method="POST">
-                                                        {{ csrf_field() }}
-                                                        <button type="submit" >Move to Cart</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section><!-- end cart-table-row -->
-                            @endforeach
-                        </div>
-
-                        <!-- end saved-for-later -->
-
-                        @else
-                            <h1>You have no items Saved for Later.</h1>
-                        @endif
-
-                    </div>
+                    </section><!-- end cart-table-row -->
                 </div>
 
-            </div>
+                <div class="tot-footer">
+                    <div class="upper-footer-tgs">
+                        <section class="tot-prod-nr tot">
+                            <div>
+                                <h4>Total Product:</h4>
+                                <h4 class="nr-tot nr-black">{{'totalQty'}}</h4>
+                            </div>
+                        </section>
+                        <section class="tot-cart-price tot">
+                            <div>
+                                <h4>Total Cost:</h4>
+                                <h4 class="tot-price-nr nr-black">$<span class="price-of-prd">{{ 'totalPrice' }}</span></h4>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="button-check">
+                        <a href="{{ route('shop.index') }}"><button class="checkout-from-cart -generes">Books</button></a>
+                        <a href="{{ route('checkout') }}"><button class="checkout-from-cart">Checkout</button></a>
+                    </div>
+                </div>
+            @else
+                <section class="shop-header">
+                    <h1>No items in Cart!</h1>
+                </section>
+                <div class="button-check">
+                    <a href="{{ route('shop.index') }}"><button class="checkout-from-cart -generes">Books</button></a>
+                </div>
+            @endif
         </div>
+    </div>
 @endsection
 
 @section('extra-js')

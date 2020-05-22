@@ -13,7 +13,7 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        //$products = Product::inRandomOrder() -> take(8) -> get();
+        //$products = Book::inRandomOrder() -> take(8) -> get();
 
         return view('pages.landing-page');
     }

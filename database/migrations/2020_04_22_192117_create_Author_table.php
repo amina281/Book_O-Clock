@@ -15,9 +15,14 @@ class CreateAuthorTable extends Migration
             $table->string('slug');
             $table->string('Address');
             $table->integer('BookNumber');
+            $table->string('imagePath');
+            $table->text('description');
             $table->timestamps();
         });
     }
-
+    public function down()
+    {
+        Schema::dropIfExists('Author');
+    }
 }
 

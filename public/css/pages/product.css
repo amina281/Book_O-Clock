@@ -1,30 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    overflow-x: hidden;
-}
-/*============== alert =====================*/
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-
-.alert-success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-
-.alert-danger {
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-}
 
 /*========================= book-checkout page ====================*/
 .book-page{
@@ -82,7 +55,7 @@ body{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
 }
 
-/*============================ Product info ===============================*/
+/*============================ Book info ===============================*/
 .cover-right{
     position: relative;
     top: 4vh;
@@ -108,7 +81,7 @@ body{
     align-items: center;
     margin-bottom: .7em;
 }
-.cover-title h1{
+.cover-title .cov-nam{
     margin-bottom: .4em;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
@@ -119,18 +92,18 @@ body{
     text-decoration: none;
     cursor: pointer;
 }
-.cover-title a h3:hover{
+.cover-title a .auth-nam:hover{
     color: rgb(128, 34, 34);
     font-weight: 800;
 }
-.cover-title h3{
+.cover-title .auth-nam{
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: .7rem;
     color: #837F7F;
     margin-bottom: 1em;
 }
-.right-wrapper p{
+.right-wrapper .book-parag{
     font-family: 'Amiri' , serif;
     font-weight: 400;
     font-size: .8rem;
@@ -202,7 +175,7 @@ body{
     align-items: center;
     justify-content: center;
 }
-.hed{
+.hed, .hed .bookshelf-select{
     display: grid;
     place-items: center center;
     height: 2.5em;
@@ -479,16 +452,20 @@ body{
     justify-content: center;
     align-items: center;
 }
-.add-tocart form{
+.add-tocart a{
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
-.add-tocart form button{
+.add-tocart a:focus{
+    outline: none;
+}
+.add-tocart a button{
     border: none;
     background: #0F2334;
     border-radius: 40px;
-    padding: .25em .6em;
+    padding: .6em  1.5em;
     color: white;
     font-family: 'Amiri',serif;
     font-weight: 600;
@@ -496,7 +473,8 @@ body{
     margin-left: .8em;
     cursor: pointer;
 }
-.add-tocart form button:hover{
+.add-tocart a button:hover, .add-tocart a button:focus{
+    outline: none;
     background: rgb(1, 11, 20);
 }
 
@@ -568,7 +546,8 @@ body{
     margin-right: .5em;
     font-size: .7rem;
 }
-.read-cover button:hover{
+.read-cover button:hover, .read-cover button:focus{
+    outline: none;
     background: rgb(1, 11, 20);
 }
 
@@ -662,26 +641,17 @@ body{
     justify-content: center;
     display: flex;
 }
-.maylike::before, .maylike::after{
-    content: '';
-    position: absolute;
-    background: lightcoral;
-    top: 0;
-}
-.maylike::before{
-    right: 0;
-    width: 60vw;
-    height: .7em;
-    border-radius: 10px 0  0 10px;
-}
-.maylike::after{
-    top: .3em;
-    left: 0;
-    width: 70vw;
-    height: .05em;
-    display: flex;
+
+/*---------- page info ----------*/
+.maylike{
+    position: relative;
+    width: 100%;
+    min-height:40vh;
+    top: 7vh;
     align-items: center;
     justify-content: center;
+    display: flex;
+    background: rgb(228, 228, 228);
 }
 /*---------- page info ----------*/
 .maylike-wrapper{
@@ -693,16 +663,6 @@ body{
     align-items: flex-start;
     justify-content: center;
     z-index: 1;
-}
-.maylike-wrapper::before{
-    width: 100%;
-    margin-left: 8%;
-    height: 40%;
-    content: '';
-    position: absolute;
-    bottom: -15%;
-    background: rgb(228, 228, 228);
-    z-index: -1;
 }
 .maylike-wrapper h2{
     position: relative;
@@ -836,7 +796,7 @@ body{
     justify-content: center;
     width: 100%;
 }
-.user-comimg a{
+.user-comimg a, .user-comimg a .user-nam-com{
     text-decoration: none;
     font-family: 'Kaushan Script', cursive;
     font-weight: bold;
@@ -850,9 +810,9 @@ body{
     position: absolute;
     content: '';
     width: 100%;
-    height: 25%;
-    right: 10%;
-    bottom: .15em;
+    height: 15%;
+    right: 20%;
+    bottom: .35em;
     background: lightcoral;
     border-radius: 50px;
     z-index: -1;
@@ -930,6 +890,13 @@ body{
         transform: translateX(-250%);
         margin-top: 1em;
     }
+
+    .awords h5{
+        width: 30%;
+    }
+    .awords-list{
+        width: 60%;
+    }
 }
 
 @media (min-width: 730px){
@@ -968,7 +935,30 @@ body{
         justify-content: space-between;
     }
     .moreinfo-wrapper{
+        width: 100vw;
         top: 17%;
+    }
+    .cover-specific{
+        width: 50%;
+    }
+    .cover-speci2{
+        width: 70%;
+    }
+    .awords{
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    .awords h5{
+        width: 30%;
+    }
+    .awords-list{
+        width: 70%;
+    }
+    .awords-list li{
+        width: 100%;
     }
     /*--------- side form -------------*/
     .side-form{
@@ -1095,7 +1085,7 @@ body{
     }
     /*--------- may like section ------*/
     .maylike{
-        min-height:60vh;
+        top: 10vh;
     }
     /*---------- comments ----------------*/
     .comment-cover-wrapper{
@@ -1163,9 +1153,23 @@ body{
 
 }
 
+
 @media (min-width: 900px){
     html{
         font-size: 19px;
+    }
+    .awords{
+        justify-content: space-between;
+        max-width: 60vw;
+    }
+    .awords h5{
+        width: 30%;
+    }
+    .awords-list{
+        min-width: 70%;
+    }
+    .awords-list li{
+        width: 100%;
     }
     /*--------------- BODY OF INFO ------------*/
     .moreinfo-wrapper{
@@ -1183,7 +1187,7 @@ body{
     .upper-page{
         min-height: 90vh;
     }
-    /*============================ Product info ===============================*/
+    /*============================ Book info ===============================*/
     .cover-right{
         position: absolute;
         top: 5.5vh;
@@ -1203,7 +1207,7 @@ body{
         align-items: flex-start;
         margin-bottom: .7em;
     }
-    .cover-title h1{
+    .cover-title .cov-nam{
         margin-bottom: 1.2em;
     }
     /*-------------add bookshelf---------------------*/
@@ -1212,10 +1216,10 @@ body{
     }
     /*--------- may like section ------*/
     .maylike{
-        min-height:80vh;
+        padding-bottom: 2em;
     }
     .maylike-wrapper h2{
-        margin: 0 0 4em 0;
+        margin: 2em 0 2em 0;
         font-size: 1.5rem;
     }
     .maylike-list li a img{
@@ -1243,7 +1247,13 @@ body{
     }
     /*--------- may like section ------*/
     .maylike{
-        min-height:90vh;
+        min-height:45vh;
+    }
+    .awords h5{
+        width: 27%;
+    }
+    .awords-list{
+        min-width: 74%;
     }
 }
 

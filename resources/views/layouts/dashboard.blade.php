@@ -59,8 +59,7 @@
                     <li class="nav-item active">
                         <a  class="nav-link" href="{{ url('/logout') }}">Logout</a>
                     </li>
-
-
+                    <li class="nav-item active"><a class="nav-link" href="{{ route('landing-page') }}">Home</a></li>
 
                 @else
                     <li class="nav-item active">
@@ -68,10 +67,6 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url('/register') }}">Register</a>
-                    <li class="nav-item active">
-                        <a  class="nav-link" href="{{ route('cart.index') }}">Shopping Cart</a>
-                    </li>
-
                 @endif
             </ul>
         </form>

@@ -28,7 +28,7 @@ class BookController extends Controller
     public function show($slug)
     {
         $product = Book::where('slug', $slug)->firstOrFail();
-        $mightAlsoLike = Book::where('slug', '!=', $slug)->mightAlsoLike()->get();
+        $mightAlsoLike = Book::where('slug', '!=', $slug)->inRandomOrder()->take(6)->get();
 
         return view('pages.product')->with([
             'product' => $product,

@@ -226,7 +226,7 @@
     position: absolute;
     margin-top: 1em;
     width: 50%;
-    height: 55%;
+    height: 30%;
     right: 0;
     display: flex;
     flex-direction: column;
@@ -235,7 +235,7 @@
 }
 .tot-prod-nr{
     background: rgb(202, 202, 202);
-    height: 30%;
+    height: 50%;
     width: 90%;
 }
 .tot-prod-nr div{
@@ -251,7 +251,7 @@
     align-items: center;
     justify-content: center;
     background: rgb(241, 205, 210);
-    height: 90%;
+    height: 50%;
     width: 90%;
 
 }
@@ -312,23 +312,6 @@
 .-generes{
     margin-left: 20%;
 }
-
-/*---------------------- save for later    ----------------*/
-.save-forlater-wrapper{
-    background: rgb(235, 235, 235);
-    width: 111%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-.save-forlater{
-    width: 79%;
-}
-.savefor-later h1::before{
-    background: rgba(32, 130, 241, 0.425);
-}
-
 
 /*=============== media queries =======================*/
 @media (min-width:560px){
@@ -500,6 +483,5 @@
         width: 100%;
         position: relative;
         margin-top: 10vh;
-        margin-bottom: 17vh;
     }
 }

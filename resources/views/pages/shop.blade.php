@@ -1,53 +1,56 @@
 @extends('layouts.master')
 
 @section('extra-css')
-
+    <link rel="stylesheet" type="text/css" href="{{ URL('css/pages/shop.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/product.css') }}">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 @endsection
 
 @section('content')
+    <!-- Page Content -->
+    <div class="container">
 
-        <div class="container">
-        @if (session()->has('success_message'))
-            <div class="alert alert-success">
-                {{ session()->get('success_message') }}
+        <div class="row">
+
+            <div class="col-lg-3">
+
+                <h1 class="my-4">Shop Name</h1>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                </div>
+
             </div>
-        @endif
+            <!-- /.col-lg-3 -->
 
-        @if(count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+            <div class="col-lg-9">
+                <div class="row" style="margin-top: 13vh;">
+
+                    @foreach($products as $product)
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <a href="/product/{{ $product->slug }}"><img class="card-img-top" src="{{ $product->imagePath}}.jpg" alt=""></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="/product/{{ $product->slug }}">{{ $product->Title }}</a>
+                                    </h4>
+                                    <h5>${{ $product->Price }}</h5>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
-                </ul>
+                </div>
+                <!-- /.row -->
             </div>
-        @endif
-    </div>
-
-        <div>
-
-            <div class="products text-center">
-                @forelse ($product as $product)
-                    <div class="product">
-                        <a href="{{ route('shop.show', $product->slug) }}"><img src="{{ productImage($product->image) }}" alt="product"></a>
-                        <a href="{{ route('shop.show', $product->slug) }}"><div class="product-name">{{ $product->Title }}</div></a>
-                        <div class="product-price">{{ $product->Price }}</div>
-                    </div>
-                @empty
-                    <div style="text-align: left">No items found</div>
-                @endforelse
-            </div> <!-- end products -->
-
-            <div class="spacer"></div>
-            {{ $product->appends(request()->input())->links() }}
+            <!-- /.col-lg-9 -->
         </div>
+        <!-- /.row -->
     </div>
-
+    <!-- /.container -->
 @endsection
 
 @section('extra-js')
-    <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
-    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-    <script src="{{ asset('js/algolia.js') }}"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 @endsection

@@ -6,25 +6,6 @@
 
 @section('content')
 
-    <div class="container">
-        @if (session()->has('success_message'))
-            <div class="alert alert-success">
-                {{ session()->get('success_message') }}
-            </div>
-        @endif
-
-        @if(count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-    </div>
-
-
     <section class="book-page">
         <div class="bookpage-img1"></div>
 
@@ -32,17 +13,17 @@
             <section class="upper-cover-wrapper">
                 <div class="upper-cover">
                     <a href="#"><h4>Young Adult</h4></a>
-                    <img src="{{ productImage($product->image) }}" alt="cover">
+                    <img src="" alt="cover">
                 </div>
             </section>
 
             <section class="cover-right">
                 <section class="right-wrapper">
                     <div class="cover-title">
-                        <h1>{{ $product->Title }}</h1>
-                        <a href="#"><h3></h3></a>
+                        <h1 class="cov-nam">{{ $product->Title }}</h1>
+                        <a href="#"><h3 class="auth-nam"></h3></a>
                     </div>
-                    <p>
+                    <p class="book-parag">
                         {{ $product->Description}}
                     </p>
 
@@ -65,7 +46,7 @@
                         <ul class="cover-add" id="select-bookshelf">
                             <li class="hed-select" onclick="show_hide()">
                                 <div class="hed">
-                                    <h1> Add To Bookshelf </h1>
+                                    <h1 class="bookshelf-select"> Add To Bookshelf </h1>
                                     <i class="fa fa-sort-down"></i>
                                 </div>
 
@@ -82,7 +63,8 @@
                             <li class="side-form" id="to-add-bookshelf">
                                 <div class="bookshelf-form" >
                                     <form action="#">
-                                        <input type="text" placeholder="Name of bookshelf">
+                                        <label></label>
+                                        <input type="text" id="add-bookshelf" name="add-bookshelf" placeholder="Name of bookshelf">
                                         <button>Save</button>
                                     </form>
                                 </div>
@@ -101,19 +83,16 @@
             </div>
             <section class="moreinfo-wrapper">
                 <div class="cover-specific">
-                    <h5>Hardcover, {{$product->PageNum}} pages</h5>
+                    <h5>Hardcover, {{$product ->PageNum}} pages</h5>
                     <h5>Published: {{ $product->Published}}</h5>
                 </div>
                 <div class="cover-speci2">
-                    <h5><span>Original Title:</span> {{ $product->Title }}</h5>
+                    <h5><span>Original Title:</span> {{ $product ->Title }}</h5>
                     <h5><span>Edition Language:</span> {{ $product->Language}}</h5>
                     <div class="awords">
                         <h5>Literary Awards:</h5>
                         <ul class="awords-list">
-                            <li>South Carolina Book Award Nominee for Young Adult (2020),</li>
-                            <li> Lincoln Award Nominee (2019), </li>
-                            <li>  Américas Award (2018), </li>
-                            <li> National Book Award Finalist for Young People's Literature (2017)</li>
+                            <li>{{ $product->literaryAwards }}</li>
                         </ul>
                     </div>
                 </div>
@@ -124,37 +103,18 @@
             <section class="before-read-wrapper">
                 <span></span>
                 <span></span>
-                @if (session()->has('success_message'))
-                    <div class="alert alert-success">
-                        {{ session()->get('success_message') }}
-                    </div>
-                @endif
-
-                @if(count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
 
                 <section class="buy-cover-wrapp">
                     <div class="buy-cover">
                         <h2 class="copy-head">Get A Copy</h2>
                         <div class="price-cover">
                             <h3>Price : </h3>
-                            <h2>{{ $product->Price}}</h2>
+                            <h2>${{ $product -> Price }}</h2>
                         </div>
                         <div class="add-tocart">
-                            <form action="{{ route('cart.store')}}" method="POST">
-                                {{csrf_field()}}
-                                <input type="hidden" name="ISBN" value="{{ $product->ISBN }}">
-                                <input type="hidden" name="Title" value="{{ $product->Title }}">
-                                <input type="hidden" name="Price" value="{{ $product->Price }}">
+                            <a href="{{ route('cart.add', [ 'id' => $product -> ISBN ]) }}" >
                                 <button type="submit">Add to Cart</button>
-                            </form>
+                            </a>
                         </div>
                     </div>
                 </section>
@@ -177,21 +137,11 @@
                 <h1>Critic Reviews</h1>
                 <div class="critic-op">
                     <div class="critic-head">
-                        <img src="./img/3238361-1549477380.jpeg" alt="">
-                        <h3>-Lucinda Dyer</h3>
+                        <img src="{{ $product-> criticImagePath}}.jpg" alt="">
+                        <h3>-{{ $product-> criticName }}</h3>
                     </div>
                     <div class="critic-com">
-                        <p>This edgy and realistic novel takes an unflinching look at the new life a
-                            Haitian-raised teen girl tries to create for herself in a gritty Detroit neighborhood.
-                            Author Ibi Zoboi, who immigrated to the U.S. from Haiti when she was a child, is a gifted
-                            storyteller who has created a vivid and memorable cast of characters.
-                        </p>
-
-                        <p>But her novel is best
-                            suited for mature teens given the graphic storylines about family loyalties, drug dealing, and
-                            an abusive relationship. Readers should consider whether the merits of the writing outweigh any
-                            concerns about language and drug-related content.
-                        </p>
+                        <p>{{ $product-> criticRev }}</p>
                     </div>
                 </div>
             </section>
@@ -205,8 +155,8 @@
                 <section class="other-com-wrapper">
                     <div class="others-com">
                         <div class="user-comimg div-img-com">
-                            <img class="com-img" src="./img/1373880.jpg" alt="">
-                            <a href="#"><h1>Lola</h1></a>
+                            <img class="com-img" src="#" alt="">
+                            <a href="#"><h1 class="user-nam-com">Lola</h1></a>
                         </div>
                         <div class="left-comment">
                             <p>As an immigrant myself, I connected with Fabiola tremendously.
@@ -220,8 +170,8 @@
 
                     <div class="others-com">
                         <div class="user-comimg">
-                            <img class="com-img div-img-com" src="./img/1373880.jpg" alt="">
-                            <a href="#"><h1>Lola</h1></a>
+                            <img class="com-img div-img-com" src="#" alt="">
+                            <a href="#"><h1 class="user-nam-com">Lola</h1></a>
                         </div>
                         <div class="left-comment">
                             <p>As an immigrant myself, I connected with Fabiola tremendously.
@@ -232,8 +182,8 @@
 
                     <div class="others-com">
                         <div class="user-comimg div-img-com">
-                            <img class="com-img div-img-com" src="./img/1373880.jpg" alt="">
-                            <a href="#"><h1>Lola</h1></a>
+                            <img class="com-img div-img-com" src="#" alt="">
+                            <a href="#"><h1 class="user-nam-com">Lola</h1></a>
                         </div>
                         <div class="left-comment">
                             <p>As an immigrant myself, I connected with Fabiola tremendously.
@@ -253,22 +203,7 @@
             </section>
         </section>
 
-
-        <section class="maylike">
-            <div class="maylike-wrapper">
-                <h2>You may also like</h2>
-
-                <ul class="maylike-list">
-                    <li>
-                        @foreach ($mightAlsoLike as $product)
-                            <a href="{{ route('shop.show', $product->slug) }}">
-                                <img src="{{ productImage($product->image) }}" alt="product">
-                            </a>
-                        @endforeach
-                    </li>
-                </ul>
-            </div>
-        </section>
+        @include('partials.might-like')
 
     </section>
 @endsection
