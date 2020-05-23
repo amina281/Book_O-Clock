@@ -34,7 +34,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg " style="background-color: #011E2A">
-    <a class="navbar-brand" href="#">Admin Section</a>
+    <a class="navbar-brand" href="{{ URL::to('AdminSection') }}">Admin Section</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -52,7 +52,7 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="{{ url('/AdminProfileData') }}">Profile</a>
                         <a class="dropdown-item" href="{{ url('/logout') }}">Log Out</a>
                     </div>
                 </li>
