@@ -17,7 +17,7 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     Route::get('AdminSection', function(){
-        return View('AuthFolder.admin'); 
+        return View('AuthFolder.admin');
     });
     Route::get('/register', 'RegisterController@index');
     Route::post('/register', 'RegisterController@store');
@@ -50,7 +50,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/editUser','AdminController@editUser');
     Route::post('deleteUser','AdminController@deleteUser');
 
-    Route::resource('/BookMgm','BookManagmentController');
+    Route::resource('/bookpost','BookManagmentController');
 
     Route::post('/addBook','BookManagmentController@addBook');
     Route::post('/editBook','BookManagmentController@editBook');

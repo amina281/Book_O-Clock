@@ -29,7 +29,7 @@
                 {{ csrf_field() }}
 
                 @foreach ($books as $value)
-                    <tr class="BookMgm{{$value->ISBN}}">
+                    <tr class="bookpost{{$value->ISBN}}">
                         <td>{{ $value->ISBN }}</td>
                         <td>{{ $value->Title }}</td>
                         <td>{{ $value->PageNum }}</td>
@@ -261,7 +261,7 @@
                         $('.error').text(data.errors.AuthorId);
                     } else {
                         $('.error').remove();
-                        $('#table').append("<tr class='BookMgm" + data.ISBN + "'>"+
+                        $('#table').append("<tr class='bookpost" + data.ISBN + "'>"+
                             "<td>" + data.ISBN + "</td>"+
                             "<td>" + data.Title + "</td>"+
                             "<td>" + data.PageNum + "</td>"+
@@ -318,16 +318,17 @@
                 url: 'editBook',
                 data: {
                     '_token': $('input[name=_token]').val(),
-                    'ISBN': $("#fid").val(),
+                    'ISBN': $("#isbn").val(),
                     'Title': $('#BTitle').val(),
-                    'PageNum': $('#bp').val(),
-                    'AuthorId':$('#Aid').val(),
+                    'PageNum': $('#pagenum').val(),
+                    'AuthorId':$('#authorid').val(),
                     'Price':$('#price').val(),
 
                 },
                 success: function(data) {
-                    $('.BookMgm' + data.ISBN).replaceWith(" "+
-                        "<tr class='post" + data.ISBN + "'>"+
+
+                    $('.bookpost' + data.ISBN).replaceWith(" "+
+                        "<tr class='bookpost" + data.ISBN + "'>"+
                         "<td>" + data.ISBN + "</td>"+
                         "<td>" + data.Title + "</td>"+
                         "<td>" + data.PageNum + "</td>"+
@@ -382,7 +383,7 @@
                     'ISBN': $('.id').text()
                 },
                 success: function(data){
-                    $('.BookMgm' + $('.id').text()).remove();
+                    $('.bookpost' + $('.id').text()).remove();
                 }
             });
         });

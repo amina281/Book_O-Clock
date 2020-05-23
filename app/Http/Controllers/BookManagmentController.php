@@ -18,29 +18,36 @@ class BookManagmentController extends Controller
     public function addBook(Request $request){
        // $this->validation($request);
 
-        $book = new Book;
-        $book->ISBN = $request->ISBN;
-        $book->Title = $request->Title;
-        $book->PageNum =($request->PageNum);
-        $book->AuthorId =($request->AuthorId);
-        $book->Price =($request->Price);
+        $books = new Book;
+        $books->ISBN = $request->ISBN;
+        $books->Title = $request->Title;
+        $books->PageNum =($request->PageNum);
+        $books->AuthorId =($request->AuthorId);
+        $books->Price =($request->Price);
 
-        $book->save();
-        return response()->json($book);
+        $books->imagePath ='img/products/81DiRewS5WL';
+        $books->Published =Carbon::now();
+        $books->slug =$request->ISBN;
+
+        $books->save();
+        return response()->json($books);
 
     }
 
-    public function editUser(request $request){
-        $user = User::find ($request->id);
+    public function editBook(request $request){
 
-        //  $this->validation($request);
+          $this->validation($request);
+          $book= Book::where('ISBN', $request->ISBN)
+            ->update([
+                'PageNum' => $request->PageNum,
+                'Title' =>  $request->Title,
+                'Price' =>  $request->Price,
+                'AuthorID' =>  $request->AuthorId
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password= Hash::make($request->password);
-        // $post->verified = $request->verified;
-        $user->save();
-        return response()->json($user);
+            ]);
+        $books =Book::where('ISBN', $request->ISBN)->first();
+
+        return response()->json($books);
     }
 
     public function deleteBook(request $request){
@@ -52,9 +59,10 @@ class BookManagmentController extends Controller
     public function  validation($request)
     {
         return $this->validate($request,[
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
+            'Title' => 'required|string|max:255',
+           // 'AuthorId' => 'required|exists:author',
+            'Price' => 'required',
+            'PageNum' => 'required',
         ]);
     }
 }

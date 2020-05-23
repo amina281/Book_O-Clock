@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="center-block">
                             <button type="button" class="btn btn-primary btn-lg btn-block" style="background-color: #c7254e !important;" onclick="window.location='{{ url("/post") }}'">Manage Users</button>
-                            <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="window.location='{{ url("/BookMgm") }}'">Manage Books</button>
+                            <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="window.location='{{ url("/bookpost") }}'">Manage Books</button>
                         </div>
                     </div>
                 </div>

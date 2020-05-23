@@ -20,11 +20,11 @@ class CreateBooksTable extends Migration
         $table->decimal('Price');
         $table->date('Published');
         $table->string('Language')->default('English');
-        $table->text('literaryAwards');
-        $table->text('Description');
-        $table->text('criticRev');
-        $table->string('criticName');
-        $table->string('criticImagePath');
+        $table->text('literaryAwards')->nullable();
+        $table->text('Description')->nullable();
+        $table->text('criticRev')->nullable();
+        $table->string('criticName')->nullable();
+        $table->string('criticImagePath')->nullable();
         $table->foreign('AuthorId')->references('Id')->on('Author');
         $table->timestamps();
 
