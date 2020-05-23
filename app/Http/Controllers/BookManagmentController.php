@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Book;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class BookManagmentController extends Controller
 {
     public function index(){
         $books = Book::paginate(10);
-        return view('Admin.ManageBooks',compact('books'));
+        $authors = Author::all();
+        return view('Admin.ManageBooks',compact('books','authors'));
     }
 
     public function addBook(Request $request){

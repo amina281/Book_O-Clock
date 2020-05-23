@@ -19,6 +19,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('AdminSection', function(){
         return View('AuthFolder.admin');
     });
+
+    Route::get('/AdminProfileData','AdminController@GetAdminData');
+    Route::post('/AdminUpdate', 'AdminController@update')->name('adminUpdate')->middleware('auth');
+
     Route::get('/register', 'RegisterController@index');
     Route::post('/register', 'RegisterController@store');
     Route::post('/register/check', 'RegisterController@check')->name('email_available.check');

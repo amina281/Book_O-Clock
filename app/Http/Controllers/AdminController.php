@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Validation\Validator;
 use http\Client\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use App\http\Requests;
@@ -57,6 +59,41 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
+        ]);
+    }
+
+    public function GetAdminData()
+    {
+
+        $user = Auth::user();
+
+
+
+        return view('Admin.Profile', compact('user'));
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+
+        $data = $this->validationAdmin($request);
+
+        $user->name = $request['Username'];
+
+        $user ->password = Hash::make($request['password']);
+
+        $user->save();
+        return redirect('/user')->with('success', 'User has been updated!!');
+    }
+
+
+
+    public function  validationAdmin($request)
+    {
+        return $this->validate($request,[
+            'Username' => 'required',
+            'password' => 'required',
+            'phonenumber'=>'required',
         ]);
     }
 }

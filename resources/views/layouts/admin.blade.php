@@ -52,7 +52,7 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="{{ url('/AdminProfileData') }}">Profile</a>
                         <a class="dropdown-item" href="{{ url('/logout') }}">Log Out</a>
                     </div>
                 </li>

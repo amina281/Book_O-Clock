@@ -103,8 +103,12 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" >Author ID:</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="body" name="author"
-                                       placeholder="Author Here" required>
+                                <select name="author" id="authorselect" >
+                                    <option value="">--Select Author--</option>
+                                    @foreach($authors as $author)
+                                        <option value="{{$author->Id}}">{{$author->Authorname}}</option>
+                                        @endforeach
+                                </select>
                                 <p class="error text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
@@ -177,34 +181,43 @@
                     <form class="form-horizontal" role="modal">
                         <div class="form-group">
                             <label class="control-label col-sm-2">ISBN</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-12">
                                 <input type="number" class="form-control" id="isbn" disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Title</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-12">
                                 <input type="text" class="form-control" id="BTitle">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Book Pages</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-12">
                                 <input type="number" class="form-control" id="pagenum"></input>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-sm-2">AuthorID</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-12">
                                 <input type="number" class="form-control" id="authorid"></input>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-sm-2">Price</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-12">
                                 <input type="number" class="form-control" id="price"></input>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Select Product Image : </label>
+                            <div class="col-md-8">
+                                <input type="file" name="image" id="image" />
+                                <span id="store_image"></span>
                             </div>
                         </div>
 
@@ -241,7 +254,17 @@
             $('.form-horizontal').show();
             $('.modal-title').text('Add Books');
         });
+
+        var authoridSelected;
+            $("#authorselect").change(function () {
+                authoridSelected = $(this).val();
+              //  alert(authoridSelected);
+            });
+
+
         $("#add").click(function() {
+
+
             $.ajax({
                 type: 'POST',
                 url: 'addBook',
@@ -250,10 +273,10 @@
                     'ISBN': $('input[name=ISBN]').val(),
                     'Title': $('input[name=title]').val(),
                     'PageNum': $('input[name=pagenum]').val(),
-                    'AuthorId': $('input[name=author]').val(),
+                    'AuthorId': authoridSelected,
                     'Price': $('input[name=price]').val(),
                 },
-                success: function(data){
+                success: function (data) {
                     if ((data.errors)) {
                         $('.error').removeClass('hidden');//nuk ka gje ktu
                         $('.error').text(data.errors.Title);
@@ -261,33 +284,34 @@
                         $('.error').text(data.errors.AuthorId);
                     } else {
                         $('.error').remove();
-                        $('#table').append("<tr class='bookpost" + data.ISBN + "'>"+
-                            "<td>" + data.ISBN + "</td>"+
-                            "<td>" + data.Title + "</td>"+
-                            "<td>" + data.PageNum + "</td>"+
-                            "<td>" + data.AuthorId + "</td>"+
-                            "<td>" + data.Price + "</td>"+
+                        $('#table').append("<tr class='bookpost" + data.ISBN + "'>" +
+                            "<td>" + data.ISBN + "</td>" +
+                            "<td>" + data.Title + "</td>" +
+                            "<td>" + data.PageNum + "</td>" +
+                            "<td>" + data.AuthorId + "</td>" +
+                            "<td>" + data.Price + "</td>" +
 
                             "<td><button class='show-modal btn btn-info btn-sm' data-ISBN='" + data.ISBN +
-                                    "' data-Title='" + data.Title +
-                                    "' data-PageNum='" + data.PageNum +
-                                    "' data-AuthorId= '"+ data.AuthorId +
-                                    "' data-Price= '"+ data.Price +"'><span class='fa fa-eye'></span></button> " +
+                            "' data-Title='" + data.Title +
+                            "' data-PageNum='" + data.PageNum +
+                            "' data-AuthorId= '" + data.AuthorId +
+                            "' data-Price= '" + data.Price + "'><span class='fa fa-eye'></span></button> " +
                             "<button class='edit-modal btn btn-warning btn-sm' data-ISBN='" + data.ISBN +
                             "' data-Title='" + data.Title +
                             "' data-PageNum='" + data.PageNum +
-                            "' data-AuthorId= '"+ data.AuthorId +
-                            "'data-Price= '"+ data.Price +
+                            "' data-AuthorId= '" + data.AuthorId +
+                            "'data-Price= '" + data.Price +
                             "'><span class='glyphicon glyphicon-pencil'></span></button> " +
                             "<button class='delete-modal btn btn-danger btn-sm' data-ISBN='" + data.ISBN +
                             "' data-Title='" + data.Title +
                             "' data-PageNum='" + data.PageNum +
-                            "'data-AuthorId= '"+ data.AuthorId +
-                            "'data-Price= '"+ data.Price +
-                            "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
+                            "'data-AuthorId= '" + data.AuthorId +
+                            "'data-Price= '" + data.Price +
+                            "'><span class='glyphicon glyphicon-trash'></span></button></td>" +
                             "</tr>");
                     }
                 },
+
             });
 
         });
