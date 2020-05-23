@@ -13,7 +13,7 @@ class Author_tableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Author')->insert([
+        DB::table('author')->insert([
             [
             'slug' => 'john-green',
             'Authorname' => 'John Green',

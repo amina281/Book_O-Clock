@@ -16,6 +16,9 @@ Route::group(['middleware' => ['web']], function () {
         return view('AuthFolder.register');
     });
 
+    Route::get('AdminSection', function(){
+        return View('AuthFolder.admin'); 
+    });
     Route::get('/register', 'RegisterController@index');
     Route::post('/register', 'RegisterController@store');
     Route::post('/register/check', 'RegisterController@check')->name('email_available.check');
@@ -46,6 +49,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/addUser','AdminController@addUser');
     Route::post('/editUser','AdminController@editUser');
     Route::post('deleteUser','AdminController@deleteUser');
+
+    Route::resource('/BookMgm','BookManagmentController');
+
+    Route::post('/addBook','BookManagmentController@addBook');
+    Route::post('/editBook','BookManagmentController@editBook');
+    Route::post('deleteBook','BookManagmentController@deleteBook');
 
 
 });
