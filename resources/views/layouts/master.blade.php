@@ -87,7 +87,7 @@
                 <li class="user">
                     <a href="#"><i class="fa fa-user"></i></a>
                     <ul class="user-dropdown">
-                        <li><a href="#">Profile</a></li>
+                        <li><a href="{{ url('/user') }}">Profile</a></li>
                         <li><a  href="/cart" >Shopping cart</a></li>
                         <li><a href="{{ route('bookshelf.index') }}">Bookshelf</a></li>
                         <li><a href="{{ url('/logout') }}">Log Out</a></li>

@@ -15,7 +15,7 @@ class LoginController extends Controller
         return view('AuthFolder.login');
     }
     else{
-        return view('AuthFolder.home');
+        redirect('/');
     }
     }
 
@@ -41,7 +41,7 @@ class LoginController extends Controller
             else
                 {
                    //return view('AuthFolder.home');
-                    return redirect('/home');
+                    return redirect('/');
                 }
         }
         else
