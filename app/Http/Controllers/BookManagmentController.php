@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use App\Book;
+use App\bookcategorymap;
 use App\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ class BookManagmentController extends Controller
     public function addBook(Request $request){
         $this->validation($request);
 
+
         $image = $request->file('imagePath');
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('img/products/'), $new_name);
@@ -39,6 +41,14 @@ class BookManagmentController extends Controller
         $books->slug =$this->createSlug($request->Title);
 
         $books->save();
+
+
+        DB::table('book_category_map')->insert(
+            array(
+                'CategoryId'     =>   $request->CategoryId,
+                'BookId'   =>   $request->ISBN
+            )
+        );
 
         return response()->json($books);
 
