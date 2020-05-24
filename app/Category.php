@@ -11,6 +11,8 @@ class Category extends Model
 
     protected $table = 'category';
 
+    protected $fillable = ['Name', 'Description'];
+
     public function products()
     {
         return $this->belongsToMany('App\Book');

@@ -14,7 +14,7 @@
         <div class="table table-responsive">
             <table class="table table-bordered" id="table">
                 <tr style="background-color: #7da8c3">
-                    <th width="30px">IBSN</th>
+                    <th width="30px">ISBN</th>
                     <th>Title</th>
                     <th>PageNum</th>
                     <th>Author</th>
@@ -75,11 +75,11 @@
                     <h4 class="modal-title"></h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" role="form">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form">
                         <div class="form-group row add">
                             <label class="control-label col-sm-2">ISBN :</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control"  name="ISBN"
+                                <input type="text" class="form-control" id="ibsnadd"  name="ISBN"
                                        placeholder="Enter Book Here" required>
                                 <p class="error text-center alert alert-danger hidden"></p>
                             </div>
@@ -88,7 +88,7 @@
                         <div class="form-group row add">
                             <label class="control-label col-sm-2">Title :</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control"  name="title"
+                                <input type="text" class="form-control"  id="titleadd" name="title"
                                        placeholder="Enter Book Here" required>
                                 <p class="error text-center alert alert-danger hidden"></p>
                             </div>
@@ -96,7 +96,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" >Books Page Number :</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="body" name="pagenum"
+                                <input type="number" class="form-control" id="pagenumadd" name="pagenum"
                                        placeholder="Your book page number Here" required>
                                 <p class="error text-center alert alert-danger hidden"></p>
                             </div>
@@ -105,18 +105,43 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" >Author ID:</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="body" name="author"
-                                       placeholder="Author Here" required>
+                                <select name="author" id="authorselectadd" >
+                                    <option value="">--Select Author--</option>
+                                    @foreach($authors as $author)
+                                        <option value="{{$author->Id}}">{{$author->Authorname}}</option>
+                                    @endforeach
+                                </select>
                                 <p class="error text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
                         <div class="form-group">
+                            <label class="control-label col-sm-2" >Category:</label>
+                            <div class="col-sm-10">
+                                <select name="category" id="categoryselectadd" >
+                                    <option value="">--Select Category--</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->Id}}">{{$category->Name}}</option>
+                                    @endforeach
+                                </select>
+                                <p class="error text-center alert alert-danger hidden"></p>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
                             <label class="control-label col-sm-2" >Price:</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="body" name="price"
+                                <input type="number" class="form-control" id="priceadd" name="price"
                                        placeholder="Price Here" required>
                                 <p class="error text-center alert alert-danger hidden"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Upload Photo</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="image" id="imageadd">
                             </div>
                         </div>
                     </form>
@@ -199,7 +224,12 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">AuthorID</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="authorid"></input>
+                                <select name="author" id="authorselect" >
+                                 <option value="">--Select Author--</option>
+                                              @foreach($authors as $author)
+                                                <option value="{{$author->Id}}">{{$author->Authorname}}</option>
+                                           @endforeach
+                                                               </select>
                             </div>
                         </div>
 
@@ -250,18 +280,53 @@
             $('.form-horizontal').show();
             $('.modal-title').text('Add Books');
         });
-        $("#add").click(function() {
+
+        var authoridSelected;
+                    $("#authorselect").change(function () {
+                           authoridSelected = $(this).val();
+                         //  alert(authoridSelected);
+                          });
+
+        var authoridSelectedadd;
+        $("#authorselectadd").change(function () {
+            authoridSelectedadd = $(this).val();
+            //  alert(authoridSelected);
+        });
+
+        var categoryidselectedadd;
+        $("#categoryselectadd").change(function () {
+            categoryidselectedadd = $(this).val();
+            //  alert(authoridSelected);
+        });
+
+        $("#add").click(function(e) {
+            e.preventDefault();
+            var _token = $('input[name=_token]').val();
+            var ISBN = $("#ibsnadd").val();
+            var Title = $('#titleadd').val();
+            var PageNum = $('#pagenumadd').val();
+            var AuthorId = authoridSelectedadd;
+            var Price = $('#priceadd').val();
+            var CategoryId=categoryidselectedadd;
+
+            var image = $('#imageadd')[0].files[0];
+
+            form = new FormData();
+            form.append('_token', _token);
+            form.append('ISBN', ISBN);
+            form.append('Title', Title);
+            form.append('PageNum', PageNum);
+            form.append('AuthorId', AuthorId);
+            form.append('Price', Price);
+            form.append('imagePath', image);
+            form.append('CategoryId',CategoryId)
             $.ajax({
                 type: 'POST',
                 url: 'addBook',
-                data: {
-                    '_token': $('input[name=_token]').val(),
-                    'ISBN': $('input[name=ISBN]').val(),
-                    'Title': $('input[name=title]').val(),
-                    'PageNum': $('input[name=pagenum]').val(),
-                    'AuthorId': $('input[name=author]').val(),
-                    'Price': $('input[name=price]').val(),
-                },
+                data: form,
+                cache: false,
+                contentType: false,
+                processData: false,
                 success: function(data){
                     if ((data.errors)) {
                         $('.error').removeClass('hidden');//nuk ka gje ktu
@@ -315,7 +380,7 @@
             $('#isbn').val($(this).data('isbn'));
             $('#BTitle').val($(this).data('title'));
             $('#pagenum').val($(this).data('pagenum'));
-            $('#authorid').val($(this).data('authorid'));
+            $('#authorselect').val($(this).data('authorid'));
             $('#price').val($(this).data('price'));
 
             $('#myModal').modal('show');
@@ -327,7 +392,7 @@
             var ISBN = $("#isbn").val();
             var Title = $('#BTitle').val();
             var PageNum = $('#pagenum').val();
-            var AuthorId = $('#authorid').val();
+            var AuthorId = authoridSelected;
             var Price = $('#price').val();
 
             var image = $('#image')[0].files[0];
