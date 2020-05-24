@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Model;
 use Session;
+use App\Http\Controllers\Cart;
 use Illuminate\Http\Request;
 use App\Book;
 use Illuminate\Support\Facades\DB;
@@ -32,12 +34,12 @@ class BookController extends Controller
     {
         $product = Book::where('slug', $slug)->firstOrFail();
         $mightAlsoLike = Book::where('slug', '!=', $slug)->inRandomOrder()->take(6)->get();
-        $comment = DB::table('comments')->where('post_id', $slug)->first();
+        //$comment = DB::table('comments')->where('post_id', $slug)->all();
 
         return view('pages.product')->with([
             'product' => $product,
             'mightAlsoLike' => $mightAlsoLike,
-            'comment' => $comment,
+            //'comment' => $comment,
         ]);
     }
 
@@ -47,7 +49,19 @@ class BookController extends Controller
     }
 
 
-    public function addToCart($ISBN)
+    public function addToCart(Request $request, $ISBN)
+    {
+        $product = DB::table('Books')->where('ISBN', $ISBN)->first();
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $product->ISBN);
+
+        $request->session()->put('cart', $cart);
+        dd($request->session()->get('cart'));
+        return redirect()->route('product.show')->with('success', 'Book was added to your cart!' );
+    }
+
+   /* public function addToCart($ISBN)
     {
         $product = DB::table('Books')->where('ISBN', $ISBN)->first();
         if(!$product) {
@@ -103,7 +117,7 @@ class BookController extends Controller
         {
             $cart = session()->get('cart');
 
-            $cart[$request->ISBN]["qty"] = $request->qty;
+            $cart [$request->ISBN]["qty"] = $request->qty;
 
             session()->put('cart', $cart);
 
@@ -131,13 +145,27 @@ class BookController extends Controller
 
     public function getCheckout(Request $request)
     {
-        $cart = session()->get('cart');
-
         if(!$cart) {
-            return view('pages.cart');
+
+        return view('pages.cart');
         }
+
+        if($request->ISBN and $request->qty)
+        {
+            $cart = session()->get('cart');
+
+            $cart [$request->ISBN]["qty"] = $request->qty;
+
+            session()->put('cart', $cart);
+
+            session()->flash('success', 'Cart updated successfully');
+        }
+
+
+
 
         return view('pages.checkout');
     }
+   */
 
 }
