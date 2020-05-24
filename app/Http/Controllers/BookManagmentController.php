@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use App\Book;
+use App\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,11 +16,17 @@ class BookManagmentController extends Controller
     public function index(){
         $books = Book::paginate(10);
         $authors = Author::all();
-        return view('Admin.ManageBooks',compact('books','authors'));
+        $categories = Category::all();
+        return view('Admin.ManageBooks',compact('books','authors','categories'));
     }
 
     public function addBook(Request $request){
-       // $this->validation($request);
+        $this->validation($request);
+
+        $image = $request->file('imagePath');
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('img/products/'), $new_name);
+        $imageFullPath = 'img/products/' . $new_name;
 
         $books = new Book;
         $books->ISBN = $request->ISBN;
@@ -28,8 +35,11 @@ class BookManagmentController extends Controller
         $books->AuthorId =($request->AuthorId);
         $books->Price =($request->Price);
         $books->Published =Carbon::now();
+        $books->imagePath =$imageFullPath;
+        $books->slug =$this->createSlug($request->Title);
 
         $books->save();
+
         return response()->json($books);
 
     }
@@ -44,6 +54,7 @@ class BookManagmentController extends Controller
             $image->move(public_path('img/products/'), $new_name);
             $imageFullPath = 'img/products/' . $new_name;
 //}
+
           $book= Book::where('ISBN', $request->ISBN)
             ->update([
                 'PageNum' => $request->PageNum,
@@ -51,7 +62,7 @@ class BookManagmentController extends Controller
                 'Price' =>  $request->Price,
                 'AuthorID' =>  $request->AuthorId,
                 'imagePath'=> $imageFullPath,
-                'slug'=>$this->createSlug($request->Title)
+                'slug'=>$this->createSlug($request->Title,$request->ISBN)
             ]);
 
         $books =Book::where('ISBN', $request->ISBN)->first();
