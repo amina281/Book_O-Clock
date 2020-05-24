@@ -24,7 +24,6 @@
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ URL('css/layout/header.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/layout/follow.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/product.css') }}">
 
 
@@ -88,7 +87,7 @@
                     </div>
                 </li>
 
-
+                @if (Auth::check())
                 <li class="user">
                     <a href="#"><i class="fa fa-user"></i></a>
                     <ul class="user-dropdown">
@@ -100,23 +99,23 @@
                 </li>
                 <li class="shopping">
                     <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
-                    @if(Session::has('cart'))
-                        <span>{{ Session::get('cart')->totalQty}}</span>
+                    @if( count((array) session('cart')) > 0)
+                        <span>{{ count((array) session('cart'))}}</span>
                     @else
                         <span style="display: none;"></span>
                     @endif
                 </li>
 
-
+                @else
 
                 <li ><a href="{{ url('/register') }}"><input type="button" value="Sign Up" class="button-hom sub"></a></li>
                 <li ><a href="{{ url('/login') }}"><input type="button" value="Log In" class="button-hom log"></a></li>
 
+                @endif
 
             </ul>
         </nav>
     </header>
-    @include('partials.follow')
     @yield('content')
 
 
@@ -125,6 +124,31 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script>
+    /*-------------  expand add to bookshelf-----------------------*/
+    function show_hide() {
+        var click= document.getElementById("expand-menu");
+        if(click.style.display === "none"){
+            click.style.display = "block";
+        }
+        else{
+            click.style.display = "none";
+        }
+    }
+
+    function show_form_bookshelf(){
+        var click= document.getElementById("to-add-bookshelf");
+        if(click.style.display === "none"){
+            click.style.display = "block";
+        }
+        else{
+            click.style.display = "none";
+        }
+    }
+</script>
+
+
 @yield('extra-js')
 
 </body>

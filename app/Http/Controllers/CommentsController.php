@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Http\Requests\CheckoutRequest;
-use Cartalyst\Stripe\Laravel\Facades\Stripe;
-use Cartalyst\Stripe\Exception\CardErrorException;
+use App\Comment;
+use App\Post;
+use Session;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class CheckoutController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +19,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return  view('pages.checkout');
+        //
     }
 
     /**
@@ -37,11 +38,38 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CheckoutRequest $request)
+    public function store(Request $request, $post_id)
     {
-        //
-    }
+      //  $user = User::find ($request->id);
+          $user = Auth::user();
+        //  $user->name = $request->name;
+        //  $user->email = $request->email;
 
+
+        $this->validate($request, array(
+            'comment' => 'required|min:5|max:2000 '
+        ));
+
+        $post = DB::table('Books')->where('slug', $post_id)->first();
+
+        $post_id = $post->slug;
+
+        $comment = new Comment();
+
+        $comment->name = $user->name;
+        $comment->email = $user->email;
+        $comment->comment = $request->comment;
+        $comment->approved = true;
+        $comment->post()->associate($post_id);
+
+        $comment->save();
+
+        Session::flash('success', 'Comment was added .');
+        return  redirect()->route('product.show',[ $post->slug]);
+
+
+
+    }
 
     /**
      * Display the specified resource.
@@ -52,7 +80,6 @@ class CheckoutController extends Controller
     public function show($id)
     {
         //
-
     }
 
     /**
@@ -88,5 +115,4 @@ class CheckoutController extends Controller
     {
         //
     }
-
 }
