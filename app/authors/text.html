@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+  padding: 20px;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+  text-align: center;
+}
+h3{
+  text-align: center;
+}
+.row {
+  margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after rows */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+  .column {
+    width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- MAIN (Center website) -->
+<div class="main">
+
+<h1>Start with choosing a genres...</h1>
+<hr>
+
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+  <div class="column">
+    <div class="content">
+      <h3>Romance</h3>
+      <a href="google.com">
+      <img src="romance.jpeg" alt="romance" style="width:450px; height:350px">
+    </a>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="content">
+    <h3>History</h3>
+    <a href="google.com">
+    <img src="history.jpeg" alt="history" style="width:450px; height:350px">
+  </a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <div class="content">
+      <h3>Classic</h3>
+      <a href="google.com">
+    <img src="classic.jpg" alt="classic" style="width:100%">
+  </a>
+    </div>
+  </div>
+  <div class="column">
+    <div class="content">
+      <h3>Adventure</h3>
+      <a href="google.com">
+    <img src="adventure.jpg" alt="adventure" style="width:450px; height:350px">
+  </a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <div class="content">
+      <h3>YA</h3>
+      <a href="google.com">
+    <img src="ya.jpg" alt="YA" style="width:450px; height:350px" >
+  </a>
+    </div>
+  </div>
+ <div class="column">
+    <div class="content">
+        <h3>Science Fiction</h3>
+        <a href="google.com">
+    <img src="sci.jpeg" alt="science" style="width:450px; height:350px" >
+  </a>
+    </div>
+  </div>
+<!-- END GRID -->
+</div>
+
+<!-- END MAIN -->
+</div>
+
+</body>
+</html>
