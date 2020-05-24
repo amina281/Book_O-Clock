@@ -82,7 +82,13 @@ class BookManagmentController extends Controller
 
     public function deleteBook(request $request){
 
+        //Fshirja tek tabela book category map
+        DB::table('book_category_map')->where(['BookId'=> $request->ISBN])->delete();
+
+        //Fshirja e librat
         $book=DB::table('books')->where(['ISBN'=> $request->ISBN])->delete();
+
+
         return response()->json();
     }
 

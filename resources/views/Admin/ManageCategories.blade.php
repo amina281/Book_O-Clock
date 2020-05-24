@@ -182,7 +182,8 @@
                 success: function(data){
 
                     if ((data.errors)) {
-                        $('.error').removeClass('hidden');//nuk ka gje ktu
+                        $('.error').removeClass('hidden');
+                        alert(data.errors.Name);
                         $('.error').text(data.errors.Name);
                         $('.error').text(data.errors.Description);
                     } else {
@@ -239,12 +240,14 @@
         $('.modal-footer').on('click', '.edit', function(e) {
             e.preventDefault();
             var _token = $('input[name=_token]').val();
+            var Id = $("#idcat").val();
             var Name = $("#nameedit").val();
             var Description = $('#descedit').val();
 
 
             form = new FormData();
             form.append('_token', _token);
+            form.append('Id', Id);
             form.append('Name', Name);
             form.append('Description', Description);
 
@@ -277,6 +280,11 @@
 
                         "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                         "</tr>");
+                    setTimeout(
+                        function()
+                        {
+                            location.reload();
+                        }, 1);
                 }
             });
         });
@@ -307,6 +315,11 @@
                 },
                 success: function(data){
                     $('.categorypost' + $('.id').text()).remove();
+                    setTimeout(
+                        function()
+                        {
+                            location.reload();
+                        }, 1);
                 }
             });
         });

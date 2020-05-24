@@ -45,7 +45,9 @@ class CategoryManagmentController extends Controller
     }
 
     public function deleteCategory(request $request){
-
+        //Fshirja tek tabela book category map
+        DB::table('book_category_map')->where(['CategoryId'=> $request->Id])->delete();
+        //Fshirja e kategorise
         $category=DB::table('category')->where(['Id'=> $request->Id])->delete();
         return response()->json();
     }
