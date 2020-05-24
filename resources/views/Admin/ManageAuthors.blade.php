@@ -90,13 +90,13 @@
                         </div>
 
 
-
                         <div class="form-group">
                             <label class="control-label col-sm-2">Upload Photo</label>
                             <div class="col-sm-10">
                                 <input type="file" name="image" id="imageadd">
                             </div>
                         </div>
+
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -193,10 +193,12 @@
 
         $("#add").click(function(e) {
             e.preventDefault();
+
             var _token = $('input[name=_token]').val();
             var Authorname = $("#nameadd").val();
             var Address = $('#descadd').val();
             var vidFileLength = $("#imageadd")[0].files.length;
+
             var image = $('#imageadd')[0].files[0];
 
 

@@ -36,7 +36,9 @@ class UserProfileController extends Controller
 
         $user->name = $request['Username'];
 
+        if($request->password != '')
         $user ->password = Hash::make($request['password']);
+
 
         $user->save();
         return redirect('/user')->with('success', 'User has been updated!!');

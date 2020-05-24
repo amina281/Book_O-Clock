@@ -23,7 +23,7 @@ class AdminController extends Controller
     public function addUser(Request $request){
         $this->validation($request);
 
-            $user = new User;
+        $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -31,6 +31,7 @@ class AdminController extends Controller
         $user->email_verified_at= Carbon::now();
         $user->role ='user';
         $user->save();
+
             return response()->json($user);
 
     }
@@ -66,8 +67,6 @@ class AdminController extends Controller
     {
 
         $user = Auth::user();
-
-
 
         return view('Admin.Profile', compact('user'));
     }

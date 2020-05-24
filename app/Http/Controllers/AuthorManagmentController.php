@@ -27,7 +27,8 @@ class AuthorManagmentController extends Controller
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('img/authors/'), $new_name);
             $imageFullPath = 'img/authors/' . $new_name;
-        }
+            }
+
         $authors = new Author;
         $authors->Authorname = $request->Authorname;
         $authors->Address = $request->Address;
@@ -45,7 +46,6 @@ class AuthorManagmentController extends Controller
 
     public function editAuthor(request $request){
 
-        $valid= $this->validation($request);
         if($request->imagePath == '0'){
             $imageFullPath= 'img/authors/';}
         else {

@@ -53,6 +53,7 @@
         </div>
         {{$user->links()}}
     </div>
+
     {{-- Modal Form Create Post --}}
     <div id="create" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -94,6 +95,7 @@
                     <button class="btn btn-warning" type="submit" id="add">
                         <span class="glyphicon glyphicon-plus"></span>Save User
                     </button>
+
                     <button class="btn btn-warning" type="button" data-dismiss="modal">
                         <span class="glyphicon glyphicon-remobe"></span>Close
                     </button>
@@ -101,6 +103,7 @@
             </div>
         </div>
     </div>
+
     {{-- Modal Form Show POST --}}
     <div id="show" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -126,6 +129,8 @@
             </div>
         </div>
     </div>
+
+
     {{-- Modal Form Edit and Delete Post --}}
     <div id="myModal"class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -135,6 +140,7 @@
                     <h4 class="modal-title"></h4>
                 </div>
                 <div class="modal-body">
+
                     <form class="form-horizontal" role="modal">
                         <div class="form-group">
                             <label class="control-label col-sm-2"for="id">ID</label>
@@ -170,6 +176,7 @@
                         </div>
 
                     </form>
+
                     {{-- Form Delete Post --}}
                     <div class="deleteContent">
                         Are You sure want to delete <span class="title"></span>?
@@ -195,13 +202,14 @@
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-                    <script type="text/javascript">
-                        {{-- ajax Form Add Post--}}
+<script type="text/javascript">
+
                         $(document).on('click','.create-modal', function() {
                             $('#create').modal('show');
                             $('.form-horizontal').show();
                             $('.modal-title').text('Add User');
                         });
+
                         $("#add").click(function() {
                             $.ajax({
                                 type: 'POST',
@@ -250,6 +258,7 @@
                             $('.modal-title').text('Edit User');
                             $('.deleteContent').hide();
                             $('.form-horizontal').show();
+
                             $('#fid').val($(this).data('id'));
                             $('#n').val($(this).data('name'));
                             $('#e').val($(this).data('email'));
@@ -301,7 +310,7 @@
                             $('.id').text($(this).data('id'));
                             $('.deleteContent').show();
                             $('.form-horizontal').hide();
-                            $('.title').html($(this).data('title'));
+                            $('.title').html($(this).data('name'));
                             $('#myModal').modal('show');
                         });
 
