@@ -28,7 +28,8 @@ class BookManagmentController extends Controller
         $books->AuthorId =($request->AuthorId);
         $books->Price =($request->Price);
         $books->Published =Carbon::now();
-
+        $books->imagePath ='/img/products';
+        $books->slug =$this->createSlug($request->Title);
         $books->save();
         return response()->json($books);
 
