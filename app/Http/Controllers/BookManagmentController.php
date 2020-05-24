@@ -22,14 +22,17 @@ class BookManagmentController extends Controller
     }
 
     public function addBook(Request $request){
-        $this->validation($request);
 
 
-        $image = $request->file('imagePath');
-        $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('img/products/'), $new_name);
-        $imageFullPath = 'img/products/' . $new_name;
-
+        if($request->imagePath == '0'){
+            $imageFullPath= 'img/products/';}
+        else {
+            $this->validation($request);
+            $image = $request->file('imagePath');
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img/products/'), $new_name);
+            $imageFullPath = 'img/products/' . $new_name;
+        }
         $books = new Book;
         $books->ISBN = $request->ISBN;
         $books->Title = $request->Title;
@@ -42,6 +45,13 @@ class BookManagmentController extends Controller
 
         $books->save();
 
+        $auth =Author::where('Id', $request->AuthorId)->first();
+
+        $author= Author::where('Id', $request->AuthorId)
+            ->update([
+                'BookNumber' => $auth->BookNumber + 1,
+
+            ]);
 
         DB::table('book_category_map')->insert(
             array(
@@ -56,14 +66,15 @@ class BookManagmentController extends Controller
 
     public function editBook(request $request){
 
-         $valid= $this->validation($request);
-  //      $imageFullPath= ' ';
-//if($request->hasFile('imagePath')){
+    if($request->imagePath == '0'){
+        $imageFullPath= 'img/products/';}
+    else{
+            $valid= $this->validation($request);
             $image = $request->file('imagePath');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('img/products/'), $new_name);
             $imageFullPath = 'img/products/' . $new_name;
-//}
+      }
 
           $book= Book::where('ISBN', $request->ISBN)
             ->update([

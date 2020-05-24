@@ -281,19 +281,19 @@
             $('.modal-title').text('Add Books');
         });
 
-        var authoridSelected;
+        var authoridSelected=1;
                     $("#authorselect").change(function () {
                            authoridSelected = $(this).val();
                          //  alert(authoridSelected);
                           });
 
-        var authoridSelectedadd;
+        var authoridSelectedadd=1;
         $("#authorselectadd").change(function () {
             authoridSelectedadd = $(this).val();
             //  alert(authoridSelected);
         });
 
-        var categoryidselectedadd;
+        var categoryidselectedadd=1;
         $("#categoryselectadd").change(function () {
             categoryidselectedadd = $(this).val();
             //  alert(authoridSelected);
@@ -309,8 +309,8 @@
             var Price = $('#priceadd').val();
             var CategoryId=categoryidselectedadd;
 
+            var vidFileLength = $("#imageadd")[0].files.length;
             var image = $('#imageadd')[0].files[0];
-
             form = new FormData();
             form.append('_token', _token);
             form.append('ISBN', ISBN);
@@ -318,7 +318,13 @@
             form.append('PageNum', PageNum);
             form.append('AuthorId', AuthorId);
             form.append('Price', Price);
-            form.append('imagePath', image);
+            if(vidFileLength!=0)
+            {
+                form.append('imagePath', image);
+            }
+            else{
+                form.append('imagePath', 0);
+            }
             form.append('CategoryId',CategoryId)
             $.ajax({
                 type: 'POST',
@@ -360,6 +366,11 @@
                             "'data-Price= '"+ data.Price +
                             "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                             "</tr>");
+                        setTimeout(
+                            function()
+                            {
+                                location.reload();
+                            }, 1);
                     }
                 },
             });
@@ -394,7 +405,8 @@
             var PageNum = $('#pagenum').val();
             var AuthorId = authoridSelected;
             var Price = $('#price').val();
-
+           // var vidFileLength = $("#image")[0].files[0].length;
+            var vidFileLength = $("#image")[0].files.length;
             var image = $('#image')[0].files[0];
 
             form = new FormData();
@@ -404,8 +416,14 @@
             form.append('PageNum', PageNum);
             form.append('AuthorId', AuthorId);
             form.append('Price', Price);
-            form.append('imagePath', image);
 
+            if(vidFileLength!=0)
+            {
+            form.append('imagePath', image);
+            }
+            else{
+                form.append('imagePath', 0);
+            }
             $.ajax({
                 type: 'POST',
                 url: 'editBook',
@@ -442,6 +460,11 @@
                         "'data-Price= '"+ data.Price +
                         "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                         "</tr>");
+                    setTimeout(
+                        function()
+                        {
+                            location.reload();
+                        }, 1);
                 }
             });
         });

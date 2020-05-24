@@ -66,6 +66,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/editCategory','CategoryManagmentController@editCategory');
     Route::post('deleteCategory','CategoryManagmentController@deleteCategory');
 
+    Route::resource('/authorpost','AuthorManagmentController');
+
+    Route::post('/addAuthor','AuthorManagmentController@addAuthor');
+    Route::post('/editAuthor','AuthorManagmentController@editAuthor');
+    Route::post('deleteAuthor','AuthorManagmentController@deleteAuthor');
+
 });
 Route::get('/', 'LandingPageController@index')->name('landing-page');
 
