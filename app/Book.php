@@ -21,4 +21,9 @@ class Book extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function  bookshelves()
+    {
+        return $this->belongsToMany('App\AddToBookshelf');
+    }
+
 }

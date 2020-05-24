@@ -33,44 +33,25 @@
             @if (Auth::check())
                 <div class="cover-left-wrapper">
                     <section class="cover-left">
-                        <div class="book-rate">
-                            <h4>Rating :</h4>
-                            <div class="rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
                         <div class="select-op">
-                            <ul class="cover-add" id="select-bookshelf">
-                                <li class="hed-select" onclick="show_hide()">
-                                    <div class="hed">
-                                        <h1 class="bookshelf-select"> Add To Bookshelf </h1>
-                                        <i class="fa fa-sort-down"></i>
-                                    </div>
-
-                                    <ul class="toselect-bookshelf" id="expand-menu">
-                                        <li><a href="#">Read</a> </li>
-                                        <li><a href="#">Reading</a></li>
-                                        <li><a href="#">Want To Read</a></li>
-                                        <li id="addbookshelf" onclick="show_form_bookshelf()">
-                                            <a href="#">
-                                                <i class="fa fa-plus"></i> Add Bookshelf
-                                            </a>
-                                        </li>
-                                    </ul>
-                                <li class="side-form" id="to-add-bookshelf">
-                                    <div class="bookshelf-form" >
-                                        <form action="#">
-                                            <label></label>
-                                            <input type="text" id="add-bookshelf" name="add-bookshelf" placeholder="Name of bookshelf">
-                                            <button>Save</button>
+                            <div class="select-book" >
+                                <h1 class="bookshelf-select"> Add To Bookshelf </h1>
+                                <i class="fa fa-sort-down"></i>
+                            </div>
+                            <div class="drop-book">
+                                <ul class="cover-add" onclick="show_bookshelf()" >
+                                    <li><a href="#">Read</a> </li>
+                                    <li><a href="#">Reading</a></li>
+                                    <li><a href="#">Want To Read</a></li>
+                                    <li id="addbookshelf" >
+                                        <form  action="{{ route('bookshelf.store', $product->slug) }}" method="POST">
+                                            {{ csrf_field() }}
+                                                <input type="text" name="add-bookshelf" id="add-bookshelf" placeholder="Add to Bookshelf" class="add-book-to"/>
+                                                <button type="submit" class="submit-name" >Add Bookshelf</button>
                                         </form>
-                                    </div>
-                                </li>
-                            </ul>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -135,7 +116,7 @@
                                 <h2>${{ $product -> Price }}</h2>
                             </div>
                             <div class="add-tocart">
-                                <a href="{{ url('add-to-cart/'.$product->ISBN) }}" >
+                                <a href="{{ route('cart.add', ['id' => $product->ISBN ]) }}" >
                                     <button type="submit">Add to Cart</button>
                                 </a>
                             </div>
@@ -174,7 +155,7 @@
         <section class="comment-cover">
             <section class="comment-cover-wrapper">
 
-                <h2 class="comment-cover-h2">Comments</h2>
+                <h2 class="comment-cover-h2">Comments({{ $product->comments()->count() }})</h2>
 
                 <section class="other-com-wrapper">
                     <div class="others-com">
@@ -193,9 +174,15 @@
                     </div>
                 </section>
 
-                @if (Auth::check())
+                @guest
+                    <p>
+                        To post a new comment you need to log in first.
+                        <a href="{{ route('login') }}"> Login</a>
+                    </p>
+
+                @else
                     <div class="your-com">
-                        <form action="{{ route('comments.store', $product->slug) }}" method="POST">
+                        <form action="{{ route('comments.store', $product->ISBN ) }}" method="POST">
                             {{ csrf_field() }}
 
                             <input type="hidden" name="name" id="name" />
@@ -203,10 +190,11 @@
 
                             <textarea  id="comment" name="comment" cols="40" rows="6" placeholder="Leave your comment here"></textarea>
 
-                            <input type="submit" value="Submit">
+                            <input type="submit" value="Post Comment">
                         </form>
                     </div>
-                @endif
+                @endguest
+
             </section>
         </section>
 

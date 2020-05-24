@@ -12,6 +12,26 @@
                 <h1>Your Order:</h1>
             </section>
 
+
+            @if(count($errors)>0)
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    <ul >
+                        @foreach($errors->all() as $error)
+                            <li style="list-style: none;">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+
+
             <div class="product-wrapper">
                 <ul class="title-shop">
                     <li>Title</li>
@@ -102,20 +122,23 @@
 
     <script type="text/javascript">
 
-            $(".update-cart").click(function (e) {
-                e.preventDefault();
 
-                var ele = $(this);
+        $(".update-cart").click(function (e) {
+            e.preventDefault();
 
-                $.ajax({
-                    route: '{{ route('cart.update') }}',
-                    method: "patch",
-                    data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), qty: ele.parents("div").find(".qty").val()},
-                    success: function (response) {
-                        window.location.reload();
-                    }
-                });
+            var ele = $(this);
+
+            $.ajax({
+                url: '{{ url('update-cart') }}',
+                method: "patch",
+                data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: ele.parents("section").find(".qty").val()},
+                success: function (response) {
+                    window.location.reload();
+                }
             });
+
+        });
+
 
         $(".remove-from-cart").click(function (e) {
             e.preventDefault();
@@ -124,7 +147,7 @@
 
             if(confirm("Are you sure")) {
                 $.ajax({
-                    route: '{{ route('cart.remove') }}',
+                    url: '{{ url('remove-from-cart') }}',
                     method: "DELETE",
                     data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
                     success: function (response) {

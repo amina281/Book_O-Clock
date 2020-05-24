@@ -15,6 +15,9 @@ class CreateAddToBookshelvesTable extends Migration
     {
         Schema::create('add_to_bookshelves', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('book-id');
+            $table->foreign('book-id')->references('Id')->on('Books');
+            $table->string('name');
             $table->timestamps();
         });
     }

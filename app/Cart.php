@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 class Cart
 {
     public $items = null;

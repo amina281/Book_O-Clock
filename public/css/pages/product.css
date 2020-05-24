@@ -129,68 +129,86 @@
     width: 80%;
     height: 100%;
 }
-.book-rate{
-    margin-bottom: .7em;
-    display: flex;
-}
-.book-rate h4{
-    font-family: 'Amiri' , serif;
-    font-weight: 400;
-    font-size: .8rem;
-    color: black;
-    margin-right: 1em;
-}
-.rating-stars{
-    color: grey;
-    font-size: 1rem;
-    cursor: pointer;
-}
-.select-op select{
-    font-family: 'Amiri' , serif;
-    font-weight: 400;
-    font-size: .8rem;
-    padding: .3em 1.3em;
-    color: white;
-    background: #011E2A;
-}
-.select-op select option{
-    padding-left: .5em;
-}
 
 
-/*----------- select bookshelf ------------*/
 
-.cover-add{
-    position: relative;
-    width: 10em;
-    cursor: pointer;
-    background: rgba(238, 103, 110, 0.808);
-    display: block;
-}
-.hed-select{
-    list-style: none;
-}
-.hed-select .hed{
+.hed-bookshelf-show{
+    background-color: rgba(238, 103, 110, 0.808);
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
-.hed, .hed .bookshelf-select{
-    display: grid;
-    place-items: center center;
-    height: 2.5em;
+.clear-bookshelf{
+    background: rgba(238, 103, 110, 0.808);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.clear .book-refresh{
+    color: white;
+    padding: .3em;
+
+
+}
+.select-op{
+    background: rgba(238, 103, 110, 0.808);
+    width: 10em;
+}
+
+.select-book{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     font-family: 'Amiri',serif;
     font-weight: 600;
     font-size: .9rem;
-    border-bottom: 1px solid rgb(216, 216, 216);
+    height: 2.5em;
+    cursor: pointer;
 }
-.hed-select .fa-sort-down{
+.bookshelf-select{
+    margin-right: 1em;
+}
+.select-book i{
     margin-top: -.5em;
-    margin-left: .5em;
-    font-size: 1.3rem;
 }
 /*--------- drop down --------*/
+.cover-add{
+    background: rgb(235, 235, 235);
+}
+.cover-add li{
+    position: relative;
+    list-style: none;
+    padding: .7em 0;
+    border-bottom:1px solid rgb(155, 155, 155);
+}
+.cover-add li::before{
+    position: absolute;
+    content: '';
+    left: 0;
+    width: .4em;
+    height: 100%;
+    background: rgb(146, 2, 57);
+    top: 0;
+    opacity: 0;
+    transition: .2s all ease-in;
+}
+.cover-add li:hover::before{
+    opacity: 1;
+}
+
+.cover-add  li a{
+    text-decoration: none;
+    margin-left: 1em;
+    padding: 1em 0;
+    color: black;
+    font-family: 'Amiri',serif;
+    font-weight: 400;
+    font-size: .9rem;
+}
 .toselect-bookshelf{
     display: none;
     background: rgb(236, 236, 236);
@@ -209,69 +227,47 @@
     font-size: .9rem;
     margin-left: 1.5em;
 }
-/*--------- side form -------------*/
-.side-form{
-    display: none;
-    position: absolute;
-    bottom: -5vh;
-    left: 40vw;
-    list-style: none;
-}
-.bookshelf-form{
-    background: rgb(223, 216, 216);
-    border: 1px solid  rgba(187, 173, 174, 0.808);
-    width: 12em;
-    height: 5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 15px;
-}
-.bookshelf-form form{
+#addbookshelf{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    height: 5em;
 }
-.bookshelf-form form input{
-    border: 1px solid  rgba(187, 173, 174, 0.808);
-    background: white;
-    padding: .2em 0 .2em 1em;
-    border-radius: 10px;
-    margin-bottom: .8em;
+#addbookshelf form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#addbookshelf .add-book-to{
+    width: 90%;
+    padding: .3em .3em .3em .5em;
+    border: .5px solid gray;
     font-family: 'Amiri',serif;
-    font-size: .8rem;
     font-weight: 400;
-    color: black;
-    width: 80%;
+    font-size: .8rem;
 }
-.bookshelf-form form input:focus{
-    outline: none;
+#addbookshelf::before{
+    display: none;
 }
-.bookshelf-form form input::placeholder{
-    font-family: 'Amiri',serif;
-    font-size: .7rem;
-    font-weight: 600;
-    color: rgb(126, 126, 126);
-}
-.bookshelf-form form button{
-    background: rgba(209, 74, 83, 0.808);
+.submit-name{
+    background: #b95d63;
     border: none;
-    font-family: 'Montserrat',sans-serif;
-    font-weight: 600;
-    font-size: .7rem;
+    width: 70%;
+    bottom: -5em;
+    margin-top: .5em;
     color: white;
-    padding: .3em 1.3em;
-    border-radius: 30px;
+    font-family: 'Amiri',serif;
+    font-weight: 600;
+    font-size: .8rem;
 }
-.bookshelf-form form button:hover{
-    background: rgba(182, 47, 56, 0.808);
-}
-.bookshelf-form form button:focus{
+.submit-name:hover, .submit-name:focus{
     outline: none;
+    background: #522c30;
 }
+
 /*================  More info ========================*/
 .more-cover-info{
     position: relative;

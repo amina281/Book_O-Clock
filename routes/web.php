@@ -90,14 +90,17 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/product/{slug}', 'BookController@show')->name('product.show');
 
     //coment section of the book page
-    Route::post('comments/{post_id}', 'CommentsController@store')->name('comments.store');
+    Route::post('comments/{book}', 'CommentController@store')->name('comments.store');
 
+    //bookshelf page
+    Route::get('bookshelf', 'BookshelfController@index')->name('bookshelf.index');
+    Route::post('bookshelf/{book_id}', 'BookshelfController@store')->name('bookshelf.store');
 
     //cart function of the cart page
     Route::get('/cart', 'BookController@cart')->name('cart.index');
-    Route::get('/add-to-cart/{ISBN}', 'BookController@addToCart')->name('cart.add');
+    Route::get('/cart/{ISBN}', 'BookController@addToCart')->name('cart.add');
     Route::patch('update-cart', 'BookController@update')->name('cart.update');
-    Route::delete('remove-from-cart', 'BookController@remove')->name('cart.remove');
+    Route::delete('remove_from_cart', 'BookController@remove')->name('cart.remove');
 
     //checkout page
     Route::get('/checkout', 'BookController@getCheckout')->name('checkout.index')->middleware('auth');
@@ -109,6 +112,8 @@ Route::group(['middleware' => ['web']], function () {
 
     //confirmation page after checkout
     Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
+
+
 
 
 
