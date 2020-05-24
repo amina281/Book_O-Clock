@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto ;
+  grid-gap: 30px;
+  background-color: white;
+  padding: 10px;
+  margin:150px;
+  margin-left: 200px;
+  margin-top: 50px;
+
+
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 5px 0;
+  font-size: 30px;
+}
+.button {
+  background-color: salmon;
+  border: none;
+  color:white;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 20px;
+  }
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.dropdown{
+  margin-top: 20px;
+
+
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+            background-image:none !important;
+ }
+ .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+            background-color:salmon;
+ }
+ p{
+   font-family: cursive;
+   text-align: center;
+   font-size: 60px;
+   margin-top: 30px;
+   margin-bottom: 0px;
+ }
+ .bg-4 {
+  background-color: #2f2f2f;
+  color: #ffffff;
+  font-size: 15px;
+}
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Book O'Clock</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="indexpage.html">Genres</a></li>
+        <li><a href="#">Authors</a></li>
+        <li><a href="shprehje.html">Quotes</a></li>
+        <li><a href="#">New</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" action="/action_page.php">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="search">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+
+
+<div class="container">
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"style="background-color:salmon;border-color:salmon" >Choose a genre
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="page2.html">Romance</a></li>
+      <li><a href="page3.html">History</a></li>
+      <li><a href="page1.html">Classic</a></li>
+       <li><a href="page6.html">Adventure</a></li>
+        <li><a href="page5.html">YA</a></li>
+         <li><a href="page4.html">Science-Fiction</a></li>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <p> Science-Fiction </p>
+</div>
+
+<div class="grid-container">
+  <div class="imgContainer">
+  <div><img src="./img/verne.jpg" alt="Journey to the Centre.." style="width:190px"></div>
+  <div class="imgButton">
+  <button class="button"><span>Read more </span></button>
+</div>
+  </div>
+
+  <div class="imgContainer">
+  <div><img src="./img/80days.jpg" alt="Around the world.." style="width:190px;height:300px" ></div>
+  <div class="imgButton">
+  <button class="button"><span>Read more </span></button>
+</div>
+  </div>
+
+  <div class="imgContainer">
+  <div><img src="./img/glass.jpg" alt="Glass Sword"style="width:200px" ></div>
+  <div class="imgButton">
+  <button class="button"><span>Read more </span></button>
+  </div>
+  </div>
+
+  <div class="imgContainer">
+  <div><img src="./img/king's.jpg" alt="King's Cage" style="width:190px"></div>
+  <div class="imgButton">
+  <button class="button"><span>Read more </span></button>
+  </div>
+  </div>
+
+  <div class="imgContainer">
+  <div><img src="./img/eragon.jpg" alt="Eragon"style="width:190px" ></div>
+  <div class="imgButton">
+  <button class="button"><span>Read more </span></button>
+  </div>
+  </div>
+
+  <div class="imgContainer">
+  <div><img src="./img/moon.jpg" alt="When the moon.."style="width:190px" ></div>
+  <div class="imgButton">
+  <button class="button"><span>Read more </span></button>
+  </div>
+  </div>
+
+  <div class="imgContainer">
+  <div><img src="./img/game.jpg" alt="A game of thrones"style="width:190px" ></div>
+  <div class="imgButton">
+  <button class="button"><span>Read more </span></button>
+  </div>
+  </div>
+
+  <div class="imgContainer">
+  <div><img src="./img/redqueen.jpg" alt="Red Queen" style="width:190px;height:300px"></div>
+  <div class="imgButton">
+  <button class="button"><span>Read more </span></button>
+  </div>
+  </div>
+
+  <div class="imgContainer">
+  <div><img src="./img/storm.jpg" alt="A storm of swords"style="width:190px" ></div>
+  <div class="imgButton">
+  <button class="button"><span>Read more </span></button>
+  </div>
+  </div>
+
+</div>
+<footer class="container-fluid bg-4 text-center">
+  <p style="font-size:20px;margin-bottom:30px">Copyright by  WebChronicles 2020</p>
+</footer>
+</body>
+</html>
