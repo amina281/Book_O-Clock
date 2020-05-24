@@ -73,26 +73,41 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('deleteAuthor','AuthorManagmentController@deleteAuthor');
 
 });
-Route::get('/', 'LandingPageController@index')->name('landing-page');
+    //landing page, home
+    Route::get('/', 'LandingPageController@index')->name('landing-page');
 
+    //faqja e servisit, contact
     Route::get('/services', 'ServicesController@index')->name('services.index');
     Route::post('/services/send', 'ServicesController@send')->name('services.send');
 
+
+    //page that holds all the products
     Route::get('/shop', 'ShopController@index')->name('shop.index');
     Route::get('/shop/{slug}', 'ShopController@show')->name('shop.show');
 
+    // page of a book
     Route::get('/product', 'BookController@index')->name('product.index');
     Route::get('/product/{slug}', 'BookController@show')->name('product.show');
 
-    Route::get('/shopping-cart', 'CartController@index')->name('cart.index');
-    Route::get('/add-to-cart/{id}', 'CartController@add')->name('cart.add');
+    //coment section of the book page
+    Route::post('comments/{post_id}', 'CommentsController@store')->name('comments.store');
 
-    Route::get('/checkout', 'CheckoutController@index')->name('checkout');
 
-    Route::get('/checkout', 'CheckoutController@index')->name('checkout.index')->middleware('auth');
+    //cart function of the cart page
+    Route::get('/cart', 'BookController@cart')->name('cart.index');
+    Route::get('/add-to-cart/{ISBN}', 'BookController@addToCart')->name('cart.add');
+    Route::patch('update-cart', 'BookController@update')->name('cart.update');
+    Route::delete('remove-from-cart', 'BookController@remove')->name('cart.remove');
+
+    //checkout page
+    Route::get('/checkout', 'BookController@getCheckout')->name('checkout.index')->middleware('auth');
+
+
+    Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
     Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
     Route::post('/paypal-checkout', 'CheckoutController@paypalCheckout')->name('checkout.paypal');
 
+    //confirmation page after checkout
     Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
 
 

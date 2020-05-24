@@ -751,7 +751,7 @@
     place-items: center center;
     width: 100%;
 }
-.comment-cover-wrapper h2{
+.comment-cover-wrapper .comment-cover-h2{
     position: relative;
     left: 0;
     top: 0;
@@ -1098,7 +1098,7 @@
         flex-direction: column;
     }
 
-    .comment-cover-wrapper h2{
+    .comment-cover-wrapper .comment-cover-h2{
         transform: translateX(-10%);
         margin-top: 2em;
     }
@@ -1234,7 +1234,7 @@
     .critic-review{
         min-height: 80vh;
     }
-    .comment-cover-wrapper h2{
+    .comment-cover-wrapper  .comment-cover-h2{
         position: relative;
         left: 0;
         top: 0;
