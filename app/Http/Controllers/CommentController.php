@@ -44,6 +44,7 @@ class CommentController extends Controller
             'comment' => 'required'
         ]);
 
+
         $comment = new Comment();
         $comment->post_id = $book;
         $comment->user_id = Auth::id();

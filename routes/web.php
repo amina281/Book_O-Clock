@@ -98,7 +98,7 @@ Route::group(['middleware' => ['web']], function () {
 
     //cart function of the cart page
     Route::get('/cart', 'BookController@cart')->name('cart.index');
-    Route::get('/cart/{ISBN}', 'BookController@addToCart')->name('cart.add');
+    Route::get('/cart/{ISBN}', 'BookController@addToCart')->name('shop.add');
     Route::patch('update-cart', 'BookController@update')->name('cart.update');
     Route::delete('remove_from_cart', 'BookController@remove')->name('cart.remove');
 

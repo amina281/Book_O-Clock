@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Model;
-use Session;
+use Illuminate\Contracts\Session\Session;
+
 use App\Http\Controllers\Cart;
 use Illuminate\Http\Request;
 use App\Book;
@@ -32,15 +33,21 @@ class BookController extends Controller
      */
     public function show($slug)
     {
-        $product = Book::where('slug', $slug)->firstOrFail();
+        if($slug != '') {
+            $product = Book::where('slug','=' ,$slug)->first();
+        }else{
+            $product = Book::where('ISBN', '=',1)->first();
+        }
         $mightAlsoLike = Book::where('slug', '!=', $slug)->inRandomOrder()->take(6)->get();
-        //$comment = DB::table('comments')->where('post_id', $slug)->all();
 
-        return view('pages.product')->with([
+        $comment = DB::table('comments')->where('post_id', $product->ISBN);
+
+        return view('pages.product',compact('product','mightAlsoLike','comment'));
+            /*->with([
             'product' => $product,
-            'mightAlsoLike' => $mightAlsoLike,
+           // 'mightAlsoLike' => $mightAlsoLike,
             //'comment' => $comment,
-        ]);
+        ]);*/
     }
 
     public function cart()
@@ -55,10 +62,9 @@ class BookController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($product, $product->ISBN);
-
         $request->session()->put('cart', $cart);
         dd($request->session()->get('cart'));
-        return redirect()->route('product.show')->with('success', 'Book was added to your cart!' );
+        return redirect()->route('product.show',['slug'=>$product->slug])->with('success', 'Book was added to your cart!' );
     }
 
    /* public function addToCart($ISBN)

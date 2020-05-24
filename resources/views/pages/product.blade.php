@@ -39,7 +39,7 @@
                                 <i class="fa fa-sort-down"></i>
                             </div>
                             <div class="drop-book">
-                                <ul class="cover-add" onclick="show_bookshelf()" >
+                                <ul class="cover-add"  >
                                     <li><a href="#">Read</a> </li>
                                     <li><a href="#">Reading</a></li>
                                     <li><a href="#">Want To Read</a></li>
@@ -116,9 +116,8 @@
                                 <h2>${{ $product -> Price }}</h2>
                             </div>
                             <div class="add-tocart">
-                                <a href="{{ route('cart.add', ['id' => $product->ISBN ]) }}" >
-                                    <button type="submit">Add to Cart</button>
-                                </a>
+                                <button type="button"  onclick="document.location.href='{{route('shop.add', ['ISBN' => $product->ISBN ])}}'"><i class="fa fa-cart-plus"></i>ADD TO CART</button>
+
                             </div>
                         </div>
                     </section>
@@ -155,7 +154,7 @@
         <section class="comment-cover">
             <section class="comment-cover-wrapper">
 
-                <h2 class="comment-cover-h2">Comments({{ $product->comments()->count() }})</h2>
+
 
                 <section class="other-com-wrapper">
                     <div class="others-com">
