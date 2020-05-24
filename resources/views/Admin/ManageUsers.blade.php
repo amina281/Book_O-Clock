@@ -4,7 +4,30 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <style>
+        #table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        #table td, #table th {
+            border: 1px solid #ddd!important;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even){background-color: #f2f2f2 !important; }
+
+        #table tr:hover {background-color: #ddd !important;}
+
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50 !important;
+            color: white;
+        }
+    </style>
 
 @endsection
 
@@ -14,7 +37,7 @@
     <div class="row">
         <div class="table table-responsive">
             <table class="table table-bordered" id="table">
-                <tr style="background-color: #7da8c3">
+                <tr >
                     <th width="30px">No</th>
                     <th>User Name</th>
                     <th>Email</th>
