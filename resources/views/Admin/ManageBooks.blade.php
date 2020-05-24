@@ -19,6 +19,7 @@
                     <th>PageNum</th>
                     <th>Author</th>
                     <th>Price</th>
+                    <th>Image</th>
                     <th>Actions</th>
                     <th class="text-center" width="150px">
                         <a href="#" class="create-modal btn btn-success btn-sm">
@@ -35,6 +36,7 @@
                         <td>{{ $value->PageNum }}</td>
                         <td>{{ $value->AuthorId }}</td>
                         <td>{{ $value->Price }}</td>
+                        <td ><img src="{{$value->imagePath}}" alt="image" width="100px;" height="100px;"/></td>
                         <td>
                             <a href="#" class="show-modal btn btn-info btn-sm" data-ISBN="{{$value->ISBN}}"
                                                                         data-Title="{{$value->Title}}"
@@ -174,7 +176,7 @@
                     <h4 class="modal-title"></h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" role="modal">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="modal">
                         <div class="form-group">
                             <label class="control-label col-sm-2">ISBN</label>
                             <div class="col-sm-10">
@@ -205,6 +207,13 @@
                             <label class="control-label col-sm-2">Price</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="price"></input>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Upload Photo</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="image" id="image">
                             </div>
                         </div>
 
@@ -312,19 +321,33 @@
             $('#myModal').modal('show');
         });
 
-        $('.modal-footer').on('click', '.edit', function() {
+        $('.modal-footer').on('click', '.edit', function(e) {
+            e.preventDefault();
+            var _token = $('input[name=_token]').val();
+            var ISBN = $("#isbn").val();
+            var Title = $('#BTitle').val();
+            var PageNum = $('#pagenum').val();
+            var AuthorId = $('#authorid').val();
+            var Price = $('#price').val();
+
+            var image = $('#image')[0].files[0];
+
+            form = new FormData();
+            form.append('_token', _token);
+            form.append('ISBN', ISBN);
+            form.append('Title', Title);
+            form.append('PageNum', PageNum);
+            form.append('AuthorId', AuthorId);
+            form.append('Price', Price);
+            form.append('imagePath', image);
+
             $.ajax({
                 type: 'POST',
                 url: 'editBook',
-                data: {
-                    '_token': $('input[name=_token]').val(),
-                    'ISBN': $("#isbn").val(),
-                    'Title': $('#BTitle').val(),
-                    'PageNum': $('#pagenum').val(),
-                    'AuthorId':$('#authorid').val(),
-                    'Price':$('#price').val(),
-
-                },
+                data: form,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
                 success: function(data) {
 
                     $('.bookpost' + data.ISBN).replaceWith(" "+
