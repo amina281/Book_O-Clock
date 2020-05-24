@@ -74,16 +74,20 @@ class AdminController extends Controller
 
     public function update(Request $request)
     {
-        $user = Auth::user();
+        $users = Auth::user();
 
         $data = $this->validationAdmin($request);
 
-        $user->name = $request['Username'];
+        User::where('id','=',$users->id)
+            ->update([
+              'name' => $request['Username'],
+                'phonenumber'=>$request['phonenumber']
+            ]);
 
-        $user ->password = Hash::make($request['password']);
+        //$user ->password = Hash::make($request['password']);
+        $user = Auth::user();
 
-        $user->save();
-        return redirect('/user')->with('success', 'User has been updated!!');
+        return view('Admin.Profile',compact('user'));
     }
 
 
@@ -92,7 +96,7 @@ class AdminController extends Controller
     {
         return $this->validate($request,[
             'Username' => 'required',
-            'password' => 'required',
+           // 'password' => 'required',
             'phonenumber'=>'required',
         ]);
     }

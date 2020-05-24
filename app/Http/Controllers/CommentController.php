@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Http\Requests\CheckoutRequest;
-use Cartalyst\Stripe\Laravel\Facades\Stripe;
-use Cartalyst\Stripe\Exception\CardErrorException;
+use App\Comment;
+use App\Post;
+use Session;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class CheckoutController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +19,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return  view('pages.checkout');
+        //
     }
 
     /**
@@ -37,11 +38,23 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CheckoutRequest $request)
+    public function store(Request $request, $book)
     {
-        //
-    }
+        $this-> validate($request,[
+            'comment' => 'required'
+        ]);
 
+
+        $comment = new Comment();
+        $comment->post_id = $book;
+        $comment->user_id = Auth::id();
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        Session::flash('success', 'Comment Successfully Published');
+        return redirect()->back();
+
+    }
 
     /**
      * Display the specified resource.
@@ -52,7 +65,6 @@ class CheckoutController extends Controller
     public function show($id)
     {
         //
-
     }
 
     /**
@@ -88,5 +100,4 @@ class CheckoutController extends Controller
     {
         //
     }
-
 }

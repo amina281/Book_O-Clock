@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 class Cart
 {
     public $items = null;
@@ -17,15 +18,15 @@ class Cart
         }
     }
 
-    public function add($item , $id){
-        $storedItem = ['qty' => 0, 'price' => $item->Price, 'item' => $item];
+    public function add($item , $ISBN){
+        $storedItem = ['qty' => 0, 'Price' => $item->Price, 'item' => $item];
         if ($this->items){
-            if (array_key_exists($id, $this->items)){
-                $storedItem = $this ->items[$id];
+            if (array_key_exists($ISBN, $this->items)){
+                $storedItem = $this ->items[$ISBN];
             }
             $storedItem['qty']++;
-            $storedItem['price'] = $item->Price * $storedItem['qty'];
-            $this->items[$id] = $storedItem;
+            $storedItem['Price'] = $item->Price * $storedItem['qty'];
+            $this->items[$ISBN] = $storedItem;
             $this->totalQty++;
             $this->totalPrice += $item->Price;
         }

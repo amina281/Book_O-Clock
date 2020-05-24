@@ -49,6 +49,7 @@
     </section>
 
 
+    @if (Auth::check())
         <section  class="quotes-hm-page">
 
             <div class="quotes-header">
@@ -232,7 +233,7 @@
             <div class="bookfooter-section"></div>
         </section>
 
-
+    @else
         <section class="info">
             <div class="offer">
                 <h2>What we offer</h2>
@@ -320,6 +321,6 @@
                 </div>
             </div>
         </section>
-
+    @endif
 
 @endsection
