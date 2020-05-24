@@ -73,7 +73,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('deleteAuthor','AuthorManagmentController@deleteAuthor');
 
 });
-Route::get('/', 'LandingPageController@index')->name('landing-page');
+
+    Route::get('/', 'LandingPageController@index')->name('landing-page');
 
     Route::get('/services', 'ServicesController@index')->name('services.index');
     Route::post('/services/send', 'ServicesController@send')->name('services.send');
