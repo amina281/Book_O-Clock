@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Comment;
 use App\Model;
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session;
 
-use App\Http\Controllers\Cart;
 use Illuminate\Http\Request;
 use App\Book;
 use Illuminate\Support\Facades\DB;
@@ -42,12 +42,12 @@ class BookController extends Controller
 
         $comment = DB::table('comments')->where('post_id', $product->ISBN);
 
-        return view('pages.product',compact('product','mightAlsoLike','comment'));
-            /*->with([
+        return view('pages.product')
+            ->with([
             'product' => $product,
-           // 'mightAlsoLike' => $mightAlsoLike,
-            //'comment' => $comment,
-        ]);*/
+            'mightAlsoLike' => $mightAlsoLike,
+            'comment' => $comment,
+        ]);
     }
 
     public function cart()
