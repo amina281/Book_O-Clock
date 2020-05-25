@@ -17,7 +17,7 @@ class CreateAddToBookshelvesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('book_id');
             $table->string('name');
-            $table->foreign('book_id')->references('Id')->on('Books');
+            $table->foreign('book_id')->references('ISBN')->on('Books');
             $table->timestamps();
         });
     }

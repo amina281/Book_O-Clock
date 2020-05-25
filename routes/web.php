@@ -16,6 +16,13 @@ Route::group(['middleware' => ['web']], function () {
         return view('AuthFolder.register');
     });
 
+    Route::get('AdminSection', function(){
+        return View('AuthFolder.admin');
+    });
+
+    Route::get('/AdminProfileData','AdminController@GetAdminData');
+    Route::post('/AdminUpdate', 'AdminController@update')->name('adminUpdate')->middleware('auth');
+
     Route::get('/register', 'RegisterController@index');
     Route::post('/register', 'RegisterController@store');
     Route::post('/register/check', 'RegisterController@check')->name('email_available.check');
@@ -41,12 +48,29 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/data/users','AdminController@getUsers')->name('dataProcessing');
     Route::get('/adminArea', 'AdminController@index')->middleware('auth');
 
-    Route::resource('/post','AdminController');
+    Route::resource('/post','AdminController');  //index method
 
     Route::post('/addUser','AdminController@addUser');
     Route::post('/editUser','AdminController@editUser');
     Route::post('deleteUser','AdminController@deleteUser');
 
+    Route::resource('/bookpost','BookManagmentController');
+
+    Route::post('/addBook','BookManagmentController@addBook');
+    Route::post('/editBook','BookManagmentController@editBook');
+    Route::post('deleteBook','BookManagmentController@deleteBook');
+
+    Route::resource('/categorypost','CategoryManagmentController');
+
+    Route::post('/addCategory','CategoryManagmentController@addCategory');
+    Route::post('/editCategory','CategoryManagmentController@editCategory');
+    Route::post('deleteCategory','CategoryManagmentController@deleteCategory');
+
+    Route::resource('/authorpost','AuthorManagmentController');
+
+    Route::post('/addAuthor','AuthorManagmentController@addAuthor');
+    Route::post('/editAuthor','AuthorManagmentController@editAuthor');
+    Route::post('deleteAuthor','AuthorManagmentController@deleteAuthor');
 
 });
     //landing page, home

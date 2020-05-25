@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\App;
 class Book extends Model
 {
 
-    protected $fillable = ['ISBN', 'Title', 'PageNum', 'Price', 'Published', 'Description', 'slug'];
+    protected $fillable = ['ISBN', 'Title', 'PageNum', 'Price', 'Published', 'Description', 'slug','imagePath'];
 
     public function scopeMightAlsoLike($query)
     {
