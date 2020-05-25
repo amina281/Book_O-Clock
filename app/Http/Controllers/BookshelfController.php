@@ -30,22 +30,18 @@ class BookshelfController extends Controller
      */
     public function store(Request $request, $book_id)
     {
-        $this->validate($request, array(
-            'addBookshelf' => 'required|min:5|max:100'
-        ));
+        $this-> validate($request,[
+            'name' => 'required'
+        ]);
 
-        $bookshelves = DB::table('Books')->where('slug', $book_id)->first();
+        $bookshelf = new AddToBookshelf();
+        $bookshelf->book_id = $book_id;
+        $bookshelf->name = $request->name;
+        $bookshelf->save();
 
-        $id = $book->ISBN;
+        Session::flash('success', 'Comment Successfully Published');
+        return redirect()->back();
 
-        $add = new AddToBookshelf();
-        $add-> name = $request->addBookshelf;
-        $add->post()->associate($id);
-
-        $add->save();
-
-        Session::flash('success', 'Book was added to bookshelf .');
-        return  redirect()->route('product.show',[ $add->slug]);
 
     }
 
