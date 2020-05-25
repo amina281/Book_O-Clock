@@ -95,11 +95,9 @@
                 </li>
                 <li class="shopping">
                     <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
-                    @if( count((array) session('cart')) > 0)
-                        <span>{{ count((array) session('cart'))}}</span>
-                    @else
-                        <span style="display: none;"></span>
-                    @endif
+
+                        <span></span>
+
                 </li>
 
                 @else

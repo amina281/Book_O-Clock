@@ -22,14 +22,14 @@
     left: 18%;
 
 }
-.hero-section h1{
+.hero-section .her-title{
     position: absolute;
     font-size: 3.1rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     color: #000000;
 }
-.hero-section p{
+.hero-section .her-secion-p{
     position: relative;
     top: 5.5em;
     left: 0;
@@ -40,13 +40,13 @@
     width: 50%;
     font-size: 1rem;
 }
-.hero-section p b{
+.hero-section .her-secion-p b{
     position: relative;
     top: .5em;
     font-size: .8rem;
     color:rgba(54, 54, 54, 0.795);
 }
-.hero-section p::before{
+.hero-section .her-secion-p::before{
     position: absolute;
     content: '';
     width: 40%;
@@ -71,6 +71,11 @@
     background: url('../../images/web-img/carolynv (1).jpg');
     background-size: cover;
 }
+.bottom-section a, .bottom-section a:hover, .bottom-section:focus{
+    outline: none;
+    color: white;
+    text-decoration: none;
+}
 .bottom-section button{
     position: absolute;
     background: none;
@@ -79,9 +84,13 @@
     font-weight: 600;
     font-size: 1.2rem;
     right: 35%;
+    padding: .2em 0;
     color: rgb(224, 223, 223);
     text-transform: uppercase;
     cursor: pointer;
+}
+.bottom-section button:focus{
+    outline: none;
 }
 .bottom-section button::before{
     position: absolute;
@@ -91,6 +100,9 @@
     border: 2px solid rgb(224, 223, 223);
     top: -.35em;
     left: -59%;
+}
+.bottom-section button:hover::before{
+    left: -12%;
 }
 .boxes{
     position: absolute;
@@ -145,21 +157,22 @@
     background: rgba(0, 0, 0, 0.452);
     z-index: -1;
 }
-.containerhm h3{
+.containerhm .buttons-names{
     position: absolute;
     z-index: 2;
     color: rgb(219, 219, 219);
     font-family: 'Montserrat',sans-serif;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 400;
 }
 .authors-btn {
     left: 27%;
+    background: url('../../images/web-img/eniko-kis-ZpPH2VO-xFc-unsplash (1).jpg');
     background-size: cover;
 }
 .news-btn{
     left: 52%;
-    background: url('../../images/web-img/enikokis.jpg.jpg');
+    background: url('../../images/web-img/dollar-gill-0V7_N62zZcU-unsplash.jpg');
     background-size: cover;
 }
 .quotes-btn{
@@ -190,7 +203,7 @@
 .info{
     position: relative;
     width: 100%;
-    background: url('public/images/elaine-howlin-iMIl-PaLszw-unsplash\ \(1\).jpg');
+    background: url('../../images/web-img/elaine-howlin-iMIl-PaLszw-unsplash (2).jpg');
     clip-path: polygon(0 0, 100% 0, 100% 30%, 50% 40%, 0 30%);
     background-size: cover;
     background-position: 90% 0;
@@ -267,6 +280,11 @@
     justify-content: center;
     align-content: center;
 }
+.animation1 a{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
 .animation1 i{
     width: 5em;
     height: 100%;
@@ -294,7 +312,7 @@
     font-size: 1rem;
     margin-top: 2em;
 }
-.bubbless p{
+.bubbless .offer-section-p{
     align-content: center;
     text-align: center;
     width: 90%;
@@ -306,7 +324,7 @@
     color: #252525;
 }
 
-.bubbless h3{
+.bubbless .offer-section{
     text-align: center;
     font-family: 'Montserrat',sans-serif;
     font-size: 1.2rem;
@@ -339,7 +357,7 @@
     position: relative;
     height: 7em;
 }
-.backinfo-div h1{
+.backinfo-div .back-1{
     position: absolute;
     font-family: 'Montserrat',sans-serif;
     font-weight: 400;
@@ -347,14 +365,14 @@
     z-index: 0;
     color: rgba(139, 83, 83, 0.349);
 }
-.backinfo-div h2{
+.backinfo-div .back-2{
     position: absolute;
     font-family: 'Amiri',serif;
     font-weight: 600;
     font-size: 1.5rem;
     color: black;
 }
-.backinfo-div h3{
+.backinfo-div .back-3{
     position: absolute;
     bottom: .5em;
     font-size: 1.3rem;
@@ -374,6 +392,11 @@
     font-size: 1rem;
     color: white;
     width: 7em;
+    cursor: pointer;
+}
+.bubbles-info-wrapper a button:hover, .bubbles-info-wrapper a button:focus{
+    outline: none;
+    background: rgba(129,60,60,0.86);
 }
 
 /*===============================
@@ -467,6 +490,11 @@
     border-radius: 50px;
     width: 6em;
     margin: .5em .5em 1em ;
+}
+.buttons-sub button:hover, .buttons-sub button:focus{
+    background: rgb(107, 57, 57);
+    color: white;
+    outline:none;
 }
 .sub{
     margin-right: .5em;
@@ -1267,17 +1295,17 @@
     .hero-section{
         top:6.4em;
     }
-    .hero-section h1{
+    .hero-section .her-title{
         font-size: 3.2rem;
     }
     .bottom-section{
         height: 6.8em;
         bottom: 3em;
     }
-    .hero-section p{
+    .hero-section .her-secion-p{
         width: 37%;
     }
-    .hero-section p::before{
+    .hero-section .her-secion-p::before{
         width: 60%;
         left: -75%;
     }
@@ -1314,19 +1342,19 @@
     .hero-section{
         top:6.4em;
     }
-    .hero-section h1{
+    .hero-section .her-title{
         font-size: 4rem;
         left: .4em;
     }
     .bottom-section{
         bottom: 0;
     }
-    .hero-section p{
+    .hero-section .her-secion-p{
         top: 6.5em;
         width: 35%;
         left: 2em;
     }
-    .hero-section p::before{
+    .hero-section .her-secion-p::before{
         width: 65%;
         left: -80%;
     }
@@ -1391,14 +1419,14 @@
     .backinfo-div{
         width: 25%;
     }
-    .backinfo-div h1{
+    .backinfo-div .back-1{
         font-size: 5rem;
         color: rgba(139, 83, 83, 0.26);
     }
-    .backinfo-div h2{
+    .backinfo-div .back-2{
         font-size: 1.6rem;
     }
-    .backinfo-div h3{
+    .backinfo-div .back-3{
         bottom: 0;
         font-size: 1.6rem;
     }
@@ -1673,17 +1701,17 @@
     .hero-section{
         top: 4.5em;
     }
-    .hero-section h1{
+    .hero-section .her-title{
         font-size: 4.5rem;
         left: .7em;
     }
-    .hero-section p{
+    .hero-section .her-secion-p{
         top: 10em;
         font-size: .9em;
         width: 33%;
         left: 8em;
     }
-    .hero-section p::before{
+    .hero-section .her-secion-p::before{
         width: 128%;
         left: -150%;
     }

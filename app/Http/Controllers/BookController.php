@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Comment;
 use App\Model;
-use Illuminate\Support\Facades\Session;
-
+//use Illuminate\Support\Facades\Session;
+use Session;
 use Illuminate\Http\Request;
 use App\Book;
 use Illuminate\Support\Facades\DB;
@@ -44,13 +44,13 @@ class BookController extends Controller
 
         return view('pages.product')
             ->with([
-            'product' => $product,
-            'mightAlsoLike' => $mightAlsoLike,
-            'comment' => $comment,
-        ]);
+                'product' => $product,
+                'mightAlsoLike' => $mightAlsoLike,
+                'comment' => $comment,
+            ]);
     }
 
-    public function cart()
+/*    public function cart()
     {
         return view('pages.cart');
     }
@@ -65,8 +65,9 @@ class BookController extends Controller
         $request->session()->put('cart', $cart);
         dd($request->session()->get('cart'));
         return redirect()->route('product.show',['slug'=>$product->slug])->with('success', 'Book was added to your cart!' );
-    }
 
+    }
+*/
    /* public function addToCart($ISBN)
     {
         $product = DB::table('Books')->where('ISBN', $ISBN)->first();

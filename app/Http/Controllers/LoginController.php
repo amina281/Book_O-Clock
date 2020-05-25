@@ -66,7 +66,7 @@ class LoginController extends Controller
             Auth::logout();
             $request->session()->invalidate();
         }
-        return view('AuthFolder.login');
+        return view('pages.landing-page');
     }
 
     public function HomePage()

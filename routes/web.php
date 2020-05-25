@@ -73,7 +73,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('deleteAuthor','AuthorManagmentController@deleteAuthor');
 
 });
-
+    //landing page, home
     Route::get('/', 'LandingPageController@index')->name('landing-page');
 
     //faqja e servisit, contact
@@ -87,7 +87,7 @@ Route::group(['middleware' => ['web']], function () {
 
     // page of a book
     Route::get('/product', 'BookController@index')->name('product.index');
-    Route::get('/product/{slug}', 'BookController@show')->name('product.show');
+    Route::get('/product/{slug}',  'BookController@show')->name('product.show');
 
     //coment section of the book page
     Route::post('comments/{book}', 'CommentController@store')->name('comments.store');
@@ -97,10 +97,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('bookshelf/{book_id}', 'BookshelfController@store')->name('bookshelf.store');
 
     //cart function of the cart page
-    Route::get('/cart', 'BookController@cart')->name('cart.index');
-    Route::get('/cart/{ISBN}', 'BookController@addToCart')->name('shop.add');
-    Route::patch('update-cart', 'BookController@update')->name('cart.update');
-    Route::delete('remove_from_cart', 'BookController@remove')->name('cart.remove');
+    Route::get('/cart', 'ShoppingCartController@index')->name('cart.index');
+    Route::post('/cart', 'ShoppingCartController@store')->name('cart.store');
+    Route::patch('update-cart', 'ShoppingCartController@update')->name('cart.update');
+    Route::delete('remove_from_cart', 'ShoppingCartController@remove')->name('cart.remove');
 
     //checkout page
     Route::get('/checkout', 'BookController@getCheckout')->name('checkout.index')->middleware('auth');

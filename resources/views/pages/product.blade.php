@@ -75,6 +75,13 @@
                 </div>
             @endif
 
+            @if(session()->has('success_message'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert" style="margin-right: 2em;"><strong>X</strong></button>
+                    <strong>{{ session()->get('success_message') }}</strong>
+                </div>
+            @endif
+
         </section>
 
 
@@ -116,8 +123,14 @@
                                 <h2>${{ $product -> Price }}</h2>
                             </div>
                             <div class="add-tocart">
-                                <button type="button"  onclick="document.location.href='{{route('shop.add', ['ISBN' => $product->ISBN ])}}'"><i class="fa fa-cart-plus"></i>ADD TO CART</button>
+                                <form action="{{ route('cart.store') }}" method="POST" >
+                                    {{ csrf_field() }}
 
+                                    <input type="hidden" name="ISBN" value=" {{ $product->ISBN }}">
+                                    <input type="hidden" name="Title" value=" {{ $product->Title }}">
+                                    <input type="hidden" name="Price" value=" {{ $product->Price }}">
+                                    <button type="submit">Add to Cart</button>
+                                </form>
                             </div>
                         </div>
                     </section>
@@ -128,7 +141,7 @@
                         <div class="read-cover">
                             <h2>Read For Free</h2>
                             <p>Download or read online</p>
-                            <button type="button"><i class="fa fa-download"></i> Download</button>
+                            <a href="#"><button type="button"><i class="fa fa-download"></i> Download</button></a>
                         </div>
                     </section>
                 </section>
@@ -154,9 +167,24 @@
         <section class="comment-cover">
             <section class="comment-cover-wrapper">
 
-
+                <h2 class="comment-cover-h2">Comments</h2>
 
                 <section class="other-com-wrapper">
+                    <div class="others-com">
+                        <div class="user-comimg div-img-com">
+                            <img class="com-img" src="#" alt="">
+                            <a href="#"><h1 class="user-nam-com">Lola</h1></a>
+                        </div>
+                        <div class="left-comment">
+                            <p>As an immigrant myself, I connected with Fabiola tremendously.
+                                When you move from one place to a very different place or even if youre just there to visit theres usually a culture shock happening.
+                                I felt that. I know what its like for people to mock the way you speak or laugh at the unusual words you use.
+                                When you move from one place to a very different place or even if youre just there to visit theres usually a culture shock happening.
+                                I felt that. I know what its like for people to mock the way you speak or laugh at the unusual words you use.
+                            </p>
+                        </div>
+                    </div>
+
                     <div class="others-com">
                         <div class="user-comimg div-img-com">
                             <img class="com-img" src="#" alt="">

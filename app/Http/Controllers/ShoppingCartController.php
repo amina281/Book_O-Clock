@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Book;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use App\Comment;
-use App\Post;
-use Session;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class CommentController extends Controller
+class ShoppingCartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +16,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.cart');
     }
 
     /**
@@ -38,22 +35,18 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $book)
+    public function store(Request $request)
     {
-        $this-> validate($request,[
-            'comment' => 'required'
-        ]);
+        $findid = DB::table('Boks')->where('ISBN', $request->ISBN);
 
+        $id = DB::table('Boks')->where('ISBN', $request->ISBN);
+        $name = $request->Title;
+        $price = $request->Price;
 
-        $comment = new Comment();
-        $comment->post_id = $book;
-        $comment->user_id = Auth::id();
-        $comment->comment = $request->comment;
-        $comment->save();
+        Cart::add($id, $name, 1, $price)
+            ->associate('App\Book');
 
-        Session::flash('success', 'Comment Successfully Published');
-        return redirect()->back()->with($book);
-
+        return  redirect()->route('cart.index')->with('success_message', 'Item was added to your cart!');
     }
 
     /**
