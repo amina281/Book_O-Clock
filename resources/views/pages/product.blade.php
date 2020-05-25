@@ -40,9 +40,7 @@
                             </div>
                             <div class="drop-book">
                                 <ul class="cover-add"  >
-                                    <li><a href="#">Read</a> </li>
-                                    <li><a href="#">Reading</a></li>
-                                    <li><a href="#">Want To Read</a></li>
+                                    <li><a href="#"></a> </li>
                                     <li id="addbookshelf" >
                                         <form  action="{{ route('bookshelf.store', $product->slug) }}" method="POST">
                                             {{ csrf_field() }}
@@ -141,7 +139,7 @@
                         <div class="read-cover">
                             <h2>Read For Free</h2>
                             <p>Download or read online</p>
-                            <a href="#"><button type="button"><i class="fa fa-download"></i> Download</button></a>
+                            <a href="../../pdf/Eragon - 1 - Inheritance.pdf"><button type="button"><i class="fa fa-download"></i> Download</button></a>
                         </div>
                     </section>
                 </section>
@@ -153,7 +151,7 @@
                 <h1>Critic Reviews</h1>
                 <div class="critic-op">
                     <div class="critic-head">
-                        <img src="{{ $product->imagePath}}" alt="image">
+                        <img src="{{ $product->criticImagePath}}" alt="image">
                         <h3>-{{ $product-> criticName }}</h3>
                     </div>
                     <div class="critic-com">
