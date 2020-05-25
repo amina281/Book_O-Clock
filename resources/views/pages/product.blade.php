@@ -39,15 +39,15 @@
                                 <i class="fa fa-sort-down"></i>
                             </div>
                             <div class="drop-book">
-                                <ul class="cover-add" onclick="show_bookshelf()" >
+                                <ul class="cover-add"  >
                                     <li><a href="#">Read</a> </li>
                                     <li><a href="#">Reading</a></li>
                                     <li><a href="#">Want To Read</a></li>
                                     <li id="addbookshelf" >
                                         <form  action="{{ route('bookshelf.store', $product->slug) }}" method="POST">
                                             {{ csrf_field() }}
-                                                <input type="text" name="add-bookshelf" id="add-bookshelf" placeholder="Add to Bookshelf" class="add-book-to"/>
-                                                <button type="submit" class="submit-name" >Add Bookshelf</button>
+                                            <input type="text" name="add-bookshelf" id="add-bookshelf" placeholder="Add to Bookshelf" class="add-book-to"/>
+                                            <button type="submit" class="submit-name" >Add Bookshelf</button>
                                         </form>
                                     </li>
                                 </ul>
@@ -153,7 +153,7 @@
                 <h1>Critic Reviews</h1>
                 <div class="critic-op">
                     <div class="critic-head">
-                        <img src="{{ $product-> criticImagePath}}.jpg" alt="">
+                        <img src="{{ $product->imagePath}}" alt="image">
                         <h3>-{{ $product-> criticName }}</h3>
                     </div>
                     <div class="critic-com">

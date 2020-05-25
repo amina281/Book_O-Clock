@@ -44,6 +44,7 @@ class CommentController extends Controller
             'comment' => 'required'
         ]);
 
+
         $comment = new Comment();
         $comment->post_id = $book;
         $comment->user_id = Auth::id();
@@ -51,7 +52,7 @@ class CommentController extends Controller
         $comment->save();
 
         Session::flash('success', 'Comment Successfully Published');
-        return redirect()->back()->with($book);
+        return redirect()->back();
 
     }
 
