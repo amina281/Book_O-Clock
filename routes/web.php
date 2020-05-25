@@ -87,7 +87,7 @@ Route::group(['middleware' => ['web']], function () {
 
     // page of a book
     Route::get('/product', 'BookController@index')->name('product.index');
-    Route::get('/product/{slug}',  'BookController@show')->name('product.show');
+    Route::get('/product/{slug}', 'BookController@show')->name('product.show');
 
     //coment section of the book page
     Route::post('comments/{book}', 'CommentController@store')->name('comments.store');

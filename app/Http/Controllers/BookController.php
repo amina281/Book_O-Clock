@@ -48,11 +48,10 @@ class BookController extends Controller
             ]);*/
     }
 
-/*    public function cart()
+   public function cart()
     {
         return view('pages.cart');
     }
-
 
     public function addToCart(Request $request, $ISBN)
     {
@@ -65,7 +64,7 @@ class BookController extends Controller
         return redirect()->route('product.show',['slug'=>$product->slug])->with('success', 'Book was added to your cart!' );
 
     }
-*/
+
    /* public function addToCart($ISBN)
     {
         $product = DB::table('Books')->where('ISBN', $ISBN)->first();
@@ -102,7 +101,7 @@ class BookController extends Controller
 
             return redirect()->back()->with('success', 'Product added to cart successfully!');
 
-        }
+           }
         // if item not exist in cart then add to cart with quantity = 1
         $cart[$ISBN] = [
             "Title" => $product->Title,
@@ -112,10 +111,10 @@ class BookController extends Controller
         ];
 
         session()->put('cart', $cart);
-
+       // dd($request->session()->get('cart'));
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-
+*/
     public function update(Request $request)
     {
         if($request->ISBN and $request->qty)
@@ -150,6 +149,8 @@ class BookController extends Controller
 
     public function getCheckout(Request $request)
     {
+        $cart = session()->get('cart');
+
         if(!$cart) {
 
         return view('pages.cart');
@@ -171,6 +172,5 @@ class BookController extends Controller
 
         return view('pages.checkout');
     }
-   */
 
 }

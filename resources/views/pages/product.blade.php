@@ -46,8 +46,8 @@
                                     <li id="addbookshelf" >
                                         <form  action="{{ route('bookshelf.store', $product->slug) }}" method="POST">
                                             {{ csrf_field() }}
-                                                <input type="text" name="add-bookshelf" id="add-bookshelf" placeholder="Add to Bookshelf" class="add-book-to"/>
-                                                <button type="submit" class="submit-name" >Add Bookshelf</button>
+                                            <input type="text" name="add-bookshelf" id="add-bookshelf" placeholder="Add to Bookshelf" class="add-book-to"/>
+                                            <button type="submit" class="submit-name" >Add Bookshelf</button>
                                         </form>
                                     </li>
                                 </ul>

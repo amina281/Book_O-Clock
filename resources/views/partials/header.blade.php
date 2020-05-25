@@ -1,67 +1,70 @@
-<header>
-    <section class="left-header">
-        <div class="burger">
-            <div class="line line1"></div>
-            <div class="line line2"></div>
-            <div class="line line3"></div>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light"
+     style="line-height: -1vh">
 
-        <div class="logo">
-            <h3>Book O'Clock</h3>
-        </div>
-    </section>
-
-    <nav>
-        <ul class="nav-bar">
-            <li class="list-items"><a href="{{ route('landing-page') }}">Home</a></li>
-            <li class="list-items"><a href="{{ route('services.index') }}">Services</a></li>
-            <li class="list-drop ">
-                <a href="#">Book  <i class="fa fa-caret-down"></i></a>
-                <ul class="dropdown">
-                    <li><a href="{{ route('shop.index') }}">Generes</a></li>
-                    <li><a href="#">Authors</a></li>
-                </ul>
+    <a class="navbar-brand" href="{{ route('landing-page') }}">Book O'Clock</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('landing-page') }}">Home<span class="sr-only">(current)</span></a>
             </li>
-
-
-                <li class="list-drop ">
-                    <a href="#">Others  <i class="fa fa-caret-down"></i></a>
-                    <ul class="dropdown">
-                        <li><a href="#">New</a></li>
-                        <li><a href="#">Quotes</a></li>
-                    </ul>
-                </li>
-
-
-            <li>
-                <div class="search-area">
-                    <input type="search" placeholder="Search..." class="search-txt">
-                    <button class="search-btn"><i class="fa fa-search"></i></button>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('services.index') }}">Services</a>
             </li>
-
-
-                <li class="user">
-                    <a href="#"><i class="fa fa-user"></i></a>
-                    <ul class="user-dropdown">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="{{ route('cart.index') }}" >Shopping cart</a></li>
-                        <li><a href="{{ url('/logout') }}">Log Out</a></li>
-                    </ul>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('shop.index') }}">Genres</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Authors</a>
+            </li>
+            @if (Auth::check())
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Quotes</a>
                 </li>
-                <li class="shopping">
-                    <a href=href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
-                    @if(Cart::instance('deafault')->count() > 0)
-                        <span>{{Cart::instance('deafault')->count() }}</span>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/logout') }}">Log Out</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user">User
+                        </i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="/cart" >Shopping cart</a>
+                        <a class="dropdown-item" href="{{ route('bookshelf.index') }}">Bookshelf</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url('/logout') }}">Log Out</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
+                    @if( count((array) session('cart')) > 0)
+                        <span class="badge">{{ count((array) session('cart')) }}</span>
+                    @else
+                        <span style="display: none"></span>
                     @endif
                 </li>
-
-
-                <li ><a href="{{ url('/register') }}"><input type="button" value="Sign Up" class="button-hom sub"></a></li>
-                <li ><a href="{{ url('/login') }}"><input type="button" value="Log In" class="button-hom log"></a></li>
-
+            @else
+                <li class="nav-item">
+                    <a class="nav-link"  href="{{ url('/register') }}" >
+                        <input type="button" value="Sign Up" class="button-hom sub" style="border-radius: 50px; padding: 0 .5em; border: none;" >
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="{{ url('/login') }}" >
+                        <input type="button" value="Log In" class="button-hom log" style="border-radius: 50px; padding: 0 .5em; border: none;" >
+                    </a>
+                </li>
+            @endif
         </ul>
+    </div>
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
     </nav>
-</header>
-
-
+</nav>

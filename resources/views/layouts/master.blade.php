@@ -14,9 +14,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Dancing+Script:wght@400;600&family=Kaushan+Script&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ URL('css/layout/header.css') }}">
@@ -24,6 +28,14 @@
 
 
     <style>
+        .navbar-nav button{
+            background: #7da8c3;
+            color:black;
+            padding: .2em 1em;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
         *{
             margin: 0;
             padding: 0;
@@ -56,60 +68,7 @@
 
 </head>
 <body>
-    <header>
-        <section class="left-header">
-            <div class="burger">
-                <div class="line line1"></div>
-                <div class="line line2"></div>
-                <div class="line line3"></div>
-            </div>
-
-            <div class="logo">
-                <h3>Book O'Clock</h3>
-            </div>
-        </section>
-
-        <nav>
-            <ul class="nav-bar">
-                <li class="list-items"><a href="{{ route('landing-page') }}">Home</a></li>
-                <li class="list-items"><a href="{{ route('services.index') }}">Services</a></li>
-                <li class="list-items"><a href="{{ route('shop.index') }}">Generes</a></li>
-                <li class="list-items"><a href="#">Authors</a></li>
-
-                <li>
-                    <div class="search-area">
-                        <input type="search" placeholder="Search..." class="search-txt">
-                        <button class="search-btn"><i class="fa fa-search"></i></button>
-                    </div>
-                </li>
-
-                @if (Auth::check())
-                <li class="user">
-                    <a href="#"><i class="fa fa-user"></i></a>
-                    <ul class="user-dropdown">
-                        <li><a href="{{ url('/user') }}">Profile</a></li>
-                        <li><a  href="/cart" >Shopping cart</a></li>
-                        <li><a href="{{ route('bookshelf.index') }}">Bookshelf</a></li>
-                        <li><a href="{{ url('/logout') }}">Log Out</a></li>
-                    </ul>
-                </li>
-                <li class="shopping">
-                    <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
-
-                        <span></span>
-
-                </li>
-
-                @else
-
-                <li ><a href="{{ url('/register') }}"><input type="button" value="Sign Up" class="button-hom sub"></a></li>
-                <li ><a href="{{ url('/login') }}"><input type="button" value="Log In" class="button-hom log"></a></li>
-
-                @endif
-
-            </ul>
-        </nav>
-    </header>
+    @include('partials.header')
     @yield('content')
 
 
