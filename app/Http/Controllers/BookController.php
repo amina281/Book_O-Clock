@@ -33,21 +33,19 @@ class BookController extends Controller
      */
     public function show($slug)
     {
-        if($slug != '') {
-            $product = Book::where('slug','=' ,$slug)->first();
-        }else{
-            $product = Book::where('ISBN', '=',1)->first();
-        }
+
+        $product = Book::where('slug','=' ,$slug)->first();
+
         $mightAlsoLike = Book::where('slug', '!=', $slug)->inRandomOrder()->take(6)->get();
 
         $comment = DB::table('comments')->where('post_id', $product->ISBN);
 
-        return view('pages.product')
-            ->with([
+        return view('pages.product')->with(compact('product','mightAlsoLike','commert'));
+          /*  ->with([
                 'product' => $product,
                 'mightAlsoLike' => $mightAlsoLike,
                 'comment' => $comment,
-            ]);
+            ]);*/
     }
 
 /*    public function cart()

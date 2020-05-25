@@ -153,7 +153,7 @@
                 <h1>Critic Reviews</h1>
                 <div class="critic-op">
                     <div class="critic-head">
-                        <img src="{{ $product-> criticImagePath}}.jpg" alt="">
+                        <img src="{{ $product->imagePath}}" alt="image">
                         <h3>-{{ $product-> criticName }}</h3>
                     </div>
                     <div class="critic-com">
