@@ -163,7 +163,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Address</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="descedit"></input>
+                                <input type="text"  class="form-control" id="descedit" required></input>
                                 <p class="errordescadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
@@ -285,6 +285,11 @@
                             $('.errorname').removeClass('hidden');
                             $('.errorname').text(myArr.Authorname[0]);
                         }
+
+
+                    }else{
+                        alert('jam ktuu');
+                        $('.errorname').addClass('hidden');
                     }
 
                     if (myArr.hasOwnProperty('Address')) {
