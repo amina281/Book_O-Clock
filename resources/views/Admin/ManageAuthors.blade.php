@@ -101,7 +101,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"  id="nameadd" name="name"
                                        placeholder="Enter author Name Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errorname text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -109,7 +109,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="descadd" name="desc"
                                        placeholder="Your address Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errordesc text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -118,6 +118,7 @@
                             <label class="control-label col-sm-2">Upload Photo</label>
                             <div class="col-sm-10">
                                 <input type="file" name="image" id="imageadd">
+                                <p class="errorimg text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -156,12 +157,14 @@
                             <label class="control-label col-sm-2">Name</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="nameedit">
+                                <p class="errornameadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Address</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="descedit"></input>
+                                <p class="errordescadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -170,7 +173,7 @@
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="booknredit" name="booknredit"
                                        placeholder=""  >
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errorbooknradd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -178,6 +181,7 @@
                             <label class="control-label col-sm-2">Upload Photo</label>
                             <div class="col-sm-10">
                                 <input type="file" name="image" id="image">
+                                <p class="errorimgadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -188,8 +192,9 @@
                         <span class="hidden id"></span>
                     </div>
                 </div>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn actionBtn" data-dismiss="modal">
+                    <button type="button" class="btn actionBtn"  >
                         <span id="footer_action_button" class="glyphicon"></span>
                     </button>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">
@@ -248,13 +253,6 @@
                 processData: false,
                 success: function(data){
 
-                    if ((data.errors)) {
-                        $('.error').removeClass('hidden');
-                        alert(data.errors.Name);
-                        $('.error').text(data.errors.AuthorName);
-                        $('.error').text(data.errors.Address);
-                    } else {
-                        $('.error').remove();
                         $('#table').append("<tr class='authorpost" + data.Id + "'>"+
                             "<td>" + data.Authorname + "</td>"+
                             "<td>" + data.Address + "</td>"+
@@ -276,8 +274,34 @@
                             {
                                 location.reload();
                             }, 1);
-                    }
+
                 },
+
+                error: function (xhr) {
+                var myArr = JSON.parse(xhr.responseText);
+                    if (myArr.hasOwnProperty('Authorname')) {
+                        if( myArr.Authorname != '')
+                        {
+                            $('.errorname').removeClass('hidden');
+                            $('.errorname').text(myArr.Authorname[0]);
+                        }
+                    }
+
+                    if (myArr.hasOwnProperty('Address')) {
+                        if (myArr.Address != '') {
+                            $('.errordesc').removeClass('hidden');
+                            $('.errordesc').text(myArr.Address[0]);
+                        }
+                    }
+                    if (myArr.hasOwnProperty('imagePath'))
+                    {
+                       if(myArr.imagePath !=''){
+                           $('.errorimg').removeClass('hidden');
+                           $('.errorimg').text(myArr.imagePath[0]);
+                       }
+                    }
+
+            }
             });
 
         });
@@ -311,6 +335,7 @@
             var Id = $("#idauth").val();
             var Authorname = $("#nameedit").val();
             var Address = $('#descedit').val();
+            var NrFaqe = $('#booknredit').val();
             var vidFileLength = $("#image")[0].files.length;
             var image = $('#image')[0].files[0];
 
@@ -319,6 +344,7 @@
             form.append('Id', Id);
             form.append('Authorname', Authorname);
             form.append('Address', Address);
+            form.append('BookNr', NrFaqe);
 
             if(vidFileLength!=0)
             {
@@ -337,11 +363,13 @@
                 processData: false,
                 success: function(data) {
 
+
                     $('.authorpost' + data.Id).replaceWith(" "+
                         "<tr class='authorpost" + data.Id + "'>"+
                         "<td>" + data.Id + "</td>"+
                         "<td>" + data.Authorname + "</td>"+
                         "<td>" + data.Address + "</td>"+
+                        "<td>" + data.BookNr + "</td>"+
 
 
 
@@ -361,7 +389,41 @@
                         {
                             location.reload();
                         }, 1);
+                },
+                error: function (xhr) {
+                    var myArr = JSON.parse(xhr.responseText);
+                    if (myArr.hasOwnProperty('Authorname')) {
+                        if( myArr.Authorname != '')
+                        {
+                            $('.errornameadd').removeClass('hidden');
+                            $('.errornameadd').text(myArr.Authorname[0]);
+                        }
+                    }
+
+                    if (myArr.hasOwnProperty('Address')) {
+                        if (myArr.Address != '') {
+                            $('.errordescadd').removeClass('hidden');
+                            $('.errordescadd').text(myArr.Address[0]);
+                        }
+                    }
+                    if (myArr.hasOwnProperty('imagePath'))
+                    {
+                        if(myArr.imagePath !=''){
+                            $('.errorimgadd').removeClass('hidden');
+                            $('.errorimgadd').text(myArr.imagePath[0]);
+                        }
+                    }
+
+                    if (myArr.hasOwnProperty('BookNr'))
+                    {
+                        if(myArr.BookNr !=''){
+                            $('.errorbooknradd').removeClass('hidden');
+                            $('.errorbooknradd').text(myArr.BookNr[0]);
+                        }
+                    }
+
                 }
+
             });
         });
 

@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use App\Book;
-use App\Category;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+//use Illuminate\Validation\Validator;
+use Validator;
+use App\Http\Controllers\Controller;
 
 class AuthorManagmentController extends Controller
 {
@@ -17,12 +18,26 @@ class AuthorManagmentController extends Controller
     }
 
     public function addAuthor(Request $request){
+        $validator = $this->validation($request);
 
+        if ($validator->fails()) {
+
+            $responseBag = $validator->getMessageBag()->toArray();
+            $responseBag['type'] = ['error'];
+
+            if ($request->ajax()) {
+                return response()->json($responseBag, 422);
+            }
+
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
 
         if($request->imagePath == '0'){
             $imageFullPath= 'img/authors/';}
         else {
-            $this->validation($request);
+
             $image = $request->file('imagePath');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('img/authors/'), $new_name);
@@ -45,16 +60,32 @@ class AuthorManagmentController extends Controller
     }
 
     public function editAuthor(request $request){
+        $validator = $this->validation($request);
 
-        if($request->imagePath == '0'){
+            if ($validator->fails()) {
+
+                $responseBag = $validator->getMessageBag()->toArray();
+                $responseBag['type'] = ['error'];
+
+                if ($request->ajax()) {
+                    return response()->json($responseBag, 422);
+                }
+
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+            if($request->imagePath == '0'){
             $imageFullPath= 'img/authors/';}
-        else {
-            $valid= $this->validation($request);
+
         $image = $request->file('imagePath');
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('img/authors/'), $new_name);
         $imageFullPath = 'img/authors/' . $new_name;
-}
+
+
+
 
         $author= Author::where('Id', $request->Id)
             ->update([
@@ -91,12 +122,13 @@ class AuthorManagmentController extends Controller
         return response()->json();
     }
 
-    public function  validation($request)
+    protected function validation(Request $request)
     {
-        return $this->validate($request,[
+      return  Validator::make($request->all(), [
             'Authorname' => 'required|string|max:255',
             'Address' => 'required',
             'imagePath' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+             'BookNr'=>'required|integer',
         ]);
     }
 

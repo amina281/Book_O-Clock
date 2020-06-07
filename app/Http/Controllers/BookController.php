@@ -40,7 +40,7 @@ class BookController extends Controller
 
         $comment = DB::table('comments')->where('post_id', $product->ISBN);
 
-        return view('pages.product')->with(compact('product','mightAlsoLike','commert'));
+        return view('pages.product')->with(compact('product','mightAlsoLike','comment'));
           /*  ->with([
                 'product' => $product,
                 'mightAlsoLike' => $mightAlsoLike,
