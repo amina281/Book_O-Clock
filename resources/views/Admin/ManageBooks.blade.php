@@ -105,7 +105,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="ibsnadd"  name="ISBN"
                                        placeholder="Enter Book Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errorISBN text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -114,7 +114,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"  id="titleadd" name="title"
                                        placeholder="Enter Book Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errortitle text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -122,7 +122,7 @@
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="pagenumadd" name="pagenum"
                                        placeholder="Your book page number Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errorPage text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -158,7 +158,7 @@
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="priceadd" name="price"
                                        placeholder="Price Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errorPrice text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -166,8 +166,10 @@
                             <label class="control-label col-sm-2">Upload Photo</label>
                             <div class="col-sm-10">
                                 <input type="file" name="image" id="imageadd">
+                                <p class="errorPhoto text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
+                        <p class="successMsgEdit text-center alert alert-success hidden">Veprimi u krye me sukses</p>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -230,18 +232,21 @@
                             <label class="control-label col-sm-2">ISBN</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="isbn" disabled>
+                                <p class="errorISBNadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Title</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="BTitle">
+                                <p class="errortitleadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Book Pages</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="pagenum"></input>
+                                <p class="errorbooknradd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -261,6 +266,7 @@
                             <label class="control-label col-sm-2">Price</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="price"></input>
+                                <p class="errorpriceadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -268,9 +274,10 @@
                             <label class="control-label col-sm-2">Upload Photo</label>
                             <div class="col-sm-10">
                                 <input type="file" name="image" id="image">
+                                <p class="erroruploadadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
-
+                        <p class="successMsgEdit text-center alert alert-success hidden">Veprimi u krye me sukses</p>
                     </form>
                     {{-- Form Delete Post --}}
                     <div class="deleteContent">
@@ -279,7 +286,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn actionBtn" data-dismiss="modal">
+                    <button type="button" class="btn actionBtn" >
                         <span id="footer_action_button" class="glyphicon"></span>
                     </button>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">
@@ -358,13 +365,7 @@
                 contentType: false,
                 processData: false,
                 success: function(data){
-                    if ((data.errors)) {
-                        $('.error').removeClass('hidden');//nuk ka gje ktu
-                        $('.error').text(data.errors.Title);
-                        $('.error').text(data.errors.PageNum);
-                        $('.error').text(data.errors.AuthorId);
-                    } else {
-                        $('.error').remove();
+
                         $('#table').append("<tr class='bookpost" + data.ISBN + "'>"+
                             "<td>" + data.ISBN + "</td>"+
                             "<td>" + data.Title + "</td>"+
@@ -390,16 +391,86 @@
                             "'data-Price= '"+ data.Price +
                             "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                             "</tr>");
+                        $('.errorISBNadd').addClass('hidden');
+                        $('.errortitleadd').addClass('hidden');
+                        $('.errorbooknradd').addClass('hidden');
+                        $('.errorpriceadd').addClass('hidden');
+                        $('.erroruploadadd').addClass('hidden');
+                        $('.successMsgEdit').removeClass('hidden');
+
                         setTimeout(
                             function()
                             {
                                 location.reload();
                             }, 1);
+
+                    },
+
+                    error: function (xhr) {
+                        var myArr = JSON.parse(xhr.responseText);
+                        if (myArr.hasOwnProperty('Title'))
+                        {
+                            if (myArr.Title != '')
+                            {
+                                $('.errortitle').removeClass('hidden');
+                                $('.errortitle').text(myArr.Title[0]);
+                            }
+
+                        } else
+                        {
+
+                            $('.errortitle').addClass('hidden');
+                        }
+
+                        if (myArr.hasOwnProperty('PageNum')) {
+                            if (myArr.PageNum != '') {
+                                $('.errorPage').removeClass('hidden');
+                                $('.errorPage').text(myArr.PageNum[0]);
+                            }
+                        } else {
+
+                            $('.errorPage').addClass('hidden');
+                        }
+
+                        if (myArr.hasOwnProperty('Price')) {
+                            if (myArr.Price != '') {
+                                $('.errorPrice').removeClass('hidden');
+                                $('.errorPrice').text(myArr.Price[0]);
+                            }
+                        } else {
+
+                            $('.errorPrice').addClass('hidden');
+                        }
+
+                        if (myArr.hasOwnProperty('imagePath')) {
+                            if (myArr.imagePath != '') {
+                                $('.errorPhoto').removeClass('hidden');
+                                $('.errorPhoto').text(myArr.imagePath[0]);
+                            }
+                        } else {
+
+                            $('.errorPhoto').addClass('hidden');
+                        }
+
+                        if (myArr.hasOwnProperty('ISBN')) {
+                            if (myArr.ISBN != '') {
+                                $('.errorISBN').removeClass('hidden');
+                                $('.errorISBN').text(myArr.ISBN[0]);
+                            }
+                        } else {
+
+                            $('.errorISBN').addClass('hidden');
+                        }
+
+
                     }
-                },
-            });
+                });
+
 
         });
+
+
+
 
         // function Edit POST
         $(document).on('click', '.edit-modal', function() {
@@ -484,12 +555,70 @@
                         "'data-Price= '"+ data.Price +
                         "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                         "</tr>");
+
+
+                    $('.errortitleadd').addClass('hidden');
+                    $('.errorbooknradd').addClass('hidden');
+                    $('.errorpriceadd').addClass('hidden');
+                    $('.erroruploadadd').addClass('hidden');
+                    $('.successMsgEdit').removeClass('hidden');
+
+
                     setTimeout(
                         function()
                         {
                             location.reload();
-                        }, 1);
+                        }, 3);
+                },
+
+                error: function (xhr) {
+                    var myArr = JSON.parse(xhr.responseText);
+                    if (myArr.hasOwnProperty('Title'))
+                    {
+                        if (myArr.Title != '')
+                        {
+                            $('.errortitleadd').removeClass('hidden');
+                            $('.errortitleadd').text(myArr.Title[0]);
+                        }
+
+                    } else
+                    {
+
+                        $('.errortitleadd').addClass('hidden');
+                    }
+
+                    if (myArr.hasOwnProperty('PageNum')) {
+                        if (myArr.PageNum != '') {
+                            $('.errorbooknradd').removeClass('hidden');
+                            $('.errorbooknradd').text(myArr.PageNum[0]);
+                        }
+                    } else {
+
+                        $('.errorbooknradd').addClass('hidden');
+                    }
+
+                    if (myArr.hasOwnProperty('Price')) {
+                        if (myArr.Price != '') {
+                            $('.errorpriceadd').removeClass('hidden');
+                            $('.errorpriceadd').text(myArr.Price[0]);
+                        }
+                    } else {
+
+                        $('.errorpriceadd').addClass('hidden');
+                    }
+
+                    if (myArr.hasOwnProperty('imagePath')) {
+                        if (myArr.imagePath != '') {
+                            $('.erroruploadadd').removeClass('hidden');
+                            $('.erroruploadadd').text(myArr.imagePath[0]);
+                        }
+                    } else {
+
+                        $('.erroruploadadd').addClass('hidden');
+                    }
+
                 }
+
             });
         });
 

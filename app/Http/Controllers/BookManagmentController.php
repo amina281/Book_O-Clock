@@ -10,8 +10,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Validator;
-
+use Validator;
+use App\Http\Controllers\Controller;
 class BookManagmentController extends Controller
 {
     public function index(){
@@ -22,17 +22,30 @@ class BookManagmentController extends Controller
     }
 
     public function addBook(Request $request){
+        $validator = $this->validation($request);
+
+        if ($validator->fails()) {
+
+            $responseBag = $validator->getMessageBag()->toArray();
+            $responseBag['type'] = ['error'];
+
+            if ($request->ajax()) {
+                return response()->json($responseBag, 422);
+            }
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
 
 
         if($request->imagePath == '0'){
             $imageFullPath= 'img/products/';}
-        else {
-            $this->validation($request);
+
             $image = $request->file('imagePath');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('img/products/'), $new_name);
             $imageFullPath = 'img/products/' . $new_name;
-        }
+
         $books = new Book;
         $books->ISBN = $request->ISBN;
         $books->Title = $request->Title;
@@ -65,16 +78,29 @@ class BookManagmentController extends Controller
     }
 
     public function editBook(request $request){
+        $validator = $this->validation($request);
+
+        if ($validator->fails()) {
+
+            $responseBag = $validator->getMessageBag()->toArray();
+            $responseBag['type'] = ['error'];
+
+            if ($request->ajax()) {
+                return response()->json($responseBag, 422);
+            }
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
 
     if($request->imagePath == '0'){
         $imageFullPath= 'img/products/';}
-    else{
-            $valid= $this->validation($request);
+
             $image = $request->file('imagePath');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('img/products/'), $new_name);
             $imageFullPath = 'img/products/' . $new_name;
-      }
+
 
           $book= Book::where('ISBN', $request->ISBN)
             ->update([
@@ -105,7 +131,8 @@ class BookManagmentController extends Controller
 
     public function  validation($request)
     {
-        return $this->validate($request,[
+        return  Validator::make($request->all(), [
+            'ISBN'=>'required|integer',
             'Title' => 'required|string|max:255',
            // 'AuthorId' => 'required|exists:author',
             'Price' => 'required',

@@ -121,7 +121,7 @@
                                 <p class="errorimg text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
-
+                        <p class="successMsgAdd text-center alert alert-success hidden">Veprimi u krye me sukses</p>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -184,7 +184,7 @@
                                 <p class="errorimgadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
-
+                        <p class="successMsgEdit text-center alert alert-success hidden">Veprimi u krye me sukses</p>
                     </form>
                     {{-- Form Delete Post --}}
                     <div class="deleteContent">
@@ -269,6 +269,13 @@
 
                             "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                             "</tr>");
+
+                    $('.errorname').addClass('hidden');
+                    $('.errordesc').addClass('hidden');
+                    $('.errorimg').addClass('hidden');
+                    $('.successMsgAdd').removeClass('hidden');
+
+
                         setTimeout(
                             function()
                             {
@@ -288,7 +295,7 @@
 
 
                     }else{
-                        alert('jam ktuu');
+
                         $('.errorname').addClass('hidden');
                     }
 
@@ -298,6 +305,11 @@
                             $('.errordesc').text(myArr.Address[0]);
                         }
                     }
+                    else{
+
+                        $('.errordesc').addClass('hidden');
+                    }
+
                     if (myArr.hasOwnProperty('imagePath'))
                     {
                        if(myArr.imagePath !=''){
@@ -305,6 +317,11 @@
                            $('.errorimg').text(myArr.imagePath[0]);
                        }
                     }
+                    else{
+
+                        $('.errorimg').addClass('hidden');
+                    }
+
 
             }
             });
@@ -389,11 +406,18 @@
 
                         "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                         "</tr>");
+
+                    $('.errornameadd').addClass('hidden');
+                    $('.errordescadd').addClass('hidden');
+                    $('.errorimgadd').addClass('hidden');
+                    $('.errorbooknradd').addClass('hidden');
+                    $('.successMsgEdit').removeClass('hidden');
+
                     setTimeout(
                         function()
                         {
                             location.reload();
-                        }, 1);
+                        }, 3);
                 },
                 error: function (xhr) {
                     var myArr = JSON.parse(xhr.responseText);
@@ -404,19 +428,30 @@
                             $('.errornameadd').text(myArr.Authorname[0]);
                         }
                     }
+                    else{
+
+                        $('.errornameadd').addClass('hidden');
+                    }
+
 
                     if (myArr.hasOwnProperty('Address')) {
                         if (myArr.Address != '') {
                             $('.errordescadd').removeClass('hidden');
                             $('.errordescadd').text(myArr.Address[0]);
                         }
+                    } else{
+                        $('.errordescadd').addClass('hidden');
                     }
+
                     if (myArr.hasOwnProperty('imagePath'))
                     {
                         if(myArr.imagePath !=''){
                             $('.errorimgadd').removeClass('hidden');
                             $('.errorimgadd').text(myArr.imagePath[0]);
                         }
+                    }
+                    else{
+                        $('.errorimgadd').addClass('hidden');
                     }
 
                     if (myArr.hasOwnProperty('BookNr'))
@@ -425,6 +460,9 @@
                             $('.errorbooknradd').removeClass('hidden');
                             $('.errorbooknradd').text(myArr.BookNr[0]);
                         }
+                    }
+                    else{
+                        $('.errorbooknradd').addClass('hidden');
                     }
 
                 }
@@ -462,7 +500,7 @@
                         function()
                         {
                             location.reload();
-                        }, 1);
+                        }, 3);
                 }
             });
         });

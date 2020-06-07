@@ -18,17 +18,17 @@ class AuthorManagmentController extends Controller
     }
 
     public function addAuthor(Request $request){
-        $validator = $this->validation($request);
 
-        if ($validator->fails()) {
+            $validator = $this->validation($request);
 
-            $responseBag = $validator->getMessageBag()->toArray();
-            $responseBag['type'] = ['error'];
+            if ($validator->fails()) {
 
-            if ($request->ajax()) {
-                return response()->json($responseBag, 422);
-            }
+                $responseBag = $validator->getMessageBag()->toArray();
+                $responseBag['type'] = ['error'];
 
+                if ($request->ajax()) {
+                    return response()->json($responseBag, 422);
+                }
             $this->throwValidationException(
                 $request, $validator
             );

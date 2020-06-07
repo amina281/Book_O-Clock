@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\Validation\Validator;
+//use Illuminate\Contracts\Validation\Validator;
 use http\Client\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use App\http\Requests;
 use App\User;
-
+use Validator;
+//use Illuminate\Validation\Validator;
+use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
     public function index(){
@@ -21,7 +23,20 @@ class AdminController extends Controller
     }
 
     public function addUser(Request $request){
-        $this->validation($request);
+        $validator = $this->validation($request);
+
+        if ($validator->fails()) {
+
+            $responseBag = $validator->getMessageBag()->toArray();
+            $responseBag['type'] = ['error'];
+
+            if ($request->ajax()) {
+                return response()->json($responseBag, 422);
+            }
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
 
         $user = new User;
         $user->name = $request->name;
@@ -38,6 +53,21 @@ class AdminController extends Controller
 
     public function editUser(request $request){
         $user = User::find ($request->id);
+        $validator = $this->validation($request);
+
+        if ($validator->fails()) {
+
+            $responseBag = $validator->getMessageBag()->toArray();
+            $responseBag['type'] = ['error'];
+
+            if ($request->ajax()) {
+                return response()->json($responseBag, 422);
+            }
+
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
 
       //  $this->validation($request);
 
@@ -56,7 +86,7 @@ class AdminController extends Controller
 
     public function  validation($request)
     {
-        return $this->validate($request,[
+        return  Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',

@@ -93,7 +93,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"  id="nameadd" name="name"
                                        placeholder="Enter Category Name Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errorname text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -101,10 +101,10 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="descadd" name="desc"
                                        placeholder="Your category description Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errorcategory text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
-
+                        <p class="successMsgEdit text-center alert alert-success hidden">Veprimi u krye me sukses</p>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -140,15 +140,17 @@
                             <label class="control-label col-sm-2">Name</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="nameedit">
+                                <p class="errornameadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Description</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="descedit"></input>
+                                <p class="errornameDes text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
-
+                        <p class="successMsgEdit text-center alert alert-success hidden">Veprimi u krye me sukses</p>
                     </form>
                     {{-- Form Delete Post --}}
                     <div class="deleteContent">
@@ -157,7 +159,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn actionBtn" data-dismiss="modal">
+                    <button type="button" class="btn actionBtn" >
                         <span id="footer_action_button" class="glyphicon"></span>
                     </button>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">
@@ -204,13 +206,7 @@
                 processData: false,
                 success: function(data){
 
-                    if ((data.errors)) {
-                        $('.error').removeClass('hidden');
-                        alert(data.errors.Name);
-                        $('.error').text(data.errors.Name);
-                        $('.error').text(data.errors.Description);
-                    } else {
-                        $('.error').remove();
+
                         $('#table').append("<tr class='categorypost" + data.Id + "'>"+
                             "<td>" + data.Name + "</td>"+
                             "<td>" + data.Description + "</td>"+
@@ -227,13 +223,45 @@
 
                             "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                             "</tr>");
+
+                        $('.errorname').addClass('hidden');
+                        $('.errorcategory').addClass('hidden');
+                        $('.successMsgEdit').removeClass('hidden');
+
                         setTimeout(
                             function()
                             {
                                 location.reload();
                             }, 1);
+                    },
+                error: function (xhr) {
+                    var myArr = JSON.parse(xhr.responseText);
+                    if (myArr.hasOwnProperty('Name')) {
+                        if( myArr.Name != '')
+                        {
+                            $('.errorname').removeClass('hidden');
+                            $('.errorname').text(myArr.Name[0]);
+                        }
+
+
+                    }else{
+
+                        $('.errorname').addClass('hidden');
                     }
-                },
+
+                    if (myArr.hasOwnProperty('Description')) {
+                        if (myArr.Description != '') {
+                            $('.errorcategory').removeClass('hidden');
+                            $('.errorcategory').text(myArr.Description[0]);
+                        }
+                    }
+                    else{
+
+                        $('.errorcategory').addClass('hidden');
+                    }
+
+                }
+
             });
 
         });
@@ -302,13 +330,40 @@
 
                         "'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                         "</tr>");
+
+
+                    $('.errornameadd').addClass('hidden');
+                    $('.errornameDes').addClass('hidden');
+
                     setTimeout(
                         function()
                         {
                             location.reload();
                         }, 1);
+                },
+                error: function (xhr) {
+                    var myArr = JSON.parse(xhr.responseText);
+                    if (myArr.hasOwnProperty('Name')) {
+                        if (myArr.Name != '') {
+                            $('.errornameadd').removeClass('hidden');
+                            $('.errornameadd').text(myArr.Name[0]);
+                        }
+                    } else {
+
+                        $('.errornameadd').addClass('hidden');
+                    }
+
+                    if (myArr.hasOwnProperty('Description')) {
+                        if (myArr.Description != '') {
+                            $('.errornameDes').removeClass('hidden');
+                            $('.errornameDes').text(myArr.Description[0]);
+                        }
+                    } else {
+                        $('.errornameDes').addClass('hidden');
+                    }
+
                 }
-            });
+                });
         });
 
         // form Delete function
