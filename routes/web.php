@@ -98,21 +98,19 @@ Route::group(['middleware' => ['web']], function () {
 
     //cart function of the cart page
     Route::get('/cart', 'ShoppingCartController@index')->name('cart.index');
-    Route::post('/cart', 'ShoppingCartController@store')->name('cart.store');
+    Route::get('/cart/{slug}', 'ShoppingCartController@store')->name('cart.store');
     Route::patch('update-cart', 'ShoppingCartController@update')->name('cart.update');
     Route::delete('remove_from_cart', 'ShoppingCartController@remove')->name('cart.remove');
 
-    //checkout page
-    Route::get('/checkout', 'BookController@getCheckout')->name('checkout.index')->middleware('auth');
-
-
+    // checkout page functions
     Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
     Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
-    Route::post('/paypal-checkout', 'CheckoutController@paypalCheckout')->name('checkout.paypal');
 
     //confirmation page after checkout
     Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
 
+    // search
+    Route::get('/search', 'LandingPageController@search')->name('search');
 
 
 

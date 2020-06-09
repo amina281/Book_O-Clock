@@ -52,7 +52,7 @@ class CommentController extends Controller
         $comment->save();
 
         Session::flash('success', 'Comment Successfully Published');
-        return redirect()->back();
+        return back();
 
     }
 
