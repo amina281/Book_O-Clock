@@ -22,9 +22,6 @@ class LandingPageController extends Controller
 
     public function search(Request $request)
     {
-        $this->validate($request, [
-            'query' => 'required|min:2',
-        ]);
 
         $query = $request->input('query');
 

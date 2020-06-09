@@ -115,7 +115,7 @@
                         <div class="read-cover">
                             <h2>Read For Free</h2>
                             <p>Download or read online</p>
-                            <a href="{{ route('product.show', $product->pdfPath )}}.pdf" target="_blank"><button type="button"><i class="fa fa-download"></i> Download</button></a>
+                            <a href="{{ $product->pdfPath }}.pdf" target="_blank"><button type="button"><i class="fa fa-download"></i> Download</button></a>
                         </div>
                     </section>
                 </section>
@@ -144,7 +144,7 @@
                 <h2 class="comment-cover-h2">Comments</h2>
 
                 <section class="other-com-wrapper">
-                    
+
                     <div class="others-com">
                         <div class="user-comimg div-img-com">
                             <img class="com-img" src="#" alt="">

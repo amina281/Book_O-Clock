@@ -34,17 +34,17 @@
             </a>
             <a href="#">
                 <div class="containerhm authors-btn">
-                    <h3 class="buttons-names">Authors</h3>
+                    <h3 class="buttons-names">Shopping Cart</h3>
                 </div>
             </a>
             <a href="#">
                 <div class="containerhm news-btn">
-                    <h3 class="buttons-names">News</h3>
+                    <h3 class="buttons-names">User Profile</h3>
                 </div>
             </a>
             <a href="#">
                 <div class="containerhm quotes-btn">
-                    <h3 class="buttons-names">Quotes</h3>
+                    <h3 class="buttons-names">Services</h3>
                 </div>
             </a>
         </section>

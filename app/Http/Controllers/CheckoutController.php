@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\OrderProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Stripe\Charge;
@@ -43,22 +44,43 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        $cart = session()->get('cart');
-
         if (!session('cart')){
             return  redirect()->route('cart.index')->with('error', 'You can\'t enter the checkout page without having product on your shopping cart !' );
         }
+
+        $cart = session()->get('cart');
+
         Stripe::setApiKey('sk_test_WAQgR3UoziWNozJZclliAMSi00Hx7F5Fe0');
+
         try{
             Charge::create(array(
-                "amount" => $cart-> total,
+                "amount" => 500,
                 "currency" => "usd",
                 "source" => $request->input('stripeToken'),
                 "description" => "Test Charge"
             ));
+
+           /* $order = Order::create([
+                'CustomerId' => auth()->user()->id,
+                'city' => $request->city,
+                'country' => $request->country,
+                'zip' => $request->zip,
+                'card_name' => $request->card_name,
+                //'subtotal' => $request->$total,
+                'CustomerAddress' => auth()->user()->email,
+                'error' => null,
+            ]);
+
+            foreach( $cart as $item){
+                OrderProduct::create([
+                    'DocumentNo' => $order->No,
+                    'product_id' => $item->model->id,
+                    'quantity' => $item->count((array) session('cart'))
+                ]);
+            }*/
         }
         catch (\Exception $e){
-            return redirect()->route('checkout.index')->with('error' , $e->get/message());
+            return redirect()->route('checkout.index')->with('error', $e->getMessage());
         }
 
         Session::forget('cart');

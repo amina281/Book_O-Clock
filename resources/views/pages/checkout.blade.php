@@ -50,7 +50,7 @@
                             <h3 class="title">Billing address</h3>
                         </div>
 
-                        <form action="{{ route('checkout.store')}}" method="POST" id="checkout-form">
+                        <form action="{{ route('checkout.store', $total)}}" method="POST" id="checkout-form">
                             {{ csrf_field() }}
 
                             <div class="form-group">
