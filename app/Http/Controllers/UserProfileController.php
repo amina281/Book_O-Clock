@@ -22,7 +22,7 @@ class UserProfileController extends Controller
             ->where(['CustomerId' => $user->id])->get() ;
 
         if($Orders->count() == 0)
-            return view('UserProfile.User', compact('user'),['EmptySet'=>'Nuk keni bere asnje porosi!']);
+            return view('UserProfile.User', compact('user'),['EmptySet'=>'You have not done any orders yet!']);
 
 
         return view('UserProfile.User', compact('user','Orders'),['EmptySet'=>'']);
