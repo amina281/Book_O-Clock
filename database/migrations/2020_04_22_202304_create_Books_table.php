@@ -14,6 +14,7 @@ class CreateBooksTable extends Migration
         $table->string('Title')->unique();
         $table->string('slug')->unique();
         $table->string('imagePath');
+        $table->string('pdfPath');
         $table->integer('PageNum');
         $table->unsignedInteger('AuthorId');
         $table->float('Rate')->default(0);
