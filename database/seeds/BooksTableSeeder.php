@@ -20,8 +20,9 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 229,
             'Price' => 9.99,
             'Published' => '2006-09-21' ,
+            'pdfPath' => 'an-abundance-of-katherines-pdf',
             'literaryAwards' => 'Winner, 2007 Michael L. Printz Honor,
-              Finalist, 2007 Los Angeles Times Book Prize',
+             Finalist, 2007 Los Angeles Times Book Prize',
             'criticRev' => 'Parents need to know that An Abundance of Katherines is a quirky novel by John Green 
              about teen boys who take a road trip to Tennessee, where they get jobs recording the locals\' oral histories 
              in the town of Gutshot. There\'s strong language ,while less graphic than many young adult books, 
@@ -47,6 +48,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 286,
             'Price' => 9.99,
             'Published' => '2017-10-10'  ,
+            'pdfPath' => 'Turtles All the Way Down',
             'literaryAwards' => 'Lincoln Award Nominee (2020),Nominee for Young Adult Fiction (2017)
               Alabama Author Award for Young Adult (2020)',
             'criticRev' => 'Parents need to know that Turtles All the Way Down is best-selling author John Green\'s 
@@ -75,6 +77,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 305,
             'Price' => 6.28,
             'Published' => '2009-09-22' ,
+            'pdfPath' => 'Paper_Towns',
             'literaryAwards' => 'Winner, The Edgar Award,
               SLJ Best Book of the Year',
             'criticRev' => 'Parents need to know that as with Green\'s other books, this one contains some edgy material:
@@ -102,6 +105,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 328,
             'Price' => 10.34,
             'Published' =>  '2013-02-26',
+            'pdfPath' => 'Eleanor-&-Park',
             'literaryAwards' => 'Georgia Peach Book Award (2014), All About Romance (AAR) 
             Annual Reader Poll for Best Young Adult Romance (2014), Odyssey Award Nominee (2014),
              Michael L. Printz Award Nominee (2016), Pennsylvania Young Readers\' Choice Award for Young Adults (2015)',
@@ -130,6 +134,7 @@ class BooksTableSeeder extends Seeder
             'Price' => 8.30,
             'Published' => '017-11-22' ,
             'literaryAwards' => '-',
+            'pdfPath' => '',
             'criticRev' => 'Parents need to know that Before Midnight is a smart, talky, insightful dramedy that extends
             the love story of Jesse (Ethan Hawke) and Celine (Julie Delpy), the couple who first met and fell in love in
              Before Sunrise and got reacquainted in Before Sunset. This latest installment is an unflinching look at the 
@@ -152,6 +157,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 310,
             'Price' => 13.19,
             'Published' => '2009-09-22' ,
+            'pdfPath' => 'Landline-Rainbow-Rowell',
             'literaryAwards' => ' Premio El Templo de las Mil Puertas Nominee for Mejor novela extranjera independiente
              (2015)',
             'criticRev' => 'I\'m deeply conflicted about how to review this book. On the one hand, I literally laughed 
@@ -183,6 +189,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 306,
             'Price' => 8.02,
             'Published' => '2017-05-19' ,
+            'pdfPath' => '16758_everything_-everything-nicola-yoonnicola-yoon',
             'literaryAwards' => 'South Carolina Book Award for Young Adult (2018),
              Pennsylvania Young Readers\' Choice Award Nominee for Young Adults (2017), Rhode Island Teen Book Award (2017),
               Evergreen Teen Book Award (2018), Soaring Eagle Book Award (2016)',
@@ -213,6 +220,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 384,
             'Price' => 8.99,
             'Published' => '2019-05-17' ,
+            'pdfPath' => 'oceanofpdf-com_the-sun-is-also-a-star',
             'literaryAwards' => '\'California Book Award for Young Adult (Gold) (2016), Michael L. Printz Award Nominee (2017), 
             South Carolina Book Award Nominee for Young Adult (2019), Rhode Island Teen Book Award Nominee for Honorable 
             Mention (2018), John Steptoe New Talent Award for Author (2017)',
@@ -247,6 +255,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 389,
             'Price' => 10.34,
             'Published' => '2016-05-03' ,
+            'pdfPath' => 'Jenna_Evans_Welch_-_Love_amp_amp_Gelato',
             'literaryAwards' => 'Rhode Island Teen Book Award Nominee for Honorable Mention (2018)',
             'criticRev' => 'This light, fun, fast-paced romance is a charmer. While still processing her grief over her 
             mother\'s death, Lina Emerson is sent to Italy to live with an old friend of her mother\'s for the summer. In
@@ -276,6 +285,7 @@ class BooksTableSeeder extends Seeder
             'Price' => 11.77,
             'Published' => '2018-05-08' ,
             'literaryAwards' => '-',
+            'pdfPath' => '',
             'criticRev' => 'The Irish scenery is the highlight of this cute but often irritating story of two feuding 
             teens stuck in close quarters on a road trip. Love & Luck tries for feisty fun, but it lacks the charm of 
             author Jenna Evans Welch\'s previous book Love & Gelato.Welch does a good job of showing the pain of trying 
@@ -305,6 +315,7 @@ class BooksTableSeeder extends Seeder
             'criticRev' => '',
             'criticName'=> '',
             'criticImagePath'=> '',
+            'pdfPath' => '',
             'Description' => 'A tale about a teen girl finding romance while trying to connect with her absent father 
             in Santorini, Greece.Liv Varanakis doesn’t have a lot of fond memories of her father, which makes sense—he 
             fled to Greece when she was only eight. What Liv does remember, though, is their shared love for Greek myths 
@@ -322,6 +333,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 194,
             'Price' => 7.00,
             'Published' => '2004-11-30' ,
+            'pdfPath' => '',
             'literaryAwards' => 'Orange Prize Nominee for New Writers (2005), Guardian Children\'s Fiction Prize (2004), 
             Michael L. Printz Award (2005), Deutscher Jugendliteraturpreis Nominee for Jugendbuch (2006), Branford Boase Award (2005)',
             'criticRev' => 'This is a book that teens will quickly devour and then spend a long time thinking about. 
@@ -347,6 +359,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 256,
             'Price' => 8.99,
             'Published' => '2013-10-03' ,
+            'pdfPath' => '',
             'literaryAwards' => 'Keystone to Reading Book Award Nominee for High School (2015), 
             Milwaukee County Teen Book Award Nominee (2015), Gouden Lijst Nominee for vertaald boek (2017), 
             National Book Award Finalist for Young People\'s Literature (2013)',
@@ -375,6 +388,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 209,
             'Price' => 6.65,
             'Published' => '2008-01-24' ,
+            'pdfPath' => '',
             'literaryAwards' => 'Goldener Lufti (2010), Carnegie Medal Nominee (2008)',
             'criticRev' => ' ',
             'criticName'=> ' ',
@@ -397,6 +411,7 @@ class BooksTableSeeder extends Seeder
             'Price' => 8.12,
             'Published' => '2017-10-03' ,
             'literaryAwards' => '-',
+            'pdfPath' => '',
             'criticRev' => 'A gorgeously written tale of family curses, feminism, and true love, this is an ideal choice 
             for fans of magical realism and romance. Estrella and her cousins are stuck in their ancestral home, tending 
             a sunken garden and making sure they don\'t fall in love lest that person disappear forever.
@@ -423,6 +438,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 320,
             'Price' => 10.21,
             'Published' => '2015-09-15' ,
+            'pdfPath' => '',
             'literaryAwards' => 'William C. Morris YA Debut Award Nominee (2016)',
             'criticRev' => 'The book walks the line between reality and magical realism: for instance, “Cluck” and his 
             family have actual feathers growing from the backs of their necks, while Lace and her family have scales 
@@ -449,6 +465,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 446,
             'Price' => 9.95,
             'Published' => '2016-02-09' ,
+            'pdfPath' => 'an-ember-in-the-ashes',
             'literaryAwards' => 'Pennsylvania Young Readers\' Choice Award Nominee for Young Adults (2017),
              Rhode Island Teen Book Award Nominee (2017), Evergreen Teen Book Award Nominee (2018), 
              Milwaukee County Teen Book Award Nominee (2016), Dioraphte Jongerenliteratuurprijs Nominee for Vertaald boek (2016) ',
@@ -471,6 +488,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 452,
             'Price' => 11.39,
             'Published' => '2016-08-30' ,
+            'pdfPath' => 'A Torch Against the Night',
             'literaryAwards' => 'Goodreads Choice Award Nominee for Young Adult Fantasy & Science Fiction (2016)',
             'criticRev' => 'The rare sequel that improves on the original, Sabaa Tahir\'s second Ember installment deepens
              the character development, introduces new forms of magic, and sets the stage for epic books to come.All 
@@ -492,6 +510,7 @@ class BooksTableSeeder extends Seeder
             'Price' => 13.19,
             'Published' => '2018-06-12' ,
             'literaryAwards' => '-',
+            'pdfPath' => 'A Reaper at the Gates',
             'criticRev' => 'It starts off slower than the first two installments, but this third book broadens the story\'s 
             scope, answers several key questions, humanizes unlikable characters, and brings former rivals together. 
             There\'s a lot going on in this last book before the fourth and final one. It\'s harder to get through
@@ -520,6 +539,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 835,
             'Price' => 16.23,
             'Published' => '2005-07-12' ,
+            'pdfPath' => 'A Game of Thrones',
             'literaryAwards' => 'Nebula Award Nominee for Best Novel (1997), Locus Award for Best Fantasy Novel (1997),
              World Fantasy Award Nominee for Best Novel (1997), Premio Ignotus for Novela extranjera (2003)',
             'criticRev' => '“George R.R. Martin’s new novel, A Game of Thrones, is the first in an epic series about a 
@@ -547,6 +567,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 969,
             'Price' => 15.88,
             'Published' => '2002-05-28' ,
+            'pdfPath' => 'A Clash of Kings',
             'literaryAwards' => 'Nebula Award Nominee for Best Novel (1999), Locus Award for Best Fantasy Novel (1999), 
             Premio Ignotus for Novela extranjera (2004)',
             'criticRev' => 'Martin is a genius, there seems to be no doubt about that. His gift with words and storytelling 
@@ -574,6 +595,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 1177,
             'Price' => 19.47,
             'Published' => '2003-03-04 ' ,
+            'pdfPath' => 'A-Storm-of-Swords',
             'literaryAwards' => 'Hugo Award Nominee for Best Novel (2001), Nebula Award Nominee for Best Novel (2001), 
             Locus Award for Best Fantasy Novel (2001), Geffen Award for Best Translated Fantasy Book (2002), 
             Premio Ignotus (2006) ',
@@ -607,6 +629,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 383,
             'Price' => 12.61,
             'Published' => '2015-02-10' ,
+            'pdfPath' => 'Victoria_Aveyard_-_Red_Queen',
             'literaryAwards' => 'Buxtehuder Bulle (2015), South Carolina Book Award for Young Adult (2017), 
             California Young Readers Medal for Young Adult (2017), Lincoln Award (2017), Missouri Truman Readers Award Nominee (2018)',
             'criticRev' => 'Aveyard packs a lot into a first novel: world building, court intrigue, caste divisions, 
@@ -628,13 +651,14 @@ class BooksTableSeeder extends Seeder
             to her death, but in the dangerous game she plays, the only certainty is betrayal.',
         ],
         [
-            'imagePath' => 'Glass Sword',
+            'imagePath' => 'Glass-Sword',
             'AuthorId' => 9,
             'Title' => 'Glass Sword',
             'slug' => 'Glass-Sword',
             'PageNum' => 444,
             'Price' => 12.78,
             'Published' => '2016-10-04' ,
+            'pdfPath' => 'Glass Sword by Victoria Aveyard',
             'literaryAwards' => 'Goodreads Choice Award Nominee for Young Adult Fantasy & Science Fiction (2016)',
             'criticRev' => 'First-person stories rely on the protagonist evolving, just as sequels must balance action 
             and plot, and on both counts this installment fails to live up to its predecessor. Mare, now fully aware of 
@@ -656,6 +680,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 528,
             'Price' => 14.21,
             'Published' => '2017-02-07' ,
+            'pdfPath' => 'King\'s Cage by Victoria Aveyard',
             'literaryAwards' => 'William C. Morris YA Debut Award Nominee (2016)',
             'criticRev' => 'After Aveyard\'s disappointing second book, this installment is just what Red Queen fans need: genuine growth and character development, more romance, and more end game in sight for Mare Barrow. Even skeptics who put the series down after the lackluster Glass Sword should consider resuming it now that the author has once again found her groove, and her main character is no longer as excruciating to follow.At more than 500 pages, it\'s unsurprising that the pacing is uneven: Some parts fly by, and others feel overlong. Given that the book starts with a quote from Hillary Rodham Clinton, that\'s clearly on purpose, and discerning readers can see how girls will eventually rule in this world.',
             'criticName'=> ' Sandie Angulo Chen',
@@ -677,6 +702,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 503,
             'Price' => 10.00,
             'Published' => '2005-04-10 ' ,
+            'pdfPath' => 'Eragon',
             'literaryAwards' => 'Book Sense Book of the Year Award for Children\'s Literature (2004), 
             Books I Loved Best Yearly (BILBY) Awards for Older Readers (2007), South Carolina Book Award for Young Adult Book (2006), 
             Grand Canyon Reader Award for Teen Book (2006), Nene Award (2006) .',
@@ -699,6 +725,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 704,
             'Price' => 9.24,
             'Published' => '2007-03-13 ' ,
+            'pdfPath' => 'Eragon - 2 -Eldest',
             'literaryAwards' => 'William C. Morris YA Debut Award Nominee (2016)',
             'criticRev' => 'ELDEST is considerably longer and more dense than its predecessor, Eragon, but it\'s exciting, dark, suspenseful, and imaginative. This is a considerable step forward in Christopher Paolini\'s development as a writer. Eragon and Roran are compelling characters, and the relationship between Eragon and Saphira can be touching.
 
@@ -723,6 +750,7 @@ class BooksTableSeeder extends Seeder
             'Price' => 11.75,
             'Published' => '2008-09-20' ,
             'literaryAwards' => '-',
+            'pdfPath' => 'brisingr',
             'criticRev' => 'oung author Christopher Paolini continues to grow as a writer, and his story has an ability to capture and hold his readers\' attentions even over the far-too-long expanse of his longest novel yet. His characters, settings, and action set-pieces are vivid and continue to thrill, and there is no doubt that this third book in what is now planned to be a four-book series will sell well and please many of his fans.Paolini is a very good writer, and has the talent to be a great one  all he needs is the discipline.',
             'criticName'=> ' Matt Berman',
             'criticImagePath'=> 'img/critics/avatar',
@@ -744,6 +772,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 315,
             'Price' => 9.85,
             'Published' => '2012-03-20' ,
+            'pdfPath' => 'Wild__From_Lost_to_Found_on_the_Pacific_Crest_Trail',
             'literaryAwards' => 'Oregon Book Award Nominee for Creative Nonfiction (Finalist) (2013), 
             Indies Choice Book Award for Adult Nonfiction (2013), Puddly Award for Nonfiction (2013), Goodreads Choice Award for Memoir & Autobiography (2012)',
             'criticRev' => 'In this hugely entertaining book, Cheryl Strayed takes the redemptive nature of travel – a theme as old as literature itself – and makes it her own. For three months she hiked 1,100 miles alone along the Pacific Crest Trail, a continuous wilderness undulating from Mexico to Canada over nine mountain ranges – the Laguna to the Cascades. She did it, she says, "in order to save myself".
@@ -769,6 +798,7 @@ class BooksTableSeeder extends Seeder
             'criticRev' => ' ',
             'criticName'=> ' ',
             'criticImagePath'=> '',
+            'pdfPath' => '',
             'Description' => 'Be brave enough to break your own heart.
             You can\'t ride to the fair unless you get on the pony.
             Keep walking.   
@@ -791,6 +821,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 302,
             'Price' => 8.37,
             'Published' => '2001-03-01' ,
+            'pdfPath' => '',
             'literaryAwards' => 'National Book Award for Nonfiction (2000), Ambassador Book Award for American Studies (2001), 
             Massachusetts Book Award Nominee for Nonfiction (2001), ALA Alex Award (2001)',
             'criticRev' => 'The story arc follows the tragic two year journey of the whaleship Essex led by Captain Pollard and his arrogant First Mate, Owen Chase. The latter being one of the surviving accounts that this novel is based off. As this particular interpretation of the event is often biased towards those in charge, the second account of the cabin boy, 14 year old Thomas Nickerson, balances the perspectives on board. Giving a voice to the men in the lower ranks of the ship’s crew.
@@ -813,6 +844,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' =>466,
             'Price' => 9.50,
             'Published' => '2010-03-04' ,
+            'pdfPath' => '',
             'literaryAwards' => 'Montana Book Award Nominee (2010), Goodreads Choice Award Nominee for History and Biography (2010)',
             'criticRev' => 'For many young and impressionable readers in the 1960s, there was an incisive and hilarious book, Thomas Berger’s “Little Big Man,” that did more than any other to replace the outdated narrative of the Old West as a contest between cowboys (good guys) and Indians (bad guys) with a reversal of roles, portraying European Americans as swashbuckling clods who committed genocide on the good-hearted natives.
             “The Last Stand” is an engrossing, thoughtfully researched and tautly written account of a critical chapter in American history. With strong narrative skill, offering broad context and narrow detail, Philbrick recounts a story and, in the process, dismantles old myths piece by piece. Custer’s military action at Little Bighorn was certainly not the last stand of the white man, who soon succeeded in decimating the Indian population. 
@@ -838,6 +870,7 @@ class BooksTableSeeder extends Seeder
             'Price' => 11.22,
             'Published' => '2005-08-01' ,
             'literaryAwards' => '-',
+            'pdfPath' => '',
             'criticRev' => 'Simply breathtaking. Yossi s story of survival haunted me for weeks. --Bryce Courtenay, author of The Power of One
             A powerful story of self-discovery, survival in the wild. --The Los Angeles Times
             Told simply and yet with a novelist s eye for structure and drama, the story unfolds like a nightmare movie. --Sun Herald
@@ -865,6 +898,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' =>166,
             'Price' => 8.15,
             'Published' => '2006-11-01 ' ,
+            'pdfPath' => '',
             'literaryAwards' => '',
             'criticRev' => ' ',
             'criticName'=> ' ',
@@ -884,6 +918,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 394,
             'Price' => 12.88,
             'Published' => '2002-04-01' ,
+            'pdfPath' => 'twenty-thousand-leagues-under-the-sea',
             'literaryAwards' => '',
             'criticRev' => ' ',
             'criticName'=> ' ',
@@ -900,6 +935,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' =>252,
             'Price' => 9.75,
             'Published' => '2004-02-26 ' ,
+            'pdfPath' => 'around-the-world-in-80-days',
             'literaryAwards' => 'Selected Audiobooks for Young Adults',
             'criticRev' => 'When you step into the world of Jules Verne, you step into a world of possibilities and endless adventures. You also meet unforgettable characters.
             
@@ -921,6 +957,7 @@ class BooksTableSeeder extends Seeder
             'PageNum' => 240,
             'Price' => 5.18,
             'Published' => ' 2006-04-25 ' ,
+            'pdfPath' => 'jules_verne_-_a_journey_to_the_center_of_the_earth',
             'literaryAwards' => 'William C. Morris YA Debut Award Nominee (2016)',
             'criticRev' => 'Jules Verne is probably known to most of you through his famous novel, Around the World in 80 Days. The staggering success of this novel though, meant that his other works are not as well known. Indeed, most of us waited for the film to be introduced to Journey to the Centre of the Earth. In this novel, instead of going around the world, we are now going into it!
 
@@ -937,5 +974,6 @@ class BooksTableSeeder extends Seeder
              and the psychology of the questor.>',
         ],
         ]);
+
     }
 }
