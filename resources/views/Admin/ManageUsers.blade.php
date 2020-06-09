@@ -92,7 +92,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"  name="name"
                                        placeholder="Your Name Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errorname text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -100,7 +100,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="body" name="email"
                                        placeholder="Your Email Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="erroremail text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -109,9 +109,10 @@
                             <div class="col-sm-10">
                                 <input type="password" class="form-control" id="body" name="password"
                                        placeholder="Your Password Here" required>
-                                <p class="error text-center alert alert-danger hidden"></p>
+                                <p class="errorpsw text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
+                        <p class="successMsgEdit text-center alert alert-success hidden">Successfully Changed</p>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -175,12 +176,14 @@
                             <label class="control-label col-sm-2">Name</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="n">
+                                <p class="errornameadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Email</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="e"></input>
+                                <p class="erroremailadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -188,6 +191,7 @@
                             <label class="control-label col-sm-2">Password</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="p"></input>
+                                <p class="errorpswadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
 
@@ -197,7 +201,7 @@
                                 <input type="checkbox"  name="verified" class="switch-input" id="v"  value="1"/>
                             </div>
                         </div>
-
+                        <p class="successMsgEdit text-center alert alert-success hidden">Successfully Changed</p>
                     </form>
 
                     {{-- Form Delete Post --}}
@@ -207,7 +211,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn actionBtn" data-dismiss="modal">
+                    <button type="button" class="btn actionBtn" >
                         <span id="footer_action_button" class="glyphicon"></span>
                     </button>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">
@@ -244,13 +248,7 @@
                                     'password': $('input[name=password]').val()
                                 },
                                 success: function(data){
-                                    if ((data.errors)) {
-                                        $('.error').removeClass('hidden');
-                                        $('.error').text(data.errors.name);
-                                        $('.error').text(data.errors.email);
-                                        $('.error').text(data.errors.password);
-                                    } else {
-                                        $('.error').remove();
+
                                         $('#table').append("<tr class='post" + data.id + "'>"+
                                             "<td>" + data.id + "</td>"+
                                             "<td>" + data.name + "</td>"+
@@ -259,14 +257,56 @@
 
                                             "<td><button class='show-modal btn btn-info btn-sm' data-id='" + data.id + "' data-name='" + data.name + "' data-email='" + data.email + "' data-password= '"+ data.password +"'><span class='fa fa-eye'></span></button> <button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-name='" + data.name + "' data-email='" + data.email + "' data-password= '"+ data.password +"'><span class='glyphicon glyphicon-pencil'></span></button> <button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-name='" + data.name + "' data-email='" + data.email + "'data-password= '"+ data.password +"'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                                             "</tr>");
-                                        setTimeout(
+
+                                    $('.errorname').addClass('hidden');
+                                    $('.erroremail').addClass('hidden');
+                                    $('.errorpsw').addClass('hidden');
+                                    $('.successMsgAdd').removeClass('hidden');
+
+
+                                    setTimeout(
                                             function()
                                             {
                                                 location.reload();
                                             }, 1);
+                                    },
+
+                                error: function (xhr) {
+                                    var myArr = JSON.parse(xhr.responseText);
+                                    if (myArr.hasOwnProperty('name')) {
+                                        if (myArr.name != '') {
+                                            $('.errorname').removeClass('hidden');
+                                            $('.errorname').text(myArr.name[0]);
+                                        }
+
+
+                                    } else {
+
+                                        $('.errorname').addClass('hidden');
                                     }
-                                },
-                            });
+
+                                    if (myArr.hasOwnProperty('email')) {
+                                        if (myArr.email != '') {
+                                            $('.erroremail').removeClass('hidden');
+                                            $('.erroremail').text(myArr.email[0]);
+                                        }
+                                    } else {
+
+                                        $('.erroremail').addClass('hidden');
+                                    }
+
+                                    if (myArr.hasOwnProperty('password')) {
+                                        if (myArr.password != '') {
+                                            $('.errorpsw').removeClass('hidden');
+                                            $('.errorpsw').text(myArr.password[0]);
+                                        }
+                                    } else {
+
+                                        $('.errorpsw').addClass('hidden');
+                                    }
+
+                                }
+                                });
 
                         });
 
@@ -312,13 +352,49 @@
 
                                         "<td><button class='show-modal btn btn-info btn-sm' data-id='" + data.id + "' data-name='" + data.name + "' data-email='" + data.email + "'data-password= '"+ data.password +"'><span class='fa fa-eye'></span></button> <button class='edit-modal btn btn-warning btn-sm' data-id='" + data.id + "' data-name='" + data.name + "' data-email='" + data.email + "'data-password= '"+ data.password +"'><span class='glyphicon glyphicon-pencil'></span></button> <button class='delete-modal btn btn-danger btn-sm' data-id='" + data.id + "' data-name='" + data.name + "' data-email='" + data.email + "'data-password= '"+ data.password +"'><span class='glyphicon glyphicon-trash'></span></button></td>"+
                                         "</tr>");
+                                    $('.errornameadd').addClass('hidden');
+                                    $('.erroremailadd').addClass('hidden');
+                                    $('.errorpswadd').addClass('hidden');
+                                    $('.successMsgEdit').removeClass('hidden');
+
                                     setTimeout(
                                         function()
                                         {
                                             location.reload();
-                                        }, 1);
+                                        }, 3);
+                                },
+                                error: function (xhr) {
+                                    var myArr = JSON.parse(xhr.responseText);
+                                    if (myArr.hasOwnProperty('name')) {
+                                        if (myArr.name != '') {
+                                            $('.errornameadd').removeClass('hidden');
+                                            $('.errornameadd').text(myArr.name[0]);
+                                        }
+                                    } else {
+
+                                        $('.errornameadd').addClass('hidden');
+                                    }
+
+
+                                    if (myArr.hasOwnProperty('email')) {
+                                        if (myArr.email != '') {
+                                            $('.erroremailadd').removeClass('hidden');
+                                            $('.erroremailadd').text(myArr.email[0]);
+                                        }
+                                    } else {
+                                        $('.erroremailadd').addClass('hidden');
+                                    }
+
+                                    if (myArr.hasOwnProperty('password')) {
+                                        if (myArr.password != '') {
+                                            $('.errorpswadd').removeClass('hidden');
+                                            $('.errorpswadd').text(myArr.password[0]);
+                                        }
+                                    } else {
+                                        $('.errorpswadd').addClass('hidden');
+                                    }
                                 }
-                            });
+                                });
                         });
 
                         // form Delete function

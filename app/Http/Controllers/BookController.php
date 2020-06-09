@@ -39,6 +39,12 @@ class BookController extends Controller
 
         $comment = Comment::where('post_id','=', $slug)->first();;
 
+        return view('pages.product')->with(compact('product','mightAlsoLike','comment'));
+          /*  ->with([
+                'product' => $product,
+                'mightAlsoLike' => $mightAlsoLike,
+                'comment' => $comment,
+            ]);*/
         return view('pages.product', compact('product','mightAlsoLike','comment'));
         /*  ->with([
               'product' => $product,

@@ -8,6 +8,10 @@ use App\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+//use Illuminate\Validation\Validator;
+use Validator;
+use App\Http\Controllers\Controller;
+
 
 class CategoryManagmentController extends Controller
 {
@@ -17,9 +21,23 @@ class CategoryManagmentController extends Controller
     }
 
     public function addCategory(Request $request){
-        $this->validation($request);
+        $validator = $this->validation($request);
 
-       $categories = new Category();
+        if ($validator->fails()) {
+
+            $responseBag = $validator->getMessageBag()->toArray();
+            $responseBag['type'] = ['error'];
+
+            if ($request->ajax()) {
+                return response()->json($responseBag, 422);
+            }
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+
+        $categories = new Category();
        $categories->Name = $request->Name;
         $categories->Description = $request->Description;
 
@@ -30,7 +48,21 @@ class CategoryManagmentController extends Controller
     }
 
     public function editCategory(request $request){
-        $this->validation($request);
+        $validator = $this->validation($request);
+
+        if ($validator->fails()) {
+
+            $responseBag = $validator->getMessageBag()->toArray();
+            $responseBag['type'] = ['error'];
+
+            if ($request->ajax()) {
+                return response()->json($responseBag, 422);
+            }
+
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
 
         $category= Category::where('Id', $request->Id)
             ->update([
@@ -54,7 +86,7 @@ class CategoryManagmentController extends Controller
 
     public function  validation($request)
     {
-        return $this->validate($request,[
+        return  Validator::make($request->all(), [
             'Name' => 'required|string|max:255',
             'Description' => 'required',
 
