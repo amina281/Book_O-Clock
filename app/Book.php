@@ -11,6 +11,11 @@ class Book extends Model
 
     protected $fillable = ['ISBN', 'Title', 'PageNum', 'Price', 'Published', 'Description', 'slug','imagePath'];
 
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category');
+    }
+
     public function scopeMightAlsoLike($query)
     {
         return $query->inRandomOrder()->take(4);
@@ -24,6 +29,11 @@ class Book extends Model
     public function  addtobookshelf()
     {
         return $this->belongsToMany('App\AddToBookshelf');
+    }
+
+    public function  author()
+    {
+        return $this->belongsTo('App\Author', AuthorId);
     }
 
 }
