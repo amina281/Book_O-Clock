@@ -11,10 +11,16 @@ class CreateCategoryTable extends Migration
     {
         Schema::create('Category', function (Blueprint $table) {
             $table->increments('Id');
-            $table->string('Name');
-            $table->string('Description');
+            $table->string('name')->unique();
+            $table->string('Description')->default('');
+            $table->string('slug')->unique();
             $table->timestamps();
 
         });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('Category');
     }
 }
