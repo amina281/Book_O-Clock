@@ -112,7 +112,7 @@
                                 <p class="errorpsw text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
-                        <p class="successMsgEdit text-center alert alert-success hidden">Veprimi u krye me sukses</p>
+                        <p class="successMsgEdit text-center alert alert-success hidden">Successfully Changed</p>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -201,7 +201,7 @@
                                 <input type="checkbox"  name="verified" class="switch-input" id="v"  value="1"/>
                             </div>
                         </div>
-                        <p class="successMsgEdit text-center alert alert-success hidden">Veprimi u krye me sukses</p>
+                        <p class="successMsgEdit text-center alert alert-success hidden">Successfully Changed</p>
                     </form>
 
                     {{-- Form Delete Post --}}
@@ -361,7 +361,7 @@
                                         function()
                                         {
                                             location.reload();
-                                        }, 1);
+                                        }, 3);
                                 },
                                 error: function (xhr) {
                                     var myArr = JSON.parse(xhr.responseText);

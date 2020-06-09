@@ -121,7 +121,7 @@
                                 <p class="errorimg text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
-                        <p class="successMsgAdd text-center alert alert-success hidden">Veprimi u krye me sukses</p>
+                        <p class="successMsgAdd text-center alert alert-success hidden">Successfully Changed</p>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -184,7 +184,7 @@
                                 <p class="errorimgadd text-center alert alert-danger hidden"></p>
                             </div>
                         </div>
-                        <p class="successMsgEdit text-center alert alert-success hidden">Veprimi u krye me sukses</p>
+                        <p class="successMsgEdit text-center alert alert-success hidden">Successfully Changed</p>
                     </form>
                     {{-- Form Delete Post --}}
                     <div class="deleteContent">
