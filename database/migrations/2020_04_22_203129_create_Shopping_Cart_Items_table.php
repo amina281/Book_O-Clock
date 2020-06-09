@@ -12,14 +12,11 @@ class CreateShoppingCartItemsTable extends Migration
         Schema::create('Shopping_Cart_Items', function (Blueprint $table) {
             $table->integer('LineNo');
             $table->unsignedInteger('DocumentNo');
-            $table->integer('BookId');
-            $table->decimal('Quantity');
-            $table->decimal('UnitPrice');
-            $table->decimal('SubTotal');
             $table->foreign('DocumentNo')->references('No')->on('Shopping_Cart_Header');
-            $table->primary(array('LineNo','DocumentNo'));
-
-
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('ISBN')->on('Books');
+            $table->decimal('quantity')->unsigned();
+            $table->timestamps();
         });
     }
 
