@@ -449,16 +449,16 @@
     justify-content: center;
     align-items: center;
 }
-.add-tocart form{
+.add-tocart a{
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
 }
-.add-tocart form:focus{
+.add-tocart a:focus{
     outline: none;
 }
-.add-tocart form button{
+.add-tocart a button{
     border: none;
     background: #0F2334;
     border-radius: 40px;
@@ -470,7 +470,7 @@
     margin-left: .8em;
     cursor: pointer;
 }
-.add-tocart form button:hover, .add-tocart form button:focus{
+.add-tocart a button:hover, .add-tocart a button:focus{
     outline: none;
     background: rgb(1, 11, 20);
 }

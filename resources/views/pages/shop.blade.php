@@ -90,7 +90,7 @@
     @foreach($products as $product)
         <div class="grid-container">
             <div class="imgContainer">
-                <div><img src="{{ $product->imagePath}}.jpg" alt="TheAlchemist" style="width:300px"></div>
+                <div><img src="{{ $product->imagePath}}.jpg" style="width:300px"></div>
                 <div class="imgButton">
                     <a href="/product/{{ $product->slug }}"><button class="button"><span>Read more </span></button></a>
                 </div>

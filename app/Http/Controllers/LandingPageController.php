@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use Illuminate\Http\Request;
+
 
 class LandingPageController extends Controller
 {
@@ -18,5 +20,17 @@ class LandingPageController extends Controller
         return view('pages.landing-page');
     }
 
+    public function search(Request $request)
+    {
+        $this->validate($request, [
+            'query' => 'required|min:2',
+        ]);
+
+        $query = $request->input('query');
+
+        $product = Book::where('Title', 'like', "%$query%")->get();
+
+        return view('pages.search-result')->with('products', $product);
+    }
 
 }

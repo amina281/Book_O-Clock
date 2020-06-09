@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $fillable = [
-        'user_id', 'billing_email', 'billing_name', 'billing_address', 'billing_city',
-        'billing_province', 'billing_postalcode', 'billing_phone', 'billing_name_on_card', 'billing_discount',
-        'billing_discount_code', 'billing_subtotal', 'billing_tax', 'billing_total', 'payment_gateway', 'error',
+        'CustomerId', 'CustomerAddress', 'payment_id', 'city',
+        'country', 'zip', 'subtotal', 'card_name', 'error',
     ];
 
     public function user()
@@ -17,8 +16,9 @@ class Order extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function products()
+    public function Books()
     {
         return $this->belongsToMany('App\Book')->withPivot('quantity');
     }
+
 }

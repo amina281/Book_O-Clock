@@ -11,13 +11,17 @@ class CreateShoppingCartHeaderTable extends Migration
     {
         Schema::create('Shopping_Cart_Header', function (Blueprint $table) {
             $table->increments('No');
-            $table->string('CustomerAddress');
-            $table->integer('TotalAmount');
+            $table->text('CustomerAddress');
+            $table->string('payment_id');
             $table->unsignedInteger('CustomerId');
             $table->foreign('CustomerId')->references('id')->on('users');
+            $table->string('city');
+            $table->string('country');
+            $table->string('zip');
+            $table->string('card_name');
+            $table->integer('subtotal');
+            $table->string('error')->nullable();
             $table->timestamps();
-
-
         });
     }
 

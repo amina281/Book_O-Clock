@@ -13,7 +13,7 @@
             <section class="upper-cover-wrapper">
                 <div class="upper-cover">
                     <a href="#"><h4>Young Adult</h4></a>
-                    <img src="" alt="cover">
+                    <img src="{{ $product->imagePath}}.jpg" alt="cover">
                 </div>
             </section>
 
@@ -21,7 +21,7 @@
                 <section class="right-wrapper">
                     <div class="cover-title">
                         <h1 class="cov-nam">{{ $product->Title }}</h1>
-                        <a href="#"><h3 class="auth-nam"></h3></a>
+                        <a href="#"><h3 class="auth-nam">{{ $product->AuthorId }}</h3></a>
                     </div>
                     <p class="book-parag">
                         {{ $product->Description}}
@@ -32,26 +32,7 @@
 
             @if (Auth::check())
                 <div class="cover-left-wrapper">
-                    <section class="cover-left">
-                        <div class="select-op">
-                            <div class="select-book" >
-                                <h1 class="bookshelf-select"> Add To Bookshelf </h1>
-                                <i class="fa fa-sort-down"></i>
-                            </div>
-                            <div class="drop-book">
-                                <ul class="cover-add"  >
-                                    <li><a href="#"></a> </li>
-                                    <li id="addbookshelf" >
-                                        <form  action="{{ route('bookshelf.store', $product->slug) }}" method="POST">
-                                            {{ csrf_field() }}
-                                            <input type="text" name="add-bookshelf" id="add-bookshelf" placeholder="Add to Bookshelf" class="add-book-to"/>
-                                            <button type="submit" class="submit-name" >Add Bookshelf</button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
+
                 </div>
             @endif
 
@@ -67,14 +48,14 @@
             @endif
 
             @if($message = Session::get('success'))
-                <div class="alert alert-success alert-block">
-                    <button type="button" class="close" data-dismiss="alert">x</button>
+                <div class="alert alert-success alert-block" style="width: 80%;margin-left: 10vw;display: flex; align-items: center; justify-content: space-evenly">
                     <strong>{{ $message }}</strong>
+                    <button type="button" class="close" data-dismiss="alert">x</button>
                 </div>
             @endif
 
             @if(session()->has('success_message'))
-                <div class="alert alert-success alert-block">
+                <div class="alert alert-success alert-block" >
                     <button type="button" class="close" data-dismiss="alert" style="margin-right: 2em;"><strong>X</strong></button>
                     <strong>{{ session()->get('success_message') }}</strong>
                 </div>
@@ -121,14 +102,9 @@
                                 <h2>${{ $product -> Price }}</h2>
                             </div>
                             <div class="add-tocart">
-                                <form action="{{ route('cart.store') }}" method="POST" >
-                                    {{ csrf_field() }}
-
-                                    <input type="hidden" name="ISBN" value=" {{ $product->ISBN }}">
-                                    <input type="hidden" name="Title" value=" {{ $product->Title }}">
-                                    <input type="hidden" name="Price" value=" {{ $product->Price }}">
+                                <a href="{{ route('cart.store', $product->slug ) }}" >
                                     <button type="submit">Add to Cart</button>
-                                </form>
+                                </a>
                             </div>
                         </div>
                     </section>
@@ -139,7 +115,7 @@
                         <div class="read-cover">
                             <h2>Read For Free</h2>
                             <p>Download or read online</p>
-                            <a href="../../pdf/Eragon - 1 - Inheritance.pdf"><button type="button"><i class="fa fa-download"></i> Download</button></a>
+                            <a href="{{ route('product.show', $product->pdfPath )}}.pdf" target="_blank"><button type="button"><i class="fa fa-download"></i> Download</button></a>
                         </div>
                     </section>
                 </section>
@@ -168,6 +144,7 @@
                 <h2 class="comment-cover-h2">Comments</h2>
 
                 <section class="other-com-wrapper">
+                    
                     <div class="others-com">
                         <div class="user-comimg div-img-com">
                             <img class="com-img" src="#" alt="">
@@ -183,26 +160,17 @@
                         </div>
                     </div>
 
-                    <div class="others-com">
-                        <div class="user-comimg div-img-com">
-                            <img class="com-img" src="#" alt="">
-                            <a href="#"><h1 class="user-nam-com">Lola</h1></a>
-                        </div>
-                        <div class="left-comment">
-                            <p>As an immigrant myself, I connected with Fabiola tremendously.
-                                When you move from one place to a very different place or even if youre just there to visit theres usually a culture shock happening.
-                                I felt that. I know what its like for people to mock the way you speak or laugh at the unusual words you use.
-                                When you move from one place to a very different place or even if youre just there to visit theres usually a culture shock happening.
-                                I felt that. I know what its like for people to mock the way you speak or laugh at the unusual words you use.
-                            </p>
-                        </div>
-                    </div>
                 </section>
 
                 @guest
-                    <p>
-                        To post a new comment you need to log in first.
-                        <a href="{{ route('login') }}"> Login</a>
+                    <p style="display: flex; align-items: center; justify-content: center; margin: 5vh 0 ; ">
+                        <h5>To post a new comment you need to log in first.</h5>
+                        <a href="{{ route('login') }}">
+                            <button style="background: rgba(225,47,65,0.76); color: white; font-family: 'Amiri',sans-serif; font-weight: 600; padding: .2em 1.5em;
+                             border: none; border-radius: 50px; margin: 1em 0 3em 0;">
+                                Login
+                            </button>
+                        </a>
                     </p>
 
                 @else

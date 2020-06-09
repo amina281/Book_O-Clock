@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light"
-     style="line-height: -1vh">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
     <a class="navbar-brand" href="{{ route('landing-page') }}">Book O'Clock</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +20,7 @@
             </li>
             @if (Auth::check())
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Quotes</a>
+                    <a class="nav-link" href="{{ url('/user') }}">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/logout') }}">Log Out</a>
@@ -32,7 +31,7 @@
                         </i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="#"></a>
                         <a class="dropdown-item" href="/cart" >Shopping cart</a>
                         <a class="dropdown-item" href="{{ route('bookshelf.index') }}">Bookshelf</a>
                         <div class="dropdown-divider"></div>
@@ -62,8 +61,8 @@
         </ul>
     </div>
     <nav class="navbar navbar-light bg-light">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form action="{{ route('search') }}" method="GET" class="form-inline search-form">
+            <input value="{{ request()->input('query') }}" class="form-control mr-sm-2 search-box" type="search" placeholder="Search for books" id="query" name="query" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </nav>

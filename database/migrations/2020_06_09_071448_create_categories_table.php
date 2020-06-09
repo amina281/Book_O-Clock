@@ -4,23 +4,31 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoryTable extends Migration
+class CreateCategoriesTable extends Migration
 {
-
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
-        Schema::create('Category', function (Blueprint $table) {
+        // Create table for storing categories
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('Id');
             $table->string('name')->unique();
-            $table->string('Description')->default('');
             $table->string('slug')->unique();
             $table->timestamps();
-
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
-        Schema::dropIfExists('Category');
+        Schema::dropIfExists('categories');
     }
 }
